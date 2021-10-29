@@ -167,4 +167,22 @@ QSqlQueryModel* Client::Trier(QString critere)
  return model;
 }
 
+int Client::recetteTotale()
+{
+    QSqlQuery query;
+
+    int somme = 0;
+    query.prepare("select * from Client");
+
+    if (query.exec())
+    {
+        while (query.next())
+            somme +=query.value(8).toInt();
+    }
+
+    return somme;
+
+}
+
+
 

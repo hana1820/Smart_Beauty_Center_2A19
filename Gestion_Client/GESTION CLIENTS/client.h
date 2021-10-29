@@ -40,7 +40,11 @@ public:
     //Les fonctionnalités avancées
     QSqlQueryModel *rechercher(int);
     QSqlQueryModel* Trier(QString );
-    int calculRecette();
+
+    int recetteTotale();
+    void genereExcel();
+    void genererPdf();
+    void chat();
 
 private:
     QString prenom,nom,adresse,email,sexe;

@@ -49,6 +49,8 @@ private slots:
 
     void on_pb_rechercher_clicked();
 
+    void on_pb_recette_clicked();
+
 private:
     Ui::MainWindow *ui;
     Client Ctmp;

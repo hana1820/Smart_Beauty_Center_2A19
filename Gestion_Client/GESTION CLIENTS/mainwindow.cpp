@@ -86,41 +86,6 @@ void MainWindow::on_pb_supprimer_clicked()
           "Click Cancel to quit"),QMessageBox::Cancel);
     }
 }
-/*
-void MainWindow::on_pb_modifier_clicked()
-{
-   // int id=ui->lineEdit_IDS->text().toInt();
-   /*ui->tableView_2->setModel(Ctmp.rechercher(id)); //permetrra de recherhcer
-
-    int identifiant=ui->lineEdit_id->text().toInt();
-
-    QString prenom=ui->lineEdit_prenom->text();
-    QString adresse=ui->lineEdit_adresse->text();
-    QString nom=ui->lineEdit_nom->text();
-    int telephone=ui->lineEdit_telephone->text().toInt();
-    QString email=ui->lineEdit_mail->text();
-    int age=ui->lineEdit_age->text().toInt();
-    QString sexe=ui->lineEdit_sexe->text();
-    int achat=ui->lineEdit_achat->text().toInt();
-
-    bool test=Ctmp.modifier(identifiant,nom,prenom,adresse,telephone,age,email,sexe,achat);
-    if(test)
-    {
-        QMessageBox::information(nullptr,QObject::tr("OK"),
-        QObject::tr("SUPPRESSION EFFECTUEE...\n"
-          "Click Cancel to quit"),QMessageBox::Cancel);
-    }
-    else
-    {
-        QMessageBox::critical(nullptr,QObject::tr("NOT OK"),
-        QObject::tr("SUPPRESSION NON EFFECTUEE...\n"
-          "Click Cancel to quit"),QMessageBox::Cancel);
-    }
-    ui->tableView_2->setModel(Ctmp.afficher());
-
-}
-
-*/
 
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
@@ -196,7 +161,7 @@ void MainWindow::on_tableView_2_activated(const QModelIndex &index)
     {
         while(query.next())
         {
-            //ui->lineEdit_Supression->setText(query.value(0).toString());
+
             ui->lineEdit_id->setText(query.value(0).toString());
             ui->lineEdit_nom->setText(query.value(1).toString());
             ui->lineEdit_prenom->setText(query.value(2).toString());
@@ -234,4 +199,14 @@ void MainWindow::on_pb_rechercher_clicked()
 {
     int id=ui->lineEdit_IDS->text().toInt();
        ui->tableView_2->setModel(Ctmp.rechercher(id));
+}
+
+
+void MainWindow::on_pb_recette_clicked()
+{
+    int somme=Ctmp.recetteTotale();
+    QString somme_string=QString::number(somme);
+
+   ui->lineEdit_recette->setText(somme_string);
+
 }

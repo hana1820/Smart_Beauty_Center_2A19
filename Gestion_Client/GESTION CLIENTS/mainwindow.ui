@@ -835,7 +835,7 @@ background-color: rgb(172, 114, 85);</string>
         </size>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_10">
+      <widget class="QPushButton" name="pb_recette">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -855,7 +855,7 @@ background-color: rgb(172, 114, 85);</string>
         <string>RECETTE</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_3">
+      <widget class="QLineEdit" name="lineEdit_recette">
        <property name="geometry">
         <rect>
          <x>0</x>
