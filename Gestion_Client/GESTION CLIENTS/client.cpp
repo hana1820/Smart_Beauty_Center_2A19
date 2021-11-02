@@ -62,7 +62,7 @@ bool Client::ajouter()
 
     //prepare() prend la requete ne paramètre pour la préparer à l'éxécution
 
-    query.prepare("insert into CLIENT (IDENTIFIANT, NOM, PRENOM, ADRESSE, TELEPHONE, AGE, EMAIL, SEXE, ACHAT)"
+    query.prepare("insert into CLIENT (IDENTIFIANT, NOM, PRENOM, ADRESSE, TELEPHONE, AGE, MAIL, SEXE, ACHAT)"
             "values(:identifiant, :nom, :prenom, :adresse, :telephone, :age, :email, :sexe, :achat)");
 
     //Creatino des variables liees
@@ -91,7 +91,7 @@ model->setHeaderData(2,Qt::Horizontal,QObject::tr("PRENOM"));
 model->setHeaderData(3,Qt::Horizontal,QObject::tr("ADRESSE"));
 model->setHeaderData(4,Qt::Horizontal,QObject::tr("TEL"));
 model->setHeaderData(5,Qt::Horizontal,QObject::tr("AGE"));
-model->setHeaderData(6,Qt::Horizontal,QObject::tr("EMAIL"));
+model->setHeaderData(6,Qt::Horizontal,QObject::tr("MAIL"));
 model->setHeaderData(7,Qt::Horizontal,QObject::tr("SEXE"));
 return model;
 }
@@ -122,7 +122,7 @@ bool Client::modifier(int identifiant, QString nom, QString prenom, QString adre
     QString achat_string=QString::number(achat);
 
 
-    query.prepare("update CLIENT set IDENTIFIANT=:identifiant ,NOM=:nom ,PRENOM=:prenom ,ADRESSE=:adresse,TELEPHONE=:telephone,AGE=:age,EMAIL=:email,SEXE=:sexe,ACHAT=:achat where IDENTIFIANT= :identifiant ");
+    query.prepare("update CLIENT set IDENTIFIANT=:identifiant ,NOM=:nom ,PRENOM=:prenom ,ADRESSE=:adresse,TELEPHONE=:telephone,AGE=:age,MAIL=:email,SEXE=:sexe,ACHAT=:achat where IDENTIFIANT= :identifiant ");
     query.bindValue(":identifiant",identifiant_string);
     query.bindValue(":nom", nom);
     query.bindValue(":prenom", prenom);

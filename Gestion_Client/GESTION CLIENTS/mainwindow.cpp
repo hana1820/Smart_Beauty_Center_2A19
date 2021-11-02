@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->lineEdit_id->setValidator(new QIntValidator(0,99999999,this));
     ui->tableView_2->setModel(Ctmp.afficher());
 }
 
