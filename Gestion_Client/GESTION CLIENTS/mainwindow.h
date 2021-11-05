@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QString>
+#include <QtWidgets>
+#include <QtNetwork>
 #include "client.h"
 
 QT_BEGIN_NAMESPACE
@@ -37,8 +39,31 @@ private slots:
 
     void on_pb_recette_clicked();
 
+    void on_pushButton_clicked();
+    void DONNEESRecues();
+
+    void CONNECTE();
+    void DECONNECTE();
+    void ERREURSOCKET(QAbstractSocket::SocketError erreur);
+
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pb_excel_clicked();
+
+    void on_pb_pdf_clicked();
+
+    void on_pushButton_11_clicked();
+
 private:
     Ui::MainWindow *ui;
+
+    QTcpSocket *socket; // Représente le serveur
+    quint16 tailleMessage;
     Client Ctmp;
 };
 

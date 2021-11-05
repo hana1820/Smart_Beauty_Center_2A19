@@ -2,13 +2,23 @@
 #include "ui_mainwindow.h"
 #include "client.h"
 #include <QMessageBox>
-
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QTextStream>
+#include <QPainter>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    socket = new QTcpSocket(this);
+    connect(socket, SIGNAL(readyRead()), this, SLOT(DONNEESRecues()));
+    connect(socket, SIGNAL(connected()), this, SLOT(CONNECTE()));
+    connect(socket, SIGNAL(disconnected()), this, SLOT(DECONNECTE()));
+    connect(socket, SIGNAL(error(QAbstractSocket::SocketError)), this,
+    SLOT(ERREURSOCKET(QAbstractSocket::SocketError)));
+    tailleMessage = 0;
     ui->lineEdit_id->setValidator(new QIntValidator(0,99999999,this));
     ui->tableView_2->setModel(Ctmp.afficher());
 }
@@ -93,23 +103,22 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     QString critere;
     if(index==2)
     {
-        critere="select * from client ORDER BY SEXE";
+        critere="select * from CLIENT_TEST ORDER BY SEXE";
     ui->tableView_2->setModel(Ctmp.Trier(critere));
     }
 
     if(index==1)
     {
-         critere="select * from client ORDER BY AGE";
+         critere="select * from CLIENT_TEST ORDER BY AGE";
     ui->tableView_2->setModel(Ctmp.Trier(critere));
     }
 
     if(index==0)
     {
-         critere="select * from client ORDER BY NOM";
+         critere="select * from CLIENT_TEST ORDER BY NOM";
     ui->tableView_2->setModel(Ctmp.Trier(critere));
     }
 }
-
 
 void MainWindow::on_pb_valider_clicked()
 {
@@ -141,23 +150,12 @@ void MainWindow::on_pb_valider_clicked()
 
 }
 
-
 void MainWindow::on_tableView_2_activated(const QModelIndex &index)
 {
     QSqlQuery query;
     QString val=ui->tableView_2->model()->data(index).toString();
-    query.prepare("SELECT * from client where IDENTIFIANT= :identifiant");
-    /*or nomAgence= :nomAgence or adresse= :adresse "
-                  "or nbr_Employes= :nbr_Employes or email= :email or gain= :gain");*/
-
+    query.prepare("SELECT * from CLIENT_TEST where IDENTIFIANT= :identifiant");
     query.bindValue(":identifiant",val);
-   /* SELECT WHOLE ROW
-    * query.bindValue(":nomAgence",val);
-    query.bindValue(":adresse",val);
-    query.bindValue(":nbr_Employes",val);
-    query.bindValue(":email",val);
-    query.bindValue(":gain",val);*/
-
     if(query.exec())
     {
         while(query.next())
@@ -182,7 +180,6 @@ void MainWindow::on_tableView_2_activated(const QModelIndex &index)
     }
 }
 
-
 void MainWindow::on_pb_annuler_clicked()
 {
     ui->lineEdit_id->setText(0);
@@ -202,7 +199,6 @@ void MainWindow::on_pb_rechercher_clicked()
        ui->tableView_2->setModel(Ctmp.rechercher(id));
 }
 
-
 void MainWindow::on_pb_recette_clicked()
 {
     int somme=Ctmp.recetteTotale();
@@ -210,4 +206,106 @@ void MainWindow::on_pb_recette_clicked()
 
    ui->lineEdit_recette->setText(somme_string);
 
+}
+
+//TENTATIVE DE CONNEXION AU SERVEUR
+void MainWindow::on_pushButton_clicked()
+{
+    ui->textEdit->append(tr("TRAITEMENT EN COURS..."));
+    ui->pushButton->setEnabled(false);
+    socket->abort(); // On désactive les connexions précédentes s'il y en a
+    // On se connecte au serveur demandé
+    socket->connectToHost(ui->lineEdit_3->text(), ui->lineEdit_4->text().toInt());
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    MainWindow c;
+    QByteArray paquet;
+    QDataStream out(&paquet, QIODevice::WriteOnly);
+    // On prépare le paquet à envoyer
+    QString messageAEnvoyer = tr("<strong>") + ui->lineEdit_6->text() +tr("</strong> : ") + ui->lineEdit_5->text();
+    out << (quint16) 0;
+    out << messageAEnvoyer;
+    out.device()->seek(0);
+    out << (quint16) (paquet.size() - sizeof(quint16));
+    socket->write(paquet); // On envoie le paquet
+    ui->lineEdit_5->clear(); // On vide la zone d'écriture du message
+    ui->lineEdit_5->setFocus(); // Et on remet le curseur à l'intérieur
+    //listeMessages->append(tr("bonjour"));
+}
+
+void MainWindow::DONNEESRecues()
+{
+/* Même principe que lorsque le serveur reçoit un paquet :
+On essaie de récupérer la taille du message
+Une fois qu'on l'a, on attend d'avoir reçu le message entier
+(en se basant sur la taille annoncée tailleMessage)
+*/
+QDataStream in(socket);
+if ( tailleMessage == 0 )
+{
+if (socket->bytesAvailable() < (int)sizeof(quint16))
+return;
+in >> tailleMessage;
+}
+if (socket->bytesAvailable() < tailleMessage)
+return;
+// Si on arrive jusqu'à cette ligne, on peut récupérer le message entier
+QString messageRecu;
+in >> messageRecu;
+// On affiche le message sur la zone de Chat
+ui->textEdit->append(messageRecu);
+// On remet la taille du message à 0 pour pouvoir recevoir de futurs messages
+tailleMessage = 0;
+}
+void MainWindow::CONNECTE()
+{
+ui->textEdit->append(tr("Connexion réussie !"));
+ui->pushButton->setEnabled(true);
+}
+
+void MainWindow::DECONNECTE()
+{
+ui->textEdit->append(tr("Déconnecté du serveur"));
+}
+
+// Ce slot est appelé lorsqu'il y a une erreur
+void MainWindow::ERREURSOCKET(QAbstractSocket::SocketError erreur)
+{
+switch(erreur) // On affiche un message différent selon l'erreur qu'on nous indique
+{
+case QAbstractSocket::HostNotFoundError:
+ui->textEdit->append(tr("ERREUR : le serveur n'a pas pu être trouvé. Vérifiez l'IP et le port."));
+break;
+case QAbstractSocket::ConnectionRefusedError:
+ui->textEdit->append(tr("ERREUR : le serveur a refusé la connexion. Vérifiez si le programme \"serveur\" a bien été lancé. Vérifiez aussi l'IP et le port."));
+break;
+case QAbstractSocket::RemoteHostClosedError:
+ui->textEdit->append(tr("ERREUR : le serveur a coupé la connexion."));
+break;
+default:
+ui->textEdit->append(tr("ERREUR : ") + socket->errorString() +tr(""));
+}
+ui->pushButton->setEnabled(true);
+}
+
+//GENRERATION DE LA FACTURE EN PDF (EN COURS)
+
+
+//GENERATION DE FIC EXCEL (EN COURS)
+void MainWindow::on_pb_excel_clicked()
+{
+   Ctmp.genereExcel();
+
+}
+
+void MainWindow::on_pb_pdf_clicked()
+{
+    Ctmp.genererPdf();
+}
+
+void MainWindow::on_pushButton_11_clicked()
+{
+    close();
 }
