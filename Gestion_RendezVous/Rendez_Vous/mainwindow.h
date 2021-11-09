@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QMainWindow>
+#include <QPixmap>
 #include "connection.h"
 #include "rendez_vous.h"
 
@@ -17,17 +18,20 @@ public:
     ~MainWindow();
 
 private slots:
+
+    void on_Ajouter_clicked();
+
+    void on_Quitter_clicked();
+
     void on_Modifier_clicked();
-    void on_supprimer_clicked();
-    void on_ajouter_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_Supprimer_clicked();
 
-    void on_recherhcer_clicked();
+    void on_Rechercher_clicked();
 
-    void on_comboBox_5_currentIndexChanged(int index);
+    void on_TrierComboBox_currentIndexChanged(int index);
 
-    void on_comboBox_5_currentIndexChanged(const QString &arg1);
+    void on_TrierComboBox_currentIndexChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;

@@ -1,5 +1,6 @@
 #include "rendez_vous.h"
 
+//Les requettes aana selection ajout suppression update creationdutableau
 Rendez_vous::Rendez_vous()
 {
     num_rdv=0;
@@ -10,6 +11,7 @@ Rendez_vous::Rendez_vous()
     salle_rdv="";
     designation="";
 }
+
 Rendez_vous::Rendez_vous(int num_rdv, int id_client, QString date_rdv, QString heure, QString periode, QString salle_rdv, QString designation)
 {
     this->num_rdv=num_rdv;
@@ -20,7 +22,6 @@ Rendez_vous::Rendez_vous(int num_rdv, int id_client, QString date_rdv, QString h
     this->salle_rdv=salle_rdv;
     this->designation=designation;
 }
-
 
 bool Rendez_vous::ajouter()
 {
@@ -34,7 +35,7 @@ bool Rendez_vous::ajouter()
     query.prepare("insert into a_sbc_rendezvous (num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation)" "values (:num_rdv, :id_client, :date_rdv, :heure, :periode, :salle_rdv, :designation)");
 
     //Création des variables liées
-
+    // transmettre les valeurs et les variables
     query.bindValue(":num_rdv",n);
     query.bindValue(":id_client",Id);
     query.bindValue(":date_rdv",date_rdv);
@@ -51,6 +52,8 @@ QSqlQueryModel * Rendez_vous::afficher()
 {
     QSqlQueryModel * model = new QSqlQueryModel(); // Création de l'objet
     model->setQuery("select * from a_sbc_rendezvous");
+
+    //setHeaderData taamel l affichage ml base de donnees
     model->setHeaderData(0,Qt::Horizontal, QObject::tr("num_rdv"));
     model->setHeaderData(1,Qt::Horizontal, QObject::tr("id_client"));
     model->setHeaderData(2,Qt::Horizontal, QObject::tr("id_employe"));
@@ -59,9 +62,6 @@ QSqlQueryModel * Rendez_vous::afficher()
     model->setHeaderData(5,Qt::Horizontal, QObject::tr("periode"));
     model->setHeaderData(6,Qt::Horizontal, QObject::tr("salle_rdv"));
     model->setHeaderData(7,Qt::Horizontal, QObject::tr("designation"));
-
-    /*QSqlQueryModel *model_image = new QSqlQueryModel();
-    model_image->setPixmap(QPixmap("logog.png");*/ //afficher une image sur le fenetre
 
     return model;
 }
@@ -160,6 +160,34 @@ QSqlQueryModel * Rendez_vous::rechercher(int num_rdv)
 
     return model;
 }
+/*
+void Rendez_vous::translate()
+ {
+    QApplication app(argc, argv);
+
+    QTranslator t;
+
+    QStringList languages;
+    languages << "French" << "English" << "Turc" ;
+
+    QString lang = QInputDialog::getItem(NULL,"Select Language", "Languge" , languages);
+
+    if ( lang == "English")
+    {
+        t.load(":/english.qm");
+    }
+    else
+        if ( lang == "Turc")
+        {
+            t.load(":/Turc.qm");
+        }
+
+    if ( lang != "French")
+    {
+        app.installTranslator(&t);
+    }
+         //ui->TraductionComboBox->setText(t());
+ }*/
 
 /*
 //mailing

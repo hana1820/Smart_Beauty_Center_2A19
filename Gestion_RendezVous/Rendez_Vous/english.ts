@@ -386,7 +386,7 @@ Click Cancel to exit</source>
         <location filename="mainwindow.cpp" line="167"/>
         <source>Trie effectuée
 Click Cancel to exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Succesful Sort</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="156"/>

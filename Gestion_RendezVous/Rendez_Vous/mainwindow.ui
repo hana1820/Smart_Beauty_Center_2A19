@@ -34,13 +34,13 @@
 background-color: rgb(245, 172, 162);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Acceuil">
      <attribute name="title">
       <string>Acceuil</string>
      </attribute>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="Connexion">
       <property name="geometry">
        <rect>
         <x>770</x>
@@ -62,7 +62,7 @@ background-color: rgb(245, 172, 162);</string>
        <string>CONNEXION</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="Identifiant">
       <property name="geometry">
        <rect>
         <x>610</x>
@@ -84,7 +84,7 @@ background-color: rgb(245, 172, 162);</string>
        <string>Identifiant</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="Mdp">
       <property name="geometry">
        <rect>
         <x>610</x>
@@ -107,7 +107,7 @@ color: rgb(121, 79, 29);</string>
        <string>Mot de passe</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="MdpLine">
       <property name="geometry">
        <rect>
         <x>780</x>
@@ -120,7 +120,7 @@ color: rgb(121, 79, 29);</string>
        <string notr="true">background-color: rgb(255, 233, 217);</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="MdpO">
       <property name="geometry">
        <rect>
         <x>850</x>
@@ -143,7 +143,7 @@ color: rgb(121, 79, 29);</string>
        <string>Mot de passe oublié ?</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="Sinscrire">
       <property name="geometry">
        <rect>
         <x>920</x>
@@ -166,7 +166,7 @@ color: rgb(121, 79, 29);</string>
        <string>S'inscrire ?</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="Connecter">
       <property name="geometry">
        <rect>
         <x>1040</x>
@@ -202,7 +202,7 @@ color: rgb(121, 79, 29);</string>
        <enum>Qt::Vertical</enum>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_9">
+     <widget class="QLineEdit" name="IdentifiantLine">
       <property name="geometry">
        <rect>
         <x>780</x>
@@ -215,7 +215,7 @@ color: rgb(121, 79, 29);</string>
        <string notr="true">background-color: rgb(255, 233, 217);</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_13">
+     <widget class="QLabel" name="logog">
       <property name="geometry">
        <rect>
         <x>-90</x>
@@ -265,7 +265,7 @@ color: rgb(121, 79, 29);</string>
        <enum>Qt::Vertical</enum>
       </property>
      </widget>
-     <widget class="QTableView" name="tableView">
+     <widget class="QTableView" name="TableView">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -311,7 +311,7 @@ color: rgb(121, 79, 29);</string>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="NumLine">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -322,7 +322,7 @@ color: rgb(121, 79, 29);</string>
          <string notr="true">background-color: rgb(255, 230, 217);</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_3">
+       <widget class="QLineEdit" name="IdLine">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -435,7 +435,7 @@ color: rgb(121, 79, 29);</string>
          </time>
         </property>
        </widget>
-       <widget class="QComboBox" name="comboBox">
+       <widget class="QComboBox" name="PeriodeComboBox">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -470,7 +470,7 @@ color: rgb(121, 79, 29);</string>
          <number>0</number>
         </property>
        </widget>
-       <widget class="QComboBox" name="comboBox_2">
+       <widget class="QComboBox" name="SalleComboBox">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -566,7 +566,7 @@ color: rgb(121, 79, 29);</string>
          </property>
         </item>
        </widget>
-       <widget class="QComboBox" name="comboBox_3">
+       <widget class="QComboBox" name="DesComboBox">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -631,7 +631,7 @@ color: rgb(121, 79, 29);</string>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="QLabel" name="label_14">
+       <widget class="QLabel" name="Num">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -646,7 +646,7 @@ color: rgb(121, 79, 29);</string>
          <string>Numero de Rendez-Vous</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_6">
+       <widget class="QLabel" name="Id">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -661,7 +661,7 @@ color: rgb(121, 79, 29);</string>
          <string>Identifiant Client</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_7">
+       <widget class="QLabel" name="Date">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -676,7 +676,7 @@ color: rgb(121, 79, 29);</string>
          <string>Date de Rendez-Vous</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_8">
+       <widget class="QLabel" name="Heure">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -691,7 +691,7 @@ color: rgb(121, 79, 29);</string>
          <string>Heure de Rendez-Vous</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_10">
+       <widget class="QLabel" name="Periode">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -706,7 +706,7 @@ color: rgb(121, 79, 29);</string>
          <string>Periode de Rendez-Vous</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_11">
+       <widget class="QLabel" name="Salle">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -721,7 +721,7 @@ color: rgb(121, 79, 29);</string>
          <string>Salle de Rendez-Vous</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_12">
+       <widget class="QLabel" name="Des">
         <property name="font">
          <font>
           <family>Gabriola</family>
@@ -784,12 +784,12 @@ color: rgb(121, 79, 29);</string>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QLineEdit" name="lineEdit_6">
+      <widget class="QLineEdit" name="RechercherLine">
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 230, 217);</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="recherhcer">
+      <widget class="QPushButton" name="Rechercher">
        <property name="font">
         <font>
          <family>Gabriola</family>
@@ -805,7 +805,7 @@ color: rgb(121, 79, 29);</string>
        </property>
       </widget>
      </widget>
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="logop">
       <property name="geometry">
        <rect>
         <x>1080</x>
@@ -833,7 +833,7 @@ color: rgb(121, 79, 29);</string>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="QPushButton" name="pushButton_12">
+      <widget class="QPushButton" name="Notification">
        <property name="font">
         <font>
          <family>Gabriola</family>
@@ -848,7 +848,7 @@ color: rgb(121, 79, 29);</string>
         <string>Notifications</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_13">
+      <widget class="QPushButton" name="Mail">
        <property name="font">
         <font>
          <family>Gabriola</family>
@@ -863,7 +863,7 @@ color: rgb(121, 79, 29);</string>
         <string>Envoyer mail </string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_15">
+      <widget class="QPushButton" name="Excel">
        <property name="font">
         <font>
          <family>Gabriola</family>
@@ -891,7 +891,7 @@ color: rgb(121, 79, 29);</string>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QPushButton" name="ajouter">
+      <widget class="QPushButton" name="Ajouter">
        <property name="font">
         <font>
          <family>Gabriola</family>
@@ -906,7 +906,7 @@ color: rgb(121, 79, 29);</string>
         <string>Ajouter</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="Quitter">
        <property name="font">
         <font>
          <family>Gabriola</family>
@@ -934,7 +934,7 @@ color: rgb(121, 79, 29); background-color: rgb(255, 230, 217);</string>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QLabel" name="trie">
+      <widget class="QLabel" name="Trier">
        <property name="font">
         <font>
          <family>Gabriola</family>
@@ -949,7 +949,7 @@ color: rgb(121, 79, 29); background-color: rgb(255, 230, 217);</string>
         <string>Trier par</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="comboBox_5">
+      <widget class="QComboBox" name="TrierComboBox">
        <property name="font">
         <font>
          <family>Gabriola</family>
@@ -1003,7 +1003,7 @@ color: rgb(121, 79, 29);</string>
         <string>Modifier</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="supprimer">
+      <widget class="QPushButton" name="Supprimer">
        <property name="font">
         <font>
          <family>Gabriola</family>
@@ -1031,7 +1031,7 @@ color: rgb(121, 79, 29);</string>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QLabel" name="label_16">
+      <widget class="QLabel" name="Traduction">
        <property name="font">
         <font>
          <family>Gabriola</family>
@@ -1046,7 +1046,7 @@ color: rgb(121, 79, 29);</string>
         <string>Traduction</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="comboBox_4">
+      <widget class="QComboBox" name="TraductionComboBox">
        <property name="font">
         <font>
          <family>Gabriola</family>

@@ -1,8 +1,11 @@
 #ifndef RENDEZ_VOUS_H
 #define RENDEZ_VOUS_H
-#include<QString>
-#include<QSqlQuery>
-#include<QSqlQueryModel>
+#include <QString>
+#include <QSqlQuery>
+#include <QSqlQueryModel> // lire seulement // todkhol lel base de donnee w t affichih
+#include <QApplication>
+#include <QTranslator>
+#include <QInputDialog>
 
 class Rendez_vous
 {
@@ -43,11 +46,12 @@ public:
     QSqlQueryModel * trierParNum_RDV();
     QSqlQueryModel * trierParDate();
     QSqlQueryModel * rechercher(int);
+    //void translate();
 
     /* void mailing(); */
     /* void Excel(); */
     /* void Notifications(); */
-    /* void translate(); */
+
 };
 
 #endif // RENDEZ_VOUS_H
