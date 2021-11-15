@@ -49,15 +49,25 @@ private slots:
 
     void on_pushButton_3_clicked();
 
-    void on_pushButton_9_clicked();
 
-    void on_pushButton_7_clicked();
 
     void on_pb_excel_clicked();
 
     void on_pb_pdf_clicked();
 
     void on_pushButton_11_clicked();
+
+
+    void on_pb_chat_clicked();
+
+    void on_pb_accueil_clicked();
+
+    void on_pushButton_2_clicked();
+
+
+    void on_pb_generer_excel_clicked();
+
+    void on_pb_generer_pdf_clicked();
 
 private:
     Ui::MainWindow *ui;

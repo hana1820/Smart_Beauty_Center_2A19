@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QString>
+#include <QtWidgets>
+#include <QtNetwork>
 #include "client.h"
 
 QT_BEGIN_NAMESPACE
@@ -19,38 +21,56 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
+
 
     void on_pb_ajouter_clicked();
 
     void on_pb_supprimer_clicked();
 
-    void on_pushButton_3_clicked();
-
-    void on_pb_modifier_clicked();
-
-    void on_comboBox_activated(const QString &arg1);
-
-    void on_comboBox_editTextChanged(const QString &arg1);
-
-    void on_comboBox_currentIndexChanged(const QString &arg1);
-
     void on_comboBox_currentIndexChanged(int index);
-
-    void on_pushButton_6_clicked();
 
     void on_pb_valider_clicked();
 
     void on_tableView_2_activated(const QModelIndex &index);
 
-    void on_pushButton_5_clicked();
-
     void on_pb_annuler_clicked();
 
     void on_pb_rechercher_clicked();
 
+    void on_pb_recette_clicked();
+
+    void on_pushButton_clicked();
+    void DONNEESRecues();
+
+    void CONNECTE();
+    void DECONNECTE();
+    void ERREURSOCKET(QAbstractSocket::SocketError erreur);
+
+
+    void on_pushButton_3_clicked();
+
+
+
+    void on_pb_excel_clicked();
+
+    void on_pb_pdf_clicked();
+
+    void on_pushButton_11_clicked();
+
+
+    void on_pb_chat_clicked();
+
+    void on_pb_accueil_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_label_12_linkActivated(const QString &link);
+
 private:
     Ui::MainWindow *ui;
+
+    QTcpSocket *socket; // Représente le serveur
+    quint16 tailleMessage;
     Client Ctmp;
 };
 

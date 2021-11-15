@@ -36,11 +36,18 @@ public:
     bool ajouter();
     QSqlQueryModel *afficher();
     bool supprimer(int);
-    bool modifier(int,QString, QString,QString,int,int,QString,QString,int);
+    bool modifier();
     //Les fonctionnalités avancées
     QSqlQueryModel *rechercher(int);
     QSqlQueryModel* Trier(QString );
-    int calculRecette();
+    //Les controles de saisie;
+    bool testmail(QString);
+    bool testNom_prenom_adresse(QString);
+
+    int recetteTotale();
+    void genereExcel();
+    void genererPdf(int,QString,QString,int,QString, int);
+    void chat();
 
 private:
     QString prenom,nom,adresse,email,sexe;
