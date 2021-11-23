@@ -29,7 +29,7 @@ private slots:
 
     void on_comboBox_currentIndexChanged(int index);
 
-    void on_pb_valider_clicked();
+    void on_pb_modifier_clicked();
 
     void on_tableView_2_activated(const QModelIndex &index);
 
@@ -39,7 +39,7 @@ private slots:
 
     void on_pb_recette_clicked();
 
-    void on_pushButton_clicked();
+    void on_pb_connexion_clicked();
     void DONNEESRecues();
 
     void CONNECTE();
@@ -47,7 +47,7 @@ private slots:
     void ERREURSOCKET(QAbstractSocket::SocketError erreur);
 
 
-    void on_pushButton_3_clicked();
+    void on_pb_envoyer_clicked();
 
 
 
@@ -68,6 +68,10 @@ private slots:
     void on_pb_generer_excel_clicked();
 
     void on_pb_generer_pdf_clicked();
+
+
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

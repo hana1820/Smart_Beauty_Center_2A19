@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(socket, SIGNAL(error(QAbstractSocket::SocketError)), this,
     SLOT(ERREURSOCKET(QAbstractSocket::SocketError)));
     tailleMessage = 0;
-   #define NOM_RX "^([a-z]+[,.]?[ ]?|[A-Z]+['-]?)+$"
+    #define NOM_RX "^([a-z]+[,.]?[ ]?|[A-Z]+['-]?)+$"
 
     QRegExp rxNom(NOM_RX);
     QRegExpValidator*valiNom= new QRegExpValidator(rxNom,this);
@@ -34,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_age->setValidator(new QIntValidator(0,99,this));
     ui->lineEdit_achat->setValidator(new QIntValidator(0,999999999,this));
     ui->tableView_2->setModel(Ctmp.afficher());
+    setFixedSize(size()); //empecher le redimensionnement de l'écran
 }
 
 MainWindow::~MainWindow()
@@ -41,7 +42,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//LES FONCTIONNALITES DE BASE
+//SLOTS VERS LES FONCTIONNALITES DE BASE ::::: @KEITA CODE
 void MainWindow::on_pb_ajouter_clicked()
 {
 
@@ -56,11 +57,12 @@ void MainWindow::on_pb_ajouter_clicked()
     QString email=ui->lineEdit_mail->text();
     QString sexe=ui->lineEdit_sexe->currentText();
     int achat=ui->lineEdit_achat->text().toInt();
+    QDate date=ui->dateEdit->date();
 
-    if(Ctmp.testmail(email)&&Ctmp.testNom_prenom_adresse(prenom)&&Ctmp.testNom_prenom_adresse(nom)&&Ctmp.testNom_prenom_adresse(adresse))
+    if(Ctmp.testNom_prenom_adresse(adresse))
     {
-        //verifiier la validité du mail, du prenom, du nom et de l'adrsese;
-        Client C(identifiant,prenom,nom,adresse,telephone,age,email,sexe,achat);
+        //verifiier la validité du mail;
+        Client C(identifiant,prenom,nom,adresse,telephone,age,email,sexe,achat,date);
         ui->lineEdit_mail->setStyleSheet("color: black");
         ui->lineEdit_id->setStyleSheet("color: black");
         ui->lineEdit_prenom->setStyleSheet("color : black");
@@ -72,7 +74,9 @@ void MainWindow::on_pb_ajouter_clicked()
         if(test) //si la requete est bien exécutée;
         {
             //actualisation Sur la table_View
+            QString id_string=QString::number(identifiant);
             ui->tableView_2->setModel(Ctmp.afficher());
+
             QMessageBox::information(nullptr,QObject::tr("OK"),
             QObject::tr("AJOUT EFFECTUE...\n"
               "Click Cancel to quit"),QMessageBox::Cancel);
@@ -113,7 +117,6 @@ void MainWindow::on_pb_ajouter_clicked()
 
 
 }
-
 void MainWindow::on_pb_supprimer_clicked()
 {
     int id=ui->lineEdit_id->text().toInt();
@@ -154,9 +157,10 @@ void MainWindow::on_pb_supprimer_clicked()
        qDebug()<<"Suppresion annulée!!";
     }
 }
-
-void MainWindow::on_pb_valider_clicked()
+void MainWindow::on_pb_modifier_clicked()
 {
+
+
     int identifiant=ui->lineEdit_id->text().toInt();
 
     QString prenom=ui->lineEdit_prenom->text();
@@ -167,7 +171,8 @@ void MainWindow::on_pb_valider_clicked()
     int age=ui->lineEdit_age->text().toInt();
     QString sexe=ui->lineEdit_sexe->currentText();
     int achat=ui->lineEdit_achat->text().toInt();
-    Client C(identifiant,prenom,nom,adresse,telephone,age,email,sexe,achat);
+    QDate date=ui->dateEdit->date();
+    Client C(identifiant,prenom,nom,adresse,telephone,age,email,sexe,achat,date);
     QMessageBox::StandardButton reply = QMessageBox::question(this,"UPDATE","ATTENTION!\nVOULEZ-VOUS VRAIMENT MODIFIER CES INFORMATIONS?", QMessageBox::Yes | QMessageBox::No);
 
     if(reply==QMessageBox::Yes)
@@ -192,10 +197,22 @@ void MainWindow::on_pb_valider_clicked()
        qDebug()<<"MODIFICATION ANNULEE!!";
     }
 
-
-
+}
+void MainWindow::on_pb_annuler_clicked()
+{
+    //REMETTRE LES CHAMPS A VIDE
+    ui->lineEdit_id->setText(0);
+    ui->lineEdit_nom->setText(0);
+    ui->lineEdit_prenom->setText(0);
+    ui->lineEdit_adresse->setText(0);
+    ui->lineEdit_telephone->setText(0);
+    ui->lineEdit_age->setText(0);
+    ui->lineEdit_mail->setText(0);
+    ui->lineEdit_sexe->setCurrentText(0);
+    ui->lineEdit_achat->setText(0);
 }
 
+//SLOTS VERS LES FONCTIONNALITES AVANCEES ::::: @KEITA CODE
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
     QString critere;
@@ -217,8 +234,6 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     ui->tableView_2->setModel(Ctmp.Trier(critere));
     }
 }
-
-//LES FONCTIONNALITES AVANCEES
 void MainWindow::on_tableView_2_activated(const QModelIndex &index)
 {
     QSqlQuery query;
@@ -239,6 +254,7 @@ void MainWindow::on_tableView_2_activated(const QModelIndex &index)
             ui->lineEdit_mail->setText(query.value(6).toString());
             ui->lineEdit_sexe->setCurrentText(query.value(7).toString());
             ui->lineEdit_achat->setText(query.value(8).toString());
+
         }
     }
     else
@@ -248,46 +264,70 @@ void MainWindow::on_tableView_2_activated(const QModelIndex &index)
                                     "Click Cancel to exit."), QMessageBox::Cancel);
     }
 }
-
-void MainWindow::on_pb_annuler_clicked()
-{
-    //REMETTRE LES CHAMPS A VIDE
-    ui->lineEdit_id->setText(0);
-    ui->lineEdit_nom->setText(0);
-    ui->lineEdit_prenom->setText(0);
-    ui->lineEdit_adresse->setText(0);
-    ui->lineEdit_telephone->setText(0);
-    ui->lineEdit_age->setText(0);
-    ui->lineEdit_mail->setText(0);
-    ui->lineEdit_sexe->setCurrentText(0);
-    ui->lineEdit_achat->setText(0);
-}
-
 void MainWindow::on_pb_rechercher_clicked()
 {
     int id=ui->lineEdit_IDS->text().toInt();
-       ui->tableView_2->setModel(Ctmp.rechercher(id));
+    if(ui->comboBox_rechercher->currentText()=="ID")
+    {
+        ui->tableView_2->setModel(Ctmp.rechercher_id(id));
+     }
+
+    if(ui->comboBox_rechercher->currentText()=="NOM")
+    {
+        QString nom=ui->lineEdit_IDS->text();
+        ui->tableView_2->setModel(Ctmp.rechercher_nom(nom));
+    }
+
+    if(ui->comboBox_rechercher->currentText()=="PRENOM")
+    {
+        QString nom=ui->lineEdit_IDS->text();
+        ui->tableView_2->setModel(Ctmp.rechercher_prenom(nom));
+    }
+
+    if(ui->comboBox_rechercher->currentText()=="VILLE")
+    {
+        QString nom=ui->lineEdit_IDS->text();
+        ui->tableView_2->setModel(Ctmp.rechercher_ville(nom));
+    }
 }
+
 
 void MainWindow::on_pb_recette_clicked()
 {
-    int somme=Ctmp.recetteTotale();
+     ui->stackedWidget->setCurrentIndex(4);
+     QDate date=ui->dateEdit_recette->date();
+     QDate dateprec=date.addDays(-1);
+    int somme=Ctmp.recetteTotale(date);
+    int sommeprec=Ctmp.recetteTotale2(dateprec);
     QString somme_string=QString::number(somme);
+    QString sommeprec_string=QString::number(sommeprec);
+    float progression;
+
+if(sommeprec!=0)
+{
+        progression=((somme-sommeprec)*100)/sommeprec;
+        QString progression_string=QString::number(progression);
+
+        ui->lineEdit_pourcentage->setText(progression_string);
 
    ui->lineEdit_recette->setText(somme_string);
+}
+
+
+
 
 }
 
-//TENTATIVE DE CONNEXION AU SERVEUR (PARTIE CHAT)
-void MainWindow::on_pushButton_clicked()
+//ENSEMBLE DES SLOTS POUR LA GESTION CHAT TENTATIVE DE CONNEXION AU SERVEUR (PARTIE CHAT)
+void MainWindow::on_pb_connexion_clicked()
 {
     ui->textEdit->append(tr("TRAITEMENT EN COURS..."));
-    ui->pushButton->setEnabled(false);
+    ui->pb_connexion->setEnabled(false);
     socket->abort(); // On désactive les connexions précédentes s'il y en a
     // On se connecte au serveur demandé
     socket->connectToHost(ui->lineEdit_3->text(), ui->lineEdit_4->text().toInt());
 }
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_pb_envoyer_clicked()
 {
     MainWindow c;
     QByteArray paquet;
@@ -301,7 +341,7 @@ void MainWindow::on_pushButton_3_clicked()
     socket->write(paquet); // On envoie le paquet
     ui->lineEdit_5->clear(); // On vide la zone d'écriture du message
     ui->lineEdit_5->setFocus(); // Et on remet le curseur à l'intérieur
-    //listeMessages->append(tr("bonjour"));
+
 }
 void MainWindow::DONNEESRecues()
 {
@@ -330,7 +370,7 @@ tailleMessage = 0;
 void MainWindow::CONNECTE()
 {
 ui->textEdit->append(tr("Connexion réussie !"));
-ui->pushButton->setEnabled(true);
+ui->pb_connexion->setEnabled(true);
 }
 void MainWindow::DECONNECTE()
 {
@@ -352,7 +392,7 @@ break;
 default:
 ui->textEdit->append(tr("ERREUR : ") + socket->errorString() +tr(""));
 }
-ui->pushButton->setEnabled(true);
+ui->pb_connexion->setEnabled(true);
 }
 
 //GENRERATION DE LA FACTURE EN PDF (EN COURS)
@@ -369,34 +409,23 @@ void MainWindow::on_pb_pdf_clicked()
      ui->label_montant->setText(ui->lineEdit_achat->text());
 
 }
-
-//GENERATION DE FIC EXCEL (EN COURS)
 void MainWindow::on_pb_excel_clicked()
 {
      ui->stackedWidget->setCurrentIndex(2);
      ui->tableView_excel->setModel(Ctmp.afficher());
 
 }
-
-//FERMETURE DE LA FENETRE
-void MainWindow::on_pushButton_11_clicked()
-{
-    close();
-}
-
 void MainWindow::on_pb_chat_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
-
 void MainWindow::on_pb_accueil_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
-//bouton de connexion
 void MainWindow::on_pushButton_2_clicked()
 {
-    QString id_connexion=ui->lineEdit_id_connexion->text();
+    /*QString id_connexion=ui->lineEdit_id_connexion->text();
     QString password_connexion=ui->lineEdit_connexion_password->text();
 
 
@@ -423,22 +452,23 @@ void MainWindow::on_pushButton_2_clicked()
          ui->lineEdit_connexion_password->setStyleSheet("color: red");
          ui->lineEdit_id_connexion->setStyleSheet("color: red");
 
-    }
+    }*/
+
+    ui->label_username->setText(ui->lineEdit_id_connexion->text());
+    ui->tabWidget->setCurrentIndex(1);
+    ui->tabWidget->setTabEnabled(1, true);
 
 
 
 }
-
-
-
 void MainWindow::on_pb_generer_excel_clicked()
 {
      QTableView * table;
     table = ui->tableView_2;
       Ctmp.genereExcel(table);
 
-}
 
+}
 void MainWindow::on_pb_generer_pdf_clicked()
 {
     int identifiant=ui->lineEdit_id->text().toInt();
@@ -447,5 +477,15 @@ void MainWindow::on_pb_generer_pdf_clicked()
     int telephone=ui->lineEdit_telephone->text().toInt();
     QString adresse=ui->lineEdit_adresse->text();
     int montant=ui->lineEdit_achat->text().toInt();
-    Ctmp.genererPdf(identifiant,nom,prenom,telephone,adresse,montant);
+    Client C(identifiant,prenom,nom,telephone,adresse,montant);
+    C.genererPdf();
+}
+void MainWindow::on_pushButton_11_clicked()
+{
+    close();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    QDesktopServices::openUrl(QUrl("http://www.facebook.com", QUrl::TolerantMode));
 }

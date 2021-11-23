@@ -9,7 +9,7 @@
 #include <QTextStream>
 #include <QPainter>
 
-
+//DEVELOPPEMENT DES CONSTRUCTEURS ::::: @KEITA CODE
 Client::Client()
 {
     identifiant=0;
@@ -21,8 +21,9 @@ Client::Client()
     email="";
     sexe="";
     achat=0;
+
 }
-Client:: Client(int identifiant,QString prenom, QString nom, QString adresse,int telephone, int age,QString email,QString sexe,int achat)
+Client:: Client(int identifiant,QString prenom, QString nom, QString adresse,int telephone, int age,QString email,QString sexe,int achat,QDate date)
 {
     this->identifiant=identifiant;
     this->prenom=prenom;
@@ -33,32 +34,59 @@ Client:: Client(int identifiant,QString prenom, QString nom, QString adresse,int
     this->email=email;
     this->sexe=sexe;
     this->achat=achat;
+    this->date=date;
+}
+Client:: Client (int identifiant,QString prenom,QString nom,int telephone,QString adresse,int montant)
+{
+    this->identifiant=identifiant;
+    this->prenom=prenom;
+    this->nom=nom;
+    this->telephone=telephone;
+    this->adresse=adresse;
+    this->achat=montant;
 }
 
-/*n LES SETTEURS : Utiliser que si nécessaire
-int set_Identifiant(int);
-void set_prenom(QString prenom);
-void set_nom(QString nom);
-void set_adresse(QString adresse);
-void set_telephone(int  telephone);
-void set_email(QString email);
-void set_sexe(QString sexe);
-void set_age(int );
-*/
+//DEVELOPPEMENT DES SETTEURS ::::: @KEITA CODE
+void Client::set_Identifiant(int identifiant)
+{
+    this->identifiant=identifiant;
+}
+void Client::set_prenom(QString prenom)
+{this->prenom=prenom;}
+void Client::set_nom(QString nom)
+{this->nom=nom;}
+void Client::set_adresse(QString adresse)
+{this->adresse=adresse;}
+void Client::set_telephone(int  telephone)
+{this->telephone=telephone;}
+void Client::set_email(QString email)
+{this->email=email;}
+void Client::set_sexe(QString sexe)
+{this->sexe=sexe;}
+void Client::set_age(int age)
+{this->age=age;}
 
-/* LES GETTEURS ::Utiliser que si nécessaire
-int Client::get_Identifiant(){return identifiant;}
-QString Client::get_Prenom(){return prenom;}
-QString Client::get_Nom(){return nom;}
-QString Client::get_Adresse(){return adresse;}
-int Client::get_Telephone(){return telephone;}
-int Client::get_Age(){return age;}
-QString Client::get_Email(){return email;}
-QString Client::get_Sexe(){return sexe;}
-int Client::get_Achat(){return achat;}
-*/
+//DEVELOPPEMENT DES GETTEURS ::::: @KEITA CODE
+int Client::get_Identifiant()
+{return identifiant;}
+QString Client::get_Prenom()
+{return prenom;}
+QString Client::get_Nom()
+{return nom;}
+QString Client::get_Adresse()
+{return adresse;}
+int Client::get_Telephone()
+{return telephone;}
+int Client::get_Age()
+{return age;}
+QString Client::get_Email()
+{return email;}
+QString Client::get_Sexe()
+{return sexe;}
+int Client::get_Achat()
+{return achat;}
 
-//LES FONCTIONNALITES DE BASE
+//LES FONCTIONNALITES DE BASE ( CONTROLE DE SAISIE ET CRUDS) ::::: @KEITA CODE
 bool Client::testmail(QString mail)
 {
     int test=0;
@@ -97,8 +125,7 @@ bool Client::testmail(QString mail)
     }
     return false;
 }
-
-bool Client::testNom_prenom_adresse(QString a) //Pour éviter les caracètre spéciaux
+bool Client::testNom_prenom_adresse(QString a)
 {
     for(int i=0;i<a.size();i++)
     {
@@ -113,7 +140,6 @@ bool Client::testNom_prenom_adresse(QString a) //Pour éviter les caracètre sp�
 
     return true;
 }
-
 bool Client::ajouter()
 {
 
@@ -125,8 +151,8 @@ bool Client::ajouter()
 
     //prepare() prend la requete en paramètre pour la préparer à l'éxécution
 
-    query.prepare("insert into A_SBC_CLIENT (IDENTIFIANT, NOM, PRENOM, ADRESSE, TELEPHONE, AGE, MAIL, SEXE, ACHAT)"
-            "values(:identifiant, :nom, :prenom, :adresse, :telephone, :age, :email, :sexe, :achat)");
+    query.prepare("insert into A_SBC_CLIENT (IDENTIFIANT, NOM, PRENOM, ADRESSE, TELEPHONE, AGE, MAIL, SEXE, ACHAT, DATEC)"
+            "values(:identifiant, :nom, :prenom, :adresse, :telephone, :age, :email, :sexe, :achat, :date)");
 
 
     query.bindValue(":identifiant",identifiant_string);
@@ -138,10 +164,10 @@ bool Client::ajouter()
     query.bindValue(":email",email);
     query.bindValue(":sexe",sexe);
     query.bindValue(":achat",achat_string);
+    query.bindValue(":date",date);
 
   return query.exec(); //exec() envoie la requete pour l'exécuter.
 }
-
 QSqlQueryModel *Client::afficher()
 {
 
@@ -156,21 +182,19 @@ model->setHeaderData(4,Qt::Horizontal,QObject::tr("TEL"));
 model->setHeaderData(5,Qt::Horizontal,QObject::tr("AGE"));
 model->setHeaderData(6,Qt::Horizontal,QObject::tr("MAIL"));
 model->setHeaderData(7,Qt::Horizontal,QObject::tr("SEXE"));
+model->setHeaderData(8,Qt::Horizontal,QObject::tr("DATE"));
 return model;
 }
-
 bool ::Client::supprimer(int id)
 {
     QSqlQuery query;
     QString id_string=QString::number(id);
-
     query.prepare("Delete from A_SBC_CLIENT where identifiant= :id");
     query.bindValue(":id",id_string);
 
     return query.exec();
 
 }
-
 bool Client::modifier()
 {
     QSqlQuery query;
@@ -182,7 +206,7 @@ bool Client::modifier()
     QString achat_string=QString::number(achat);
 
 
-    query.prepare("update A_SBC_CLIENT set IDENTIFIANT=:identifiant ,NOM=:nom ,PRENOM=:prenom ,ADRESSE=:adresse,TELEPHONE=:telephone,AGE=:age,MAIL=:email,SEXE=:sexe,ACHAT=:achat where IDENTIFIANT= :identifiant ");
+    query.prepare("update A_SBC_CLIENT set IDENTIFIANT=:identifiant ,NOM=:nom ,PRENOM=:prenom ,ADRESSE=:adresse,TELEPHONE=:telephone,AGE=:age,MAIL=:email,SEXE=:sexe,ACHAT=:achat, DATEC=:date where IDENTIFIANT= :identifiant ");
 
     query.bindValue(":identifiant",identifiant_string);
     query.bindValue(":nom", nom);
@@ -193,21 +217,21 @@ bool Client::modifier()
     query.bindValue(":email",email);
     query.bindValue(":sexe",sexe);
     query.bindValue(":achat",achat_string);
+    query.bindValue(":date",date);
 
     return    query.exec();
 
 
 }
 
-//LES FONCTIONNALITES AVANCEES
-QSqlQueryModel * Client::rechercher(int id)   //OK
+//LES FONCTIONNALITES AVANCEES ::::: @KEITA CODE
+QSqlQueryModel * Client::rechercher_id(int id)
 {
 
     QSqlQueryModel *model=new QSqlQueryModel();
     QSqlQuery query;
 
     QString id_string=QString::number(id);
-
 
     query.prepare("Select * from A_SBC_CLIENT where identifiant=:id");
     query.bindValue(":id",id_string);
@@ -217,19 +241,57 @@ QSqlQueryModel * Client::rechercher(int id)   //OK
 
     return model;
 }
-
-QSqlQueryModel* Client::Trier(QString critere)
+QSqlQueryModel * Client::rechercher_nom(QString nom)
 {
+    QSqlQueryModel *model=new QSqlQueryModel();
+    QSqlQuery query;
+
+    query.prepare("Select * from A_SBC_CLIENT where nom=:nom");
+    query.bindValue(":nom",nom);
+    query.exec();
+    model->setQuery(query);
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+
+    return model;
+}
+QSqlQueryModel * Client::rechercher_prenom(QString prenom)
+{
+    QSqlQueryModel *model=new QSqlQueryModel();
+    QSqlQuery query;
+
+    query.prepare("Select * from A_SBC_CLIENT where prenom=:prenom");
+    query.bindValue(":prenom",prenom);
+    query.exec();
+    model->setQuery(query);
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+
+    return model;
+}
+QSqlQueryModel * Client::rechercher_ville(QString ville)
+{
+    QSqlQueryModel *model=new QSqlQueryModel();
+    QSqlQuery query;
+
+    query.prepare("Select * from A_SBC_CLIENT where adresse=:ville");
+    query.bindValue(":ville",ville);
+    query.exec();
+    model->setQuery(query);
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+
+    return model;
+}
+QSqlQueryModel * Client::Trier(QString critere)
+{
+    //Pour Optimisation, On mettra  critere de tri dans la chaine 'critere'::::: @KEITA CODE
     QSqlQueryModel* model=new QSqlQueryModel() ;
     QSqlQuery *query=new QSqlQuery;
     query->prepare(critere) ;
     query->exec() ;
     model->setQuery(*query) ;
 
- return model;
+    return model;
 }
-
-int Client::recetteTotale()
+int Client::recetteTotale(QDate date)
 {
     QSqlQuery query;
 
@@ -239,20 +301,37 @@ int Client::recetteTotale()
     if (query.exec())
     {
         while (query.next())
+            if(query.value(9)==date)
             somme +=query.value(8).toInt();
+        //8 representre la colonne qui contient le montant des achats ::::: @KEITA CODE
     }
 
     return somme;
 
 }
+int Client::recetteTotale2(QDate date)
+{
+            QSqlQuery query;
 
-//ENCOURS
+            int somme = 0;
+            query.prepare("select * from A_SBC_CLIENT");
+
+            if (query.exec())
+            {
+                while (query.next())
+                    if(query.value(9)==date)
+                    somme +=query.value(8).toInt();
+                //8 representre la colonne qui contient le montant des achats ::::: @KEITA CODE
+            }
+
+            return somme;
+}
 void Client::genereExcel(QTableView *table)
 {
 
-               QString filters("CSV files (.csv);;All files (.*)");
-               QString defaultFilter("CSV files (*.csv)");
-               QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+         QString filters("CSV files (.csv);;All files (.*)");
+         QString defaultFilter("CSV files (*.csv)");
+         QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
                                   filters, &defaultFilter);
                QFile file(fileName);
 
@@ -279,16 +358,14 @@ void Client::genereExcel(QTableView *table)
                        data << strList.join(";") + "\n";
                    }
                    file.close();
-                   QMessageBox::information(nullptr, QObject::tr("Export excel"),
-                                             QObject::tr("Export avec succes .\n"
+                   QMessageBox::information(nullptr, QObject::tr("GENERATION EXCEL"),
+                                             QObject::tr("GENERATION REALISEE AVEC SUCCES\n"
                                                          "Click OK to exit."), QMessageBox::Ok);
                }
 
 }
-//ENCOURS
-void Client::genererPdf(int identifiant,QString nom,QString prenom,int telephone,QString adresse, int montant)
+void Client::genererPdf()
 {
-
     QPdfWriter pdf("C:/Users/balla/Desktop/TRAVAIL C++/Pdf.pdf");
     QPainter painter(&pdf);
 
@@ -312,7 +389,7 @@ void Client::genererPdf(int identifiant,QString nom,QString prenom,int telephone
     painter.drawRect(0,3000,9600,500);
     painter.setFont(QFont("Cambria", 17));
     painter.drawText(200,5000,"Je soussigné Mr Balla moussa Keita,Responsable des clients"
-                              " Ceritifie avoir");
+                              " Certifie avoir");
     painter.drawText(200,5500,"reçu un paiement en DT de la part du client dont les infomations"
                               " suivent:");
     painter.drawText(200,6300,"ID:");
@@ -326,7 +403,7 @@ void Client::genererPdf(int identifiant,QString nom,QString prenom,int telephone
 
    QString id_string=QString::number(identifiant);
    QString telephone_string=QString::number(telephone);
-   QString montant_string=QString::number(montant);
+   QString montant_string=QString::number(achat);
     painter.setFont(QFont("Courier New", 18));
         painter.drawText(2400,6300,id_string);
         painter.drawText(2400,7100,nom);
