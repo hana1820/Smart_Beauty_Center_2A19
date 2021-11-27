@@ -35,11 +35,38 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_achat->setValidator(new QIntValidator(0,999999999,this));
     ui->tableView_2->setModel(Ctmp.afficher());
     setFixedSize(size()); //empecher le redimensionnement de l'écran
+
+    //
+
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+    switch(ret){
+    case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+        break;
+    case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+       break;
+    case(-1):qDebug() << "arduino is not available";
+    }
+     QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+     //le slot update_label suite à la reception du signal readyRead (reception des données).
+    //
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+//SLOTS ARDUNINO
+void MainWindow::update_label()
+{
+    data=A.read_from_arduino();
+
+  if(data=="1")
+  {
+      QMessageBox::StandardButton reply = QMessageBox::question(this,"ARDUINO","ATTENTION! MOUVEMENT DETECTE", QMessageBox::Yes | QMessageBox::No);
+      data="0";
+
+  }
 }
 
 //SLOTS VERS LES FONCTIONNALITES DE BASE ::::: @KEITA CODE
@@ -422,6 +449,7 @@ void MainWindow::on_pb_chat_clicked()
 void MainWindow::on_pb_accueil_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+
 }
 void MainWindow::on_pushButton_2_clicked()
 {
@@ -455,8 +483,10 @@ void MainWindow::on_pushButton_2_clicked()
     }*/
 
     ui->label_username->setText(ui->lineEdit_id_connexion->text());
+
     ui->tabWidget->setCurrentIndex(1);
     ui->tabWidget->setTabEnabled(1, true);
+    ui->tabWidget->setTabEnabled(0,false);
 
 
 
@@ -480,12 +510,31 @@ void MainWindow::on_pb_generer_pdf_clicked()
     Client C(identifiant,prenom,nom,telephone,adresse,montant);
     C.genererPdf();
 }
-void MainWindow::on_pushButton_11_clicked()
-{
-    close();
-}
+
 
 void MainWindow::on_pushButton_clicked()
 {
     QDesktopServices::openUrl(QUrl("http://www.facebook.com", QUrl::TolerantMode));
+}
+
+void MainWindow::on_pushButton_retourInscription_clicked()
+{
+    ui->stackedWidget_2->setCurrentIndex(0);
+}
+
+void MainWindow::on_pb_quitter_clicked()
+{
+    close();
+}
+
+void MainWindow::on_pushButton_deconnexion_clicked()
+{
+    ui->tabWidget->setTabEnabled(0,true);
+    ui->tabWidget->setTabEnabled(1,false);
+}
+
+void MainWindow::on_pushButton_passwordforgot_clicked()
+{
+    ui->stackedWidget_2->setCurrentIndex(1);
+
 }

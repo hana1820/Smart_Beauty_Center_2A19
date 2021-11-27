@@ -6,6 +6,7 @@
 #include <QtWidgets>
 #include <QtNetwork>
 #include "client.h"
+#include "Arduino.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -55,23 +56,31 @@ private slots:
 
     void on_pb_pdf_clicked();
 
-    void on_pushButton_11_clicked();
-
-
     void on_pb_chat_clicked();
 
     void on_pb_accueil_clicked();
 
     void on_pushButton_2_clicked();
 
-
     void on_pb_generer_excel_clicked();
 
     void on_pb_generer_pdf_clicked();
 
-
+void update_label();
 
     void on_pushButton_clicked();
+
+
+
+
+
+    void on_pushButton_retourInscription_clicked();
+
+    void on_pb_quitter_clicked();
+
+    void on_pushButton_deconnexion_clicked();
+
+    void on_pushButton_passwordforgot_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -79,6 +88,8 @@ private:
     QTcpSocket *socket; // Représente le serveur
     quint16 tailleMessage;
     Client Ctmp;
+    QByteArray data; // variable contenant les données reçues
+    Arduino A; // objet temporaire
 };
 
 #endif // MAINWINDOW_H

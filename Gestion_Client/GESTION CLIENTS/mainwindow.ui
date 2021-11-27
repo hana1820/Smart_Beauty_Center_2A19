@@ -51,200 +51,361 @@ color: rgb(121, 79, 29);</string>
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
       <string>Accueil</string>
      </attribute>
-     <widget class="QLabel" name="label_2">
+     <widget class="QStackedWidget" name="stackedWidget_2">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>90</y>
-        <width>171</width>
-        <height>41</height>
+        <x>0</x>
+        <y>10</y>
+        <width>1021</width>
+        <height>551</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">font: 30pt &quot;Gabriola&quot;;</string>
+      <property name="currentIndex">
+       <number>1</number>
       </property>
-      <property name="text">
-       <string>CONNEXION</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>480</x>
-        <y>180</y>
-        <width>121</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;Gabriola&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Identifiant</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>480</x>
-        <y>270</y>
-        <width>111</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 20pt &quot;Gabriola&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Mot de passe</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_id_connexion">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>180</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_connexion_password">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>260</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>790</x>
-        <y>220</y>
-        <width>101</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Gabriola</family>
-        <pointsize>16</pointsize>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255,255,200);
+      <widget class="QWidget" name="page_6">
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>40</y>
+          <width>401</width>
+          <height>421</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../../Downloads/logo2.png</pixmap>
+        </property>
+       </widget>
+       <widget class="Line" name="line">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>40</y>
+          <width>31</width>
+          <height>431</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 26pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>180</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 20pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Identifiant</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_id_connexion">
+        <property name="geometry">
+         <rect>
+          <x>660</x>
+          <y>180</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="geometry">
+         <rect>
+          <x>860</x>
+          <y>230</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255,255,200);
 selection-background-color: rgb(170, 0, 0);
 border-left-color: rgb(255, 170, 127);
 color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="text">
-       <string>Se Connecter</string>
-      </property>
-      <property name="icon">
-       <iconset theme="ajouter">
-        <normaloff>.</normaloff>.</iconset>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_12">
-      <property name="geometry">
-       <rect>
-        <x>600</x>
-        <y>320</y>
-        <width>201</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 16pt &quot;Gabriola&quot;;
+        </property>
+        <property name="text">
+         <string>Se Connecter</string>
+        </property>
+        <property name="icon">
+         <iconset theme="ajouter">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>290</y>
+          <width>111</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 20pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Mot de passe</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_connexion_password">
+        <property name="geometry">
+         <rect>
+          <x>660</x>
+          <y>280</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_passwordforgot">
+        <property name="geometry">
+         <rect>
+          <x>660</x>
+          <y>360</y>
+          <width>171</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius:15px 10px 15px 10px;
 text-decoration: underline;
-
+font: 14pt &quot;Gabriola&quot;;
 color: rgb(0, 0, 255);
-font: 16pt &quot;Gabriola&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Mot de passe oublié?</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_7">
-      <property name="geometry">
-       <rect>
-        <x>630</x>
-        <y>360</y>
-        <width>91</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 16pt &quot;Gabriola&quot;;
-text-decoration: underline;
-
-color: rgb(0, 0, 255);
-font: 16pt &quot;Gabriola&quot;;</string>
-      </property>
-      <property name="text">
-       <string>S'inscrire?</string>
-      </property>
-     </widget>
-     <widget class="Line" name="line">
-      <property name="geometry">
-       <rect>
-        <x>410</x>
-        <y>40</y>
-        <width>31</width>
-        <height>351</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 26pt &quot;MS Shell Dlg 2&quot;;</string>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_15">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>465</y>
-        <width>91</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font: 14pt &quot;Gabriola&quot;;
-color: rgb(0, 0, 127);</string>
-      </property>
-      <property name="text">
-       <string>Besoin d'Aide?</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_13">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>401</width>
-        <height>421</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>../../../Downloads/logo2.png</pixmap>
-      </property>
+</string>
+        </property>
+        <property name="text">
+         <string>Mot de pass oublié?</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_quitter">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>520</y>
+          <width>81</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255,255,200);
+selection-background-color: rgb(170, 0, 0);
+border-left-color: rgb(255, 170, 127);
+color: rgb(0, 0, 0);
+font:12pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>QUITTER</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_54">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>60</y>
+          <width>101</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../../Downloads/username 1.png</pixmap>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_7">
+       <widget class="QPushButton" name="pushButton_retourInscription">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>520</y>
+          <width>80</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255,255,200);
+font: 14pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>RETOUR</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line_7">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>50</y>
+          <width>31</width>
+          <height>431</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 26pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>401</width>
+          <height>421</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../../Downloads/logo2.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_id_connexion_2">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>160</y>
+          <width>191</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>570</x>
+          <y>70</y>
+          <width>381</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 30pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>RECUPERATION PASSWORD</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="geometry">
+         <rect>
+          <x>880</x>
+          <y>160</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255,255,200);
+selection-background-color: rgb(170, 0, 0);
+border-left-color: rgb(255, 170, 127);
+color: rgb(0, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string>ENVOYER</string>
+        </property>
+        <property name="icon">
+         <iconset theme="ajouter">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>160</y>
+          <width>101</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 30pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>E-MAIL</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_52">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>280</y>
+          <width>521</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Un message de confirmation contenant votre mot de pass sera envoyé à l'administrateur.</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_53">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>320</y>
+          <width>181</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Prière de le récupérer chez lui.</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
@@ -432,7 +593,7 @@ background-color: rgb(172, 114, 85);</string>
         </size>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_11">
+      <widget class="QPushButton" name="pushButton_deconnexion">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -449,7 +610,7 @@ background-color: rgb(172, 114, 85);</string>
 background-color: rgb(172, 114, 85);</string>
        </property>
        <property name="text">
-        <string>QUITTER</string>
+        <string>DECONNEXION</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pb_accueil">
@@ -486,7 +647,7 @@ font:16pt &quot;Gabriola&quot;;</string>
        <string notr="true">background-color: rgb(245,172,162);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_3">
        <widget class="QGroupBox" name="groupBox">
