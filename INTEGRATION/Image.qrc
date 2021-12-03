@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ajout.png</file>
+        <file>annuler.png</file>
+        <file>email.png</file>
+        <file>entrer.png</file>
+        <file>excel.png</file>
+        <file>logo.png</file>
+        <file>logog.png</file>
+        <file>logop.png</file>
+        <file>modifier.png</file>
+        <file>recherche.png</file>
+        <file>supprimer.png</file>
+    </qresource>
+</RCC>
