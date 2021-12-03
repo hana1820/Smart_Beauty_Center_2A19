@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>Rendez_Vous_an_AN.qm</file>
-        <file>Rendez_Vous_fr_FR.qm</file>
-        <file>Rendez_Vous_tu_TU.qm</file>
-    </qresource>
-</RCC>
