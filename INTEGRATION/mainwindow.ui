@@ -1,0 +1,4661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1305</width>
+    <height>811</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1291</width>
+      <height>741</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Gabriola</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="toolTip">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(245,172,162);
+color: rgb(121, 79, 29);</string>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
+    </property>
+    <property name="currentIndex">
+     <number>3</number>
+    </property>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Accueil</string>
+     </attribute>
+     <widget class="QStackedWidget" name="stackedWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>1131</width>
+        <height>551</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="page_6">
+       <widget class="Line" name="line">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>40</y>
+          <width>31</width>
+          <height>481</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 26pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>230</y>
+          <width>121</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 20pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Identifiant</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_id_connexion">
+        <property name="geometry">
+         <rect>
+          <x>700</x>
+          <y>230</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>320</y>
+          <width>141</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 20pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Mot de passe</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_connexion_password">
+        <property name="geometry">
+         <rect>
+          <x>700</x>
+          <y>320</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_passwordforgot">
+        <property name="geometry">
+         <rect>
+          <x>710</x>
+          <y>370</y>
+          <width>171</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius:15px 10px 15px 10px;
+text-decoration: underline;
+font: 14pt &quot;Gabriola&quot;;
+color: rgb(0, 0, 255);
+</string>
+        </property>
+        <property name="text">
+         <string>Mot de pass oublié?</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_quitter">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>490</y>
+          <width>81</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255,255,200);
+selection-background-color: rgb(170, 0, 0);
+border-left-color: rgb(255, 170, 127);
+color: rgb(0, 0, 0);
+font:12pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>QUITTER</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_citation">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>460</y>
+          <width>561</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>430</y>
+          <width>191</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 16pt &quot;Gabriola&quot;;
+color: rgb(0, 0, 0);
+</string>
+        </property>
+        <property name="text">
+         <string>CITATION DU JOUR:</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="Connecter">
+        <property name="geometry">
+         <rect>
+          <x>920</x>
+          <y>270</y>
+          <width>151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);
+color: rgb(121, 79, 29);</string>
+        </property>
+        <property name="text">
+         <string>Se connecter</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../Rendez_Vous/entrer.png</normaloff>../Rendez_Vous/entrer.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>18</width>
+          <height>18</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="logog">
+        <property name="geometry">
+         <rect>
+          <x>-130</x>
+          <y>60</y>
+          <width>531</width>
+          <height>401</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::PlainText</enum>
+        </property>
+        <property name="pixmap">
+         <pixmap>F:/logog.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="Connexion">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>100</y>
+          <width>231</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>26</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(121, 79, 29);</string>
+        </property>
+        <property name="text">
+         <string>CONNEXION</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_7">
+       <widget class="QPushButton" name="pushButton_retourInscription">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>520</y>
+          <width>80</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255,255,200);
+font: 14pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>RETOUR</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line_7">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>60</y>
+          <width>31</width>
+          <height>431</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 26pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>-140</x>
+          <y>60</y>
+          <width>551</width>
+          <height>421</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>logog.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_id_connexion_2">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>200</y>
+          <width>191</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>570</x>
+          <y>70</y>
+          <width>481</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 30pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>RECUPERATION PASSWORD</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="geometry">
+         <rect>
+          <x>880</x>
+          <y>200</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255,255,200);
+selection-background-color: rgb(170, 0, 0);
+border-left-color: rgb(255, 170, 127);
+color: rgb(0, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string>ENVOYER</string>
+        </property>
+        <property name="icon">
+         <iconset theme="ajouter">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>200</y>
+          <width>131</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 30pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>E-MAIL</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_52">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>320</y>
+          <width>631</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Un message de confirmation contenant votre mot de pass sera envoyé à l'administrateur.</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_53">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>360</y>
+          <width>231</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Prière de le récupérer chez lui.</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Gestion des clients</string>
+     </attribute>
+     <widget class="Line" name="line_2">
+      <property name="geometry">
+       <rect>
+        <x>780</x>
+        <y>40</y>
+        <width>20</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>121</width>
+        <height>571</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(197, 131, 98);</string>
+      </property>
+      <widget class="QPushButton" name="pb_excel">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>200</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font:16pt &quot;Gabriola&quot;;
+background-color: rgb(172, 114, 85);</string>
+       </property>
+       <property name="text">
+        <string>EXCEL</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../icon excel.png</normaloff>../../icon excel.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pb_pdf">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>260</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font:16pt &quot;Gabriola&quot;;
+
+background-color: rgb(172, 114, 85);</string>
+       </property>
+       <property name="text">
+        <string>PDF</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../PDF ICON.png</normaloff>../../PDF ICON.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>40</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pb_recette">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>390</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font:16pt &quot;Gabriola&quot;;
+background-color: rgb(172, 114, 85);</string>
+       </property>
+       <property name="text">
+        <string>RECETTE</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../ICONE DINARS.png</normaloff>../../ICONE DINARS.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="Line" name="line_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>120</y>
+         <width>118</width>
+         <height>3</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>0</y>
+         <width>101</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../../username 1.png</pixmap>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_username">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>100</y>
+         <width>81</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Gabriola&quot;;</string>
+       </property>
+       <property name="text">
+        <string>USER NAME</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pb_chat">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>320</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 16pt &quot;Gabriola&quot;;
+background-color: rgb(172, 114, 85);</string>
+       </property>
+       <property name="text">
+        <string>CHAT</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../icon chat.png</normaloff>../../icon chat.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>40</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_deconnexion">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>530</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 16pt &quot;Gabriola&quot;;
+background-color: rgb(172, 114, 85);</string>
+       </property>
+       <property name="text">
+        <string>LOGOUT</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pb_accueil">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>140</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(162, 108, 80);
+font:16pt &quot;Gabriola&quot;;</string>
+       </property>
+       <property name="text">
+        <string>ACCUEIL</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pb_configuration">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>460</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font:15pt &quot;Gabriola&quot;;
+background-color: rgb(172, 114, 85);</string>
+       </property>
+       <property name="text">
+        <string>SETTINGS</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>0</y>
+        <width>911</width>
+        <height>571</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(245,172,162);</string>
+      </property>
+      <property name="currentIndex">
+       <number>3</number>
+      </property>
+      <widget class="QWidget" name="page_3">
+       <widget class="QGroupBox" name="groupBox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>661</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 16pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="title">
+         <string>INFORMATIONS</string>
+        </property>
+        <widget class="QLabel" name="label">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>121</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffaa00;&quot;&gt;IDENTIFIANT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>IDENTIFIANT:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_id">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>30</y>
+           <width>161</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_5">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>80</y>
+           <width>91</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>PRENOM:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_prenom">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>69</y>
+           <width>161</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_6">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>110</y>
+           <width>71</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>NOM:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_nom">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>109</y>
+           <width>161</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_11">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>150</y>
+           <width>81</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>ADRESSE:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_adresse">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>150</y>
+           <width>161</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_8">
+         <property name="geometry">
+          <rect>
+           <x>340</x>
+           <y>30</y>
+           <width>81</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Telephone:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_9">
+         <property name="geometry">
+          <rect>
+           <x>340</x>
+           <y>70</y>
+           <width>47</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Age:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_16">
+         <property name="geometry">
+          <rect>
+           <x>340</x>
+           <y>120</y>
+           <width>61</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>E-mail:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_10">
+         <property name="geometry">
+          <rect>
+           <x>340</x>
+           <y>160</y>
+           <width>47</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Sexe:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_telephone">
+         <property name="geometry">
+          <rect>
+           <x>450</x>
+           <y>30</y>
+           <width>161</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_mail">
+         <property name="geometry">
+          <rect>
+           <x>450</x>
+           <y>110</y>
+           <width>161</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_22">
+         <property name="geometry">
+          <rect>
+           <x>140</x>
+           <y>200</y>
+           <width>151</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>MONTANT ACHAT:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_achat">
+         <property name="geometry">
+          <rect>
+           <x>300</x>
+           <y>200</y>
+           <width>141</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_23">
+         <property name="geometry">
+          <rect>
+           <x>450</x>
+           <y>210</y>
+           <width>21</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 14pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>DT</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_age">
+         <property name="geometry">
+          <rect>
+           <x>450</x>
+           <y>70</y>
+           <width>161</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="lineEdit_sexe">
+         <property name="geometry">
+          <rect>
+           <x>450</x>
+           <y>150</y>
+           <width>161</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>         MASCULIN</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>         FEMININ</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>         AUTRES...</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QDateEdit" name="dateEdit">
+         <property name="geometry">
+          <rect>
+           <x>500</x>
+           <y>201</y>
+           <width>111</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_17">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>280</y>
+          <width>231</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 28pt &quot;Gabriola&quot;;
+font: 28pt &quot;Gabriola&quot;;
+text-decoration: underline;</string>
+        </property>
+        <property name="text">
+         <string>LISTE DES CLIENTS</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_18">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>330</y>
+          <width>101</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:16pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>RECHERCHER:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_IDS">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>330</y>
+          <width>231</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_20">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>330</y>
+          <width>47</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 16pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>TRIER</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox">
+        <property name="geometry">
+         <rect>
+          <x>580</x>
+          <y>330</y>
+          <width>81</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Par nom</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Par age</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Par sexe</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QTableView" name="tableView_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>370</y>
+          <width>661</width>
+          <height>181</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_modifier">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>120</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(162, 108, 80);
+font:16pt &quot;Gabriola&quot;;
+</string>
+        </property>
+        <property name="text">
+         <string>MODIFIER</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../icon modifier.png</normaloff>../../icon modifier.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_ajouter">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>40</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(52, 52, 0);
+selection-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));</string>
+        </property>
+        <property name="text">
+         <string>AJOUTER</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../ajouter icon.png</normaloff>../../ajouter icon.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>40</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_annuler">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>190</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(172, 114, 85);
+font:16pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>ANNULER</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../icon annuler.png</normaloff>../../icon annuler.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>40</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_rechercher">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>390</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:16pt &quot;Gabriola&quot;;
+background-color: rgb(172, 114, 85);</string>
+        </property>
+        <property name="text">
+         <string>RECHERCHER</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../icon valider encore.png</normaloff>../../icon valider encore.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>40</width>
+          <height>15</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_supprimer">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>510</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(79, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string>SUPPRIMER</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../icon supprimer1.png</normaloff>../../icon supprimer1.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>40</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="Line" name="line_3">
+        <property name="geometry">
+         <rect>
+          <x>830</x>
+          <y>10</y>
+          <width>21</width>
+          <height>521</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox_rechercher">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>330</y>
+          <width>65</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>ID</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>NOM</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>PRENOM</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>VILLE</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>860</x>
+          <y>40</y>
+          <width>41</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_4">
+       <widget class="QFrame" name="frame">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>60</y>
+          <width>901</width>
+          <height>501</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLineEdit" name="lineEdit_3">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>121</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_4">
+         <property name="geometry">
+          <rect>
+           <x>280</x>
+           <y>30</y>
+           <width>121</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_5">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>420</y>
+           <width>311</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pb_envoyer">
+         <property name="geometry">
+          <rect>
+           <x>320</x>
+           <y>420</y>
+           <width>80</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(162, 108, 80);
+font:16pt &quot;Gabriola&quot;;
+</string>
+         </property>
+         <property name="text">
+          <string>ENVOYER</string>
+         </property>
+        </widget>
+        <widget class="QTextEdit" name="textEdit">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>120</y>
+           <width>391</width>
+           <height>261</height>
+          </rect>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_24">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>10</y>
+           <width>16</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>IP</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pb_connexion">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>80</y>
+           <width>111</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(162, 108, 80);
+font:16pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>CONNEXION</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_26">
+         <property name="geometry">
+          <rect>
+           <x>320</x>
+           <y>10</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PORT</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_6">
+         <property name="geometry">
+          <rect>
+           <x>140</x>
+           <y>390</y>
+           <width>113</width>
+           <height>21</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_27">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>390</y>
+           <width>47</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PSEUDO</string>
+         </property>
+        </widget>
+        <widget class="Line" name="line_5">
+         <property name="geometry">
+          <rect>
+           <x>450</x>
+           <y>20</y>
+           <width>20</width>
+           <height>431</height>
+          </rect>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_25">
+         <property name="geometry">
+          <rect>
+           <x>490</x>
+           <y>40</y>
+           <width>431</width>
+           <height>401</height>
+          </rect>
+         </property>
+         <property name="cursor">
+          <cursorShape>CrossCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../../logo2.png</pixmap>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="widget_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>0</y>
+          <width>841</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(197, 131, 98);
+border-radius: 15px 15px 15px 15px;</string>
+        </property>
+        <widget class="QLabel" name="label_41">
+         <property name="geometry">
+          <rect>
+           <x>340</x>
+           <y>0</y>
+           <width>201</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 40pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>AFRICHAT</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page">
+       <widget class="QTableView" name="tableView_excel">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>881</width>
+          <height>451</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_generer_excel">
+        <property name="geometry">
+         <rect>
+          <x>770</x>
+          <y>520</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 16pt &quot;Gabriola&quot;;
+background-color: rgb(172, 114, 85);</string>
+        </property>
+        <property name="text">
+         <string>GENERER</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="widget_3" native="true">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>0</y>
+          <width>841</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(197, 131, 98);
+border-radius: 15px 15px 15px 15px;</string>
+        </property>
+        <widget class="QLabel" name="label_42">
+         <property name="geometry">
+          <rect>
+           <x>280</x>
+           <y>0</y>
+           <width>291</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 40pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>APERCU EXCEL</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <widget class="QWidget" name="widget_4" native="true">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>0</y>
+          <width>841</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(197, 131, 98);
+border-radius: 15px 15px 15px 15px;</string>
+        </property>
+        <widget class="QLabel" name="label_43">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>0</y>
+           <width>371</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 40pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>APERCU RECU PDF</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QFrame" name="frame_2">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>60</y>
+          <width>481</width>
+          <height>501</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="label_28">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>20</y>
+           <width>171</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 16pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>AVENUE BOURGUIBA</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_29">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 16pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>BP:005</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_30">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>60</y>
+           <width>241</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 16pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>MAIL: magictouch@gmail.com</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_31">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>80</y>
+           <width>111</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 16pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>TEL:51010101</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_32">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>100</y>
+           <width>241</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 16pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>BEAUTY CENTER MAGIC TOUCH</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_34">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>160</y>
+           <width>191</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 20pt &quot;Gabriola&quot;;
+font: 75 20pt &quot;MS Shell Dlg 2&quot;;
+text-decoration: underline;
+font: 20pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>RECU DE PAIEMENT</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_35">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>190</y>
+           <width>441</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Je soussigné Mr Balla moussa Keita, Responsable des clients Ceritifie avoir</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_36">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>210</y>
+           <width>431</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>reçu un paiement en DT de la part du client dont les infomations suivent:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_37">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>280</y>
+           <width>47</width>
+           <height>14</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>NOM:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_38">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>250</y>
+           <width>47</width>
+           <height>14</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ID:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_40">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>310</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PRENOM:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_44">
+         <property name="geometry">
+          <rect>
+           <x>290</x>
+           <y>310</y>
+           <width>91</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>MONTANT:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_45">
+         <property name="geometry">
+          <rect>
+           <x>290</x>
+           <y>280</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ADRESSE:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_46">
+         <property name="geometry">
+          <rect>
+           <x>280</x>
+           <y>400</y>
+           <width>171</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>RESPONSABLE DES CLIENTS</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_47">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>480</y>
+           <width>391</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(0, 170, 0);</string>
+         </property>
+         <property name="text">
+          <string>LA DIRECTION DE MAGIC TOUCH VOUS REMERCIE DE VOTRE FIDELITE</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_48">
+         <property name="geometry">
+          <rect>
+           <x>290</x>
+           <y>250</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>CONTACT:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_33">
+         <property name="geometry">
+          <rect>
+           <x>340</x>
+           <y>10</y>
+           <width>121</width>
+           <height>131</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../../TRAVAIL C++/logo.png</pixmap>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_id">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>250</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_nom">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>280</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_contact">
+         <property name="geometry">
+          <rect>
+           <x>370</x>
+           <y>250</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_prenom">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>310</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_adresse">
+         <property name="geometry">
+          <rect>
+           <x>370</x>
+           <y>280</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_montant">
+         <property name="geometry">
+          <rect>
+           <x>370</x>
+           <y>310</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="pb_generer_pdf">
+        <property name="geometry">
+         <rect>
+          <x>710</x>
+          <y>530</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:16pt &quot;Gabriola&quot;;
+background-color: rgb(172, 114, 85);</string>
+        </property>
+        <property name="text">
+         <string>GENERER</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_5">
+       <widget class="QWidget" name="widget_5" native="true">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>0</y>
+          <width>841</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(197, 131, 98);
+border-radius: 15px 15px 15px 15px;</string>
+        </property>
+        <widget class="QLabel" name="label_49">
+         <property name="geometry">
+          <rect>
+           <x>210</x>
+           <y>0</y>
+           <width>461</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 40pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>RECETTE ET PROJECTION</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QDateEdit" name="dateEdit_recette">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>170</y>
+          <width>181</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 20pt &quot;Gabriola&quot;;</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_recette">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>280</y>
+          <width>291</width>
+          <height>41</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_21">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>300</y>
+          <width>21</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 14pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>DT</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_39">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>60</y>
+          <width>431</width>
+          <height>501</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>CrossCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../logo2.png</pixmap>
+        </property>
+       </widget>
+       <widget class="Line" name="line_6">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>60</y>
+          <width>20</width>
+          <height>501</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>180</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 24pt &quot;Gabriola&quot;;</string>
+        </property>
+        <property name="text">
+         <string>CHOISIR LE JOUR</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_50">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>370</y>
+          <width>411</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>SOIT UN POURCENTAGE DE DIFFERENCE PAR RAPPORT AU JOUR PRECEDENT DE :</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_pourcentage">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>410</y>
+          <width>113</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_51">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>410</y>
+          <width>21</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_8">
+       <widget class="QFrame" name="frame_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>441</width>
+          <height>551</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QWidget" name="widget_6" native="true">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>10</y>
+           <width>401</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(197, 131, 98);
+border-radius: 15px 15px 15px 15px;
+font: 30pt &quot;Gabriola&quot;;</string>
+         </property>
+         <widget class="QLabel" name="label_55">
+          <property name="geometry">
+           <rect>
+            <x>80</x>
+            <y>0</y>
+            <width>301</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>GERER AFFICHAGE</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>80</y>
+           <width>411</width>
+           <height>101</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 13pt &quot;MS Shell Dlg 2&quot;;
+</string>
+         </property>
+         <property name="title">
+          <string>GESTION THEME</string>
+         </property>
+         <widget class="QLabel" name="label_57">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>50</y>
+            <width>141</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>CHOISIR MODE:</string>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="lineEdit_mode">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>40</y>
+            <width>161</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>         JOUR</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>         NUIT</string>
+           </property>
+          </item>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>230</y>
+           <width>411</width>
+           <height>101</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 13pt &quot;MS Shell Dlg 2&quot;;
+</string>
+         </property>
+         <property name="title">
+          <string>GESTION LANGUES</string>
+         </property>
+         <widget class="QLabel" name="label_59">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>50</y>
+            <width>151</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>CHOISIR LANGUE :</string>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="lineEdit_sexe_5">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>40</y>
+            <width>161</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>         FRANCAIS</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>         ANGLAIS</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>         TURQUE</string>
+           </property>
+          </item>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_4">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>380</y>
+           <width>411</width>
+           <height>101</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 13pt &quot;MS Shell Dlg 2&quot;;
+</string>
+         </property>
+         <property name="title">
+          <string>GESTION MUSIQUE</string>
+         </property>
+         <widget class="QLabel" name="label_60">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>50</y>
+            <width>161</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>CHOISIR MUSIQUE:</string>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="lineEdit_sexe_6">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>40</y>
+            <width>161</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 18pt &quot;Gabriola&quot;;</string>
+          </property>
+          <item>
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+         </widget>
+        </widget>
+        <widget class="QPushButton" name="pushButton_APPLIQUER">
+         <property name="geometry">
+          <rect>
+           <x>320</x>
+           <y>510</y>
+           <width>101</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font:15pt &quot;Gabriola&quot;;
+background-color: rgb(172, 114, 85);</string>
+         </property>
+         <property name="text">
+          <string>APPLIQUER</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QFrame" name="frame_4">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>10</y>
+          <width>441</width>
+          <height>551</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QWidget" name="widget_7" native="true">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>10</y>
+           <width>401</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(197, 131, 98);
+border-radius: 15px 15px 15px 15px;
+font: 30pt &quot;Gabriola&quot;;</string>
+         </property>
+         <widget class="QLabel" name="label_56">
+          <property name="geometry">
+           <rect>
+            <x>70</x>
+            <y>0</y>
+            <width>321</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>GERER MON COMPTE</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QLabel" name="label_61">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>100</y>
+           <width>271</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 20pt &quot;Gabriola&quot;;
+text-decoration: underline;
+font: 20pt &quot;Gabriola&quot;;</string>
+         </property>
+         <property name="text">
+          <string>CHANGER DE MOT DE PASSE</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_62">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>220</y>
+           <width>161</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 14pt &quot;Gabriola&quot;;
+</string>
+         </property>
+         <property name="text">
+          <string>ANCIEN PASSWORD:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>220</y>
+           <width>251</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_2">
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>280</y>
+           <width>251</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_63">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>280</y>
+           <width>151</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 14pt &quot;Gabriola&quot;;
+</string>
+         </property>
+         <property name="text">
+          <string>NOUVEAU PASSWORD:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_64">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>340</y>
+           <width>171</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 14pt &quot;Gabriola&quot;;
+</string>
+         </property>
+         <property name="text">
+          <string>CONFIRMER PASSWORD:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_7">
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>340</y>
+           <width>251</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_65">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>160</y>
+           <width>171</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 14pt &quot;Gabriola&quot;;
+</string>
+         </property>
+         <property name="text">
+          <string>ADRESSE MAIL:</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_8">
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>160</y>
+           <width>251</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>430</y>
+           <width>421</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font:15pt &quot;Gabriola&quot;;
+background-color: rgb(172, 114, 85);</string>
+         </property>
+         <property name="text">
+          <string>VALIDER</string>
+         </property>
+        </widget>
+        <widget class="Line" name="line_8">
+         <property name="geometry">
+          <rect>
+           <x>-17</x>
+           <y>0</y>
+           <width>20</width>
+           <height>551</height>
+          </rect>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Gestion des Rendez vous</string>
+     </attribute>
+     <widget class="QStackedWidget" name="Gestion_des_Rendez_Vous">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1281</width>
+        <height>701</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="RDV">
+       <widget class="QPushButton" name="MailRDV">
+        <property name="geometry">
+         <rect>
+          <x>810</x>
+          <y>130</y>
+          <width>221</width>
+          <height>53</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);
+color: rgb(121, 79, 29);</string>
+        </property>
+        <property name="text">
+         <string>Envoyer mail </string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../Rendez_Vous/email.png</normaloff>../Rendez_Vous/email.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="ExcelRDV">
+        <property name="geometry">
+         <rect>
+          <x>810</x>
+          <y>188</y>
+          <width>221</width>
+          <height>53</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);
+color: rgb(121, 79, 29);</string>
+        </property>
+        <property name="text">
+         <string>Fichier Excel</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../Rendez_Vous/excel.png</normaloff>../Rendez_Vous/excel.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>21</width>
+          <height>21</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="QuitterRDV">
+        <property name="geometry">
+         <rect>
+          <x>918</x>
+          <y>320</y>
+          <width>133</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+color: rgb(121, 79, 29); background-color: rgb(255, 230, 217);</string>
+        </property>
+        <property name="text">
+         <string>Annuler</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../Rendez_Vous/annuler.png</normaloff>../Rendez_Vous/annuler.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="AjouterRDV">
+        <property name="geometry">
+         <rect>
+          <x>790</x>
+          <y>320</y>
+          <width>123</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);
+color: rgb(121, 79, 29);</string>
+        </property>
+        <property name="text">
+         <string>Ajouter</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../Rendez_Vous/ajout.png</normaloff>../Rendez_Vous/ajout.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="logop">
+        <property name="geometry">
+         <rect>
+          <x>1130</x>
+          <y>170</y>
+          <width>121</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>F:/logop.png</pixmap>
+        </property>
+       </widget>
+       <widget class="Line" name="line_RDV_2">
+        <property name="geometry">
+         <rect>
+          <x>1080</x>
+          <y>110</y>
+          <width>20</width>
+          <height>281</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_7">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>711</width>
+          <height>381</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="title">
+         <string>Informations</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+        <widget class="QSplitter" name="splitter_11">
+         <property name="geometry">
+          <rect>
+           <x>300</x>
+           <y>50</y>
+           <width>261</width>
+           <height>311</height>
+          </rect>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <widget class="QLineEdit" name="NumLine">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 230, 217);</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="IdLine">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 230, 217);</string>
+          </property>
+         </widget>
+         <widget class="QDateEdit" name="dateEdit_RDV">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 230, 217);color: rgb(121, 79, 29);</string>
+          </property>
+          <property name="dateTime">
+           <datetime>
+            <hour>0</hour>
+            <minute>0</minute>
+            <second>0</second>
+            <year>2021</year>
+            <month>12</month>
+            <day>1</day>
+           </datetime>
+          </property>
+          <property name="maximumDateTime">
+           <datetime>
+            <hour>23</hour>
+            <minute>59</minute>
+            <second>59</second>
+            <year>2099</year>
+            <month>12</month>
+            <day>31</day>
+           </datetime>
+          </property>
+          <property name="minimumDateTime">
+           <datetime>
+            <hour>0</hour>
+            <minute>0</minute>
+            <second>0</second>
+            <year>2021</year>
+            <month>12</month>
+            <day>1</day>
+           </datetime>
+          </property>
+          <property name="minimumDate">
+           <date>
+            <year>2021</year>
+            <month>12</month>
+            <day>1</day>
+           </date>
+          </property>
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QTimeEdit" name="timeEdit">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 230, 217);color: rgb(121, 79, 29);</string>
+          </property>
+          <property name="dateTime">
+           <datetime>
+            <hour>9</hour>
+            <minute>0</minute>
+            <second>0</second>
+            <year>2021</year>
+            <month>11</month>
+            <day>8</day>
+           </datetime>
+          </property>
+          <property name="maximumDateTime">
+           <datetime>
+            <hour>23</hour>
+            <minute>59</minute>
+            <second>59</second>
+            <year>2099</year>
+            <month>12</month>
+            <day>30</day>
+           </datetime>
+          </property>
+          <property name="minimumTime">
+           <time>
+            <hour>9</hour>
+            <minute>0</minute>
+            <second>0</second>
+           </time>
+          </property>
+          <property name="currentSection">
+           <enum>QDateTimeEdit::HourSection</enum>
+          </property>
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
+          <property name="time">
+           <time>
+            <hour>9</hour>
+            <minute>0</minute>
+            <second>0</second>
+           </time>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="PeriodeComboBox">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 233, 217);color: rgb(121, 79, 29);</string>
+          </property>
+          <property name="editable">
+           <bool>false</bool>
+          </property>
+          <property name="currentText">
+           <string/>
+          </property>
+          <property name="maxVisibleItems">
+           <number>20</number>
+          </property>
+          <property name="insertPolicy">
+           <enum>QComboBox::InsertAtBottom</enum>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+          </property>
+          <property name="duplicatesEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="frame">
+           <bool>true</bool>
+          </property>
+          <property name="modelColumn">
+           <number>0</number>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="SalleComboBox">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 233, 217);color: rgb(121, 79, 29);</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>C1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>C2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>C3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>C4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>M1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>M2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>M3</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>M4</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>S1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>S2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>MP1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>MP2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>EP1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>EP2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Massage</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Spa 1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Spa 2</string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QComboBox" name="DesComboBox">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 233, 217);
+color: rgb(121, 79, 29);</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Coiffure</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Maquillage</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Soin</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Manucure</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Pedicure</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Epilation</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Massage</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>SPA</string>
+           </property>
+          </item>
+         </widget>
+        </widget>
+        <widget class="QSplitter" name="splitter_12">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>60</y>
+           <width>241</width>
+           <height>301</height>
+          </rect>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <widget class="QLabel" name="Num">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(121, 79, 29);</string>
+          </property>
+          <property name="text">
+           <string>Numero de Rendez-Vous</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Id">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(121, 79, 29);</string>
+          </property>
+          <property name="text">
+           <string>Identifiant Client</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Date">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(121, 79, 29);</string>
+          </property>
+          <property name="text">
+           <string>Date de Rendez-Vous</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Heure">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(121, 79, 29);</string>
+          </property>
+          <property name="text">
+           <string>Heure de Rendez-Vous</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Periode">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(121, 79, 29);</string>
+          </property>
+          <property name="text">
+           <string>Periode de Rendez-Vous</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Salle">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(121, 79, 29);</string>
+          </property>
+          <property name="text">
+           <string>Salle de Rendez-Vous</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Des">
+          <property name="font">
+           <font>
+            <family>Gabriola</family>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(121, 79, 29);</string>
+          </property>
+          <property name="text">
+           <string>Designation</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QSpinBox" name="spinBox">
+         <property name="geometry">
+          <rect>
+           <x>600</x>
+           <y>50</y>
+           <width>41</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Gabriola</family>
+           <pointsize>22</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 230, 217);</string>
+         </property>
+         <property name="wrapping">
+          <bool>false</bool>
+         </property>
+         <property name="frame">
+          <bool>true</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::NoButtons</enum>
+         </property>
+         <property name="keyboardTracking">
+          <bool>false</bool>
+         </property>
+         <property name="maximum">
+          <number>10000</number>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="RechercherRDV">
+        <property name="geometry">
+         <rect>
+          <x>206</x>
+          <y>430</y>
+          <width>155</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);
+color: rgb(121, 79, 29);</string>
+        </property>
+        <property name="text">
+         <string>Rechercher</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../Rendez_Vous/recherche.png</normaloff>../Rendez_Vous/recherche.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>18</width>
+          <height>18</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="RechercherLine">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>430</y>
+          <width>171</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+        <property name="placeholderText">
+         <string>exemple : 1</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="ModifierRDV">
+        <property name="geometry">
+         <rect>
+          <x>1120</x>
+          <y>532</y>
+          <width>131</width>
+          <height>43</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);
+color: rgb(121, 79, 29);</string>
+        </property>
+        <property name="text">
+         <string>Modifier</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../Rendez_Vous/modifier.png</normaloff>../Rendez_Vous/modifier.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>17</width>
+          <height>17</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="SupprimerRDV">
+        <property name="geometry">
+         <rect>
+          <x>1120</x>
+          <y>580</y>
+          <width>131</width>
+          <height>43</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);
+color: rgb(121, 79, 29);</string>
+        </property>
+        <property name="text">
+         <string>Supprimer</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../Rendez_Vous/supprimer.png</normaloff>../Rendez_Vous/supprimer.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>18</width>
+          <height>18</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="TrierComboBox">
+        <property name="geometry">
+         <rect>
+          <x>880</x>
+          <y>440</y>
+          <width>211</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 233, 217);color: rgb(121, 79, 29);</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Choisir</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Numero de rdv</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Date de rdv</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="Trier">
+        <property name="geometry">
+         <rect>
+          <x>750</x>
+          <y>440</y>
+          <width>119</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 233, 217);color: rgb(121, 79, 29);
+</string>
+        </property>
+        <property name="text">
+         <string> Trier par</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line_RDV">
+        <property name="geometry">
+         <rect>
+          <x>730</x>
+          <y>440</y>
+          <width>20</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="TraductionComboBox">
+        <property name="geometry">
+         <rect>
+          <x>1168</x>
+          <y>30</y>
+          <width>103</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+color: rgb(121, 79, 29); background-color: rgb(245, 172, 162);</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Français</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Anglais</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Turc</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="Traduction">
+        <property name="geometry">
+         <rect>
+          <x>1070</x>
+          <y>30</y>
+          <width>93</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+color: rgb(121, 79, 29);</string>
+        </property>
+        <property name="text">
+         <string>Traduction</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="TableView">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>480</y>
+          <width>1061</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Cambria</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);
+color: rgb(121, 79, 29);</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Mailing">
+       <widget class="QGroupBox" name="groupBoxMail">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>1181</width>
+          <height>651</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="title">
+         <string>Envoyer un mail</string>
+        </property>
+        <widget class="QWidget" name="layoutWidget_5">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>60</y>
+           <width>1091</width>
+           <height>551</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="3" column="0" colspan="3">
+           <widget class="QTextEdit" name="msg">
+            <property name="font">
+             <font>
+              <family>Gabriola</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 230, 217);</string>
+            </property>
+            <property name="placeholderText">
+             <string>type your message here ...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" colspan="2">
+           <widget class="QLineEdit" name="mail_pass">
+            <property name="font">
+             <font>
+              <family>Gabriola</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 230, 217);</string>
+            </property>
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
+            </property>
+            <property name="placeholderText">
+             <string>your mail password</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLineEdit" name="rcpt">
+            <property name="font">
+             <font>
+              <family>Gabriola</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 230, 217);</string>
+            </property>
+            <property name="placeholderText">
+             <string>recipient</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="3">
+           <widget class="QLineEdit" name="subject">
+            <property name="font">
+             <font>
+              <family>Gabriola</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 230, 217);</string>
+            </property>
+            <property name="placeholderText">
+             <string>subject</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QPushButton" name="browseBtn">
+            <property name="font">
+             <font>
+              <family>Gabriola</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 230, 217);</string>
+            </property>
+            <property name="text">
+             <string>Browse ...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <widget class="QLineEdit" name="file">
+            <property name="font">
+             <font>
+              <family>Gabriola</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 230, 217);</string>
+            </property>
+            <property name="placeholderText">
+             <string>attachement here</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="QPushButton" name="sendBtn">
+            <property name="font">
+             <font>
+              <family>Gabriola</family>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 230, 217);</string>
+            </property>
+            <property name="text">
+             <string>Send</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QPushButton" name="QuitterRDV_2">
+            <property name="font">
+             <font>
+              <family>Gabriola</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">
+color: rgb(121, 79, 29); background-color: rgb(255, 230, 217);</string>
+            </property>
+            <property name="text">
+             <string>Annuler</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../Rendez_Vous/annuler.png</normaloff>../Rendez_Vous/annuler.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>15</width>
+              <height>15</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Gestion des employes</string>
+     </attribute>
+     <widget class="QStackedWidget" name="Gestion_des_employes">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>1271</width>
+        <height>661</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="page_9">
+       <widget class="QLineEdit" name="lineEdit_9">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>30</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_10">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>90</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_19">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>200</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_12">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>210</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_13">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>270</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_14">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>330</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_15">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>380</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_16">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>30</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_17">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>80</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_11">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>150</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_18">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>140</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_20">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>270</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="statistique">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>350</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>afficher</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="stat">
+        <property name="geometry">
+         <rect>
+          <x>840</x>
+          <y>70</y>
+          <width>391</width>
+          <height>371</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="retour">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>350</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>retour </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_58">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>40</y>
+          <width>55</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>janvier</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_66">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>110</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>fevrier</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_67">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>160</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>mars</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_68">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>220</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>avril</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_69">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>280</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>mai</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_70">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>40</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>aout</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_71">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>90</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>septembre</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_73">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>280</y>
+          <width>71</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>decembre</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_74">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>210</y>
+          <width>61</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>novembre</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_75">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>150</y>
+          <width>61</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>octobre</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_76">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>340</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>juin</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_77">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>390</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>juillet</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_86">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>30</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Stat:</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_11">
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>0</y>
+          <width>1101</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../../../Users/DELL/Desktop/Nouveau dossier (3)/map .png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_54">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>130</y>
+          <width>111</width>
+          <height>121</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/p.png);
+background-color: rgb(255, 0, 0,0);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="retour_2">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>600</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>retour </string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_10">
+       <widget class="QLineEdit" name="le_id">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>40</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="le_nom">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>110</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="le_prenom">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>180</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="le_poste">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>240</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="le_tel">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>40</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="le_adresse">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>180</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="le_email">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>110</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="le_fusion">
+        <property name="geometry">
+         <rect>
+          <x>870</x>
+          <y>120</y>
+          <width>73</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="rechercher">
+        <property name="geometry">
+         <rect>
+          <x>1000</x>
+          <y>110</y>
+          <width>181</width>
+          <height>39</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gabriola</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 230, 217);</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_recherche_employe">
+        <property name="geometry">
+         <rect>
+          <x>990</x>
+          <y>190</y>
+          <width>93</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>rechercher</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox_2">
+        <property name="geometry">
+         <rect>
+          <x>1100</x>
+          <y>190</y>
+          <width>81</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>choisir</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>id</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="pb_modifier_employe">
+        <property name="geometry">
+         <rect>
+          <x>700</x>
+          <y>350</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>modifier</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_ajouter_2">
+        <property name="geometry">
+         <rect>
+          <x>840</x>
+          <y>350</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>ajouter </string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="statistique_2">
+        <property name="geometry">
+         <rect>
+          <x>1140</x>
+          <y>410</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>statistique</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="tab_employes">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>390</y>
+          <width>951</width>
+          <height>192</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_supprimer_2">
+        <property name="geometry">
+         <rect>
+          <x>960</x>
+          <y>350</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>supprimer</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="geometry">
+         <rect>
+          <x>1140</x>
+          <y>470</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>excel</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="localisation">
+        <property name="geometry">
+         <rect>
+          <x>1140</x>
+          <y>530</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>localisation</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_72">
+        <property name="geometry">
+         <rect>
+          <x>1120</x>
+          <y>170</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Trier</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_78">
+        <property name="geometry">
+         <rect>
+          <x>970</x>
+          <y>70</y>
+          <width>251</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Rechercher par identifiant </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_79">
+        <property name="geometry">
+         <rect>
+          <x>14</x>
+          <y>50</y>
+          <width>61</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Identifiant</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_80">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>120</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nom</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_81">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>190</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>prenom</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_82">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>250</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Poste</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_83">
+        <property name="geometry">
+         <rect>
+          <x>364</x>
+          <y>50</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Num de telephone</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_84">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>120</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Adresse</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_85">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>190</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Email</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Gestion des Produits</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Configuration</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1305</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
