@@ -11,5 +11,7 @@
         <file>modifier.png</file>
         <file>recherche.png</file>
         <file>supprimer.png</file>
+        <file>map .png</file>
+        <file>p.png</file>
     </qresource>
 </RCC>

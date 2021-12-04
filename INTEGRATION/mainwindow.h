@@ -19,7 +19,7 @@
 #include "rendez_vous.h"
 #include "mailing.h"
 #include "exportexcelobject.h"
-
+#include "employe.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -124,6 +124,32 @@ void update_label();
 
 //----------------------------------------------//
 
+    void on_pb_ajouter_2_clicked();
+
+    void on_pb_supprimer_2_clicked();
+
+    void on_pb_modifier_employe_clicked();
+
+    void on_pb_recherche_employe_clicked();
+
+    void on_comboBox_2_currentIndexChanged(int index);
+
+    //void on_lineEdit_id_connexion_cursorPositionChanged(int arg1, int arg2);
+
+   // void on_pb_ajouter_3_clicked();
+
+    void on_statistique_2_clicked();
+
+    void on_statistique_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_localisation_clicked();
+
+    void on_retour_clicked();
+
+    void on_retour_2_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -137,7 +163,10 @@ private:
     Rendez_Vous Etmp;
     QStringList files;
 //----------------------------------------------//
-
+Employe E ;
+void refrech() ;
+   signals:
+void setCenter(QVariant,QVariant);// localisation
 };
 
 #endif // MAINWINDOW_H

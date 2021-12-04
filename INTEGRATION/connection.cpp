@@ -17,9 +17,13 @@ bool Connection::createconnection()
     db.setPassword("QToracle");
 */
 
-    db.setDatabaseName("PROJET_SMART_BEAUTY_CENTER");//inserer le nom de la source de données ODBC
+   /*db.setDatabaseName("PROJET_SMART_BEAUTY_CENTER");//inserer le nom de la source de données ODBC
     db.setUserName("BALLA");//inserer nom de l'utilisateur
-    db.setPassword("@Tampon2001");//inserer mot de passe de cet utilisateur
+    db.setPassword("@Tampon2001");//inserer mot de passe de cet utilisateur*/
+
+    db.setDatabaseName("SMART_BEAUTY_CENTER");//inserer le nom de la source de données ODBC
+     db.setUserName("ahmed");//inserer nom de l'utilisateur
+     db.setPassword("ahmed");//inserer mot de passe de cet utilisateur
 
 
     if (db.open())

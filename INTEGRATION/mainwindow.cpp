@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "client.h"
 #include "rendez_vous.h"
-
+#include "employe.h"
 #include <QMessageBox>
 #include <QPrinter>
 #include <QPrintDialog>
@@ -137,6 +137,16 @@ MainWindow::MainWindow(QWidget *parent)
      ui->tabWidget->setTabEnabled(2,false);
      ui->tabWidget->setTabEnabled(3,false);
      */
+     ui->le_fusion->setModel(E.fusion());
+     ui->le_id->setValidator(new QIntValidator(100,999,this));
+     ui->tab_employes->setModel(E.afficher());
+   //  ui->ahmed->setSource(QUrl(QStringLiteral("qrc:/map.qml")));
+     //ui->ahmed->show();
+    // auto obj = ui->ahmed->rootObject();
+     //connect(this,SIGNAL(setCenter(Qvariant,Qvariant)), obj, SLOT(setCenter(Qvarian,Qvariant)));
+
+     emit setCenter(25.000,50.000);
+
 }
 
 MainWindow::~MainWindow()
@@ -599,9 +609,9 @@ void MainWindow::on_Connecter_clicked()
     {
         Etmp.notifications("Connexion", "Le nom d'utilisateur et le mot de passe sont corrects");
         //ui->label_username->setText(ui->lineEdit_id_connexion->text());
-        ui->tabWidget->setCurrentIndex(2);
-        ui->tabWidget->setTabEnabled(2, true);
-        ui->tabWidget->setTabEnabled(0,false);
+        ui->tabWidget->setCurrentIndex(4);
+        ui->tabWidget->setTabEnabled(4, true);
+        ui->tabWidget->setTabEnabled(0,true);
         /*ui->tabWidget->setCurrentIndex(1);
         ui->tabWidget->setTabEnabled(1, true);
         */
@@ -906,4 +916,335 @@ void MainWindow::on_QuitterRDV_2_clicked()
 
 //-------------------------------------------------------------------------------------------------//
 //-------------------------------------------------------------------------------------------------//
+
+
+void MainWindow::on_pb_ajouter_2_clicked()
+{
+    int id=ui->le_id->text().toInt();
+       int telephone=ui->le_tel->text().toInt();
+       QString nom=ui->le_nom->text();
+       QString prenom=ui->le_prenom->text();
+       QString adresse=ui->le_adresse->text();
+       QString poste=ui->le_poste->text();
+       QString email=ui->le_email->text();
+       QString sr=ui->le_fusion->currentText();
+       Employe E(id,telephone,nom,prenom,adresse,poste,email,sr);
+       bool test=E.ajouter();
+       if(test)
+       {
+
+           QMessageBox::information(nullptr,QObject::tr("OK"),
+           QObject::tr("Ajout effectué\n"
+           "click Cancel to exit"),QMessageBox::Cancel);
+            ui->tab_employes->setModel(E.afficher());
+   refrech() ;
+       }
+       else
+           QMessageBox::critical(nullptr, QObject::tr("Not Ok"),
+           QObject::tr("Ajout not effectué.\n"
+           "Click Cancel to exit"), QMessageBox::Cancel);
+}
+
+void MainWindow::refrech()
+{
+
+    ui->tab_employes->setModel(E.afficher());
+
+}
+
+void MainWindow::on_pb_supprimer_2_clicked()
+{
+    Employe E1;
+    E1.setid(ui->le_id->text().toInt());
+    bool test=E1.supprimer(E1.getid());
+    if(test)
+    {
+
+        QMessageBox::information(nullptr,QObject::tr("OK"),
+        QObject::tr("Suppression effectué\n"
+        "click Cancel to exit"),QMessageBox::Cancel);
+        ui->tab_employes->setModel(E.afficher());
+
+    }
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Not Ok"),
+        QObject::tr("Suppression not effectué.\n"
+        "Click Cancel to exit"), QMessageBox::Cancel);
+}
+
+
+
+void MainWindow::on_pb_modifier_employe_clicked()
+{
+    int id=ui->le_id->text().toInt();
+          int telephone=ui->le_tel->text().toInt();
+
+          QString nom=ui->le_nom->text();
+          QString prenom=ui->le_prenom->text();
+          QString adresse=ui->le_adresse->text();
+         QString poste=ui->le_poste->text();
+          QString email=ui->le_email->text();
+
+
+          Employe E;
+                 bool test;
+                 test=E.modifier(id,telephone,nom,prenom,adresse,poste,email);
+                 if(test)
+                 {
+                    ui->tab_employes->setModel(E.afficher());
+
+                    QMessageBox::information(nullptr,QObject::tr("modifier employe"),
+                      QObject::tr(" employe modifé") ,QMessageBox::Ok);
+
+                   }else
+
+                       QMessageBox::critical(nullptr,QObject::tr("modifier employe"),
+                         QObject::tr("Erreur !.\n""Click Ok to exit."), QMessageBox::Ok);
+}
+
+
+
+void MainWindow::on_pb_recherche_employe_clicked()
+{
+    int ide=ui->rechercher->text().toInt() ;
+        ui->tab_employes->setModel(E.rechercher(ide)) ;
+
+        QMessageBox::information(nullptr, QObject::tr("succes"),
+                    QObject::tr(" affiche  dans le tableau !.\n"
+
+                               "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+
+
+void MainWindow::on_comboBox_2_currentIndexChanged(int index)
+{
+    if(index==1)
+          {
+              ui->tab_employes->setModel(E.sort_employe());
+          }else
+              ui->tab_employes->setModel(E.sort_employe());
+}
+
+
+
+/*void MainWindow::on_pb_ajouter_3_clicked()
+{
+       ui->Gestion_des_employes->setCurrentIndex(2);
+}*/
+
+
+void MainWindow::on_statistique_2_clicked()
+{
+
+    ui->Gestion_des_employes->setCurrentIndex(0);
+
+
+}
+
+
+void MainWindow::on_statistique_clicked()
+{
+    double MOIS1=E.Statistiquee("2021-01-01","2021-01-31");
+    double MOIS2=E.Statistiquee("2021-02-01","2021-02-28");
+    double MOIS3=E.Statistiquee("2021-03-01","2021-03-31");
+    double MOIS4=E.Statistiquee("2021-04-01","2021-04-30");
+    double MOIS5=E.Statistiquee("2021-05-01","2021-05-31");
+    double MOIS6=E.Statistiquee("2021-06-01","2021-06-30");
+    double MOIS7=E.Statistiquee("2021-07-01","2021-07-31");
+    double MOIS8=E.Statistiquee("2021-08-01","2021-08-31");
+    double MOIS9=E.Statistiquee("2021-09-01","2021-09-30");
+    double MOIS10=E.Statistiquee("2021-10-01","2021-10-31");
+    double MOIS11=E.Statistiquee("2021-11-01","2021-11-30");
+    double MOIS12=E.Statistiquee("2021-12-01","2021-12-31");
+
+    double somme=MOIS1+MOIS2+MOIS3+MOIS4+MOIS5+MOIS6+MOIS7+MOIS8+MOIS9+MOIS10+MOIS11+MOIS12;
+      MOIS1=((MOIS1/somme)*360); //moyenne chaque mois
+       MOIS2=((MOIS2/somme)*360);
+       MOIS3=((MOIS3/somme)*360);
+       MOIS4=((MOIS4/somme)*360);
+       MOIS5=((MOIS5/somme)*360);
+       MOIS6=((MOIS6/somme)*360);
+       MOIS7=((MOIS7/somme)*360);
+       MOIS8=((MOIS8/somme)*360);
+       MOIS9=((MOIS9/somme)*360);
+       MOIS10=((MOIS10/somme)*360);
+       MOIS11=((MOIS11/somme)*360);
+       MOIS12=((MOIS12/somme)*360);
+       int M1 = MOIS1+MOIS2+MOIS3+MOIS4+MOIS5+MOIS6+MOIS7+MOIS8+MOIS9+MOIS10+MOIS11+MOIS12;//dessiner cercle sur cercle
+       int M2 = MOIS2+MOIS3+MOIS4+MOIS5+MOIS6+MOIS7+MOIS8+MOIS9+MOIS10+MOIS11+MOIS12;
+       int M3 = MOIS3+MOIS4+MOIS5+MOIS6+MOIS7+MOIS8+MOIS9+MOIS10+MOIS11+MOIS12;
+       int M4 = MOIS4+MOIS5+MOIS6+MOIS7+MOIS8+MOIS9+MOIS10+MOIS11+MOIS12;
+       int M5 = MOIS5+MOIS6+MOIS7+MOIS8+MOIS9+MOIS10+MOIS11+MOIS12;
+       int M6 = MOIS6+MOIS7+MOIS8+MOIS9+MOIS10+MOIS11+MOIS12;
+       int M7 = MOIS7+MOIS8+MOIS9+MOIS10+MOIS11+MOIS12;
+       int M8 = MOIS8+MOIS9+MOIS10+MOIS11+MOIS12;
+       int M9 = MOIS9+MOIS10+MOIS11+MOIS12;
+       int M10= MOIS10+MOIS11+MOIS12;
+       int M11= MOIS11+MOIS12;
+       int M12= MOIS12;
+      int h = ui->stat->height();
+      int w = ui->stat->width();
+      QPixmap pix(w, h);
+     pix.fill( Qt::white ); //pix =pix map
+      QPainter painter(&pix); //pour dessiner
+      QRectF size =QRectF(0,0,w-20,h-20);//position
+     painter.setBrush(Qt::blue);//coulour
+      painter.drawPie(size,0,M1*16);// espace //les degre sont calcule en unite 16 en qt
+
+
+      painter.setBrush(Qt::red);
+      painter.drawPie(size,(MOIS1)*16,(M1)*16);
+
+      painter.setBrush(Qt::green);
+      painter.drawPie(size,(MOIS1+MOIS2)*16,(M2)*16);
+
+      painter.setBrush(Qt::yellow);
+      painter.drawPie(size,(MOIS3+MOIS2+MOIS1)*16,(M3)*16);
+
+      painter.setBrush(Qt::cyan);
+      painter.drawPie(size,(MOIS3+MOIS4+MOIS2+MOIS1)*16,(M4)*16);
+
+      painter.setBrush(Qt::darkRed);
+      painter.drawPie(size,(MOIS3+MOIS4+MOIS2+MOIS1+MOIS5)*16,(M5)*16);
+
+      painter.setBrush(Qt::darkBlue);
+      painter.drawPie(size,(MOIS1+MOIS2+MOIS3+MOIS4+MOIS5+MOIS6)*16,(M6)*16);
+
+      painter.setBrush(Qt::darkGray);
+      painter.drawPie(size,(MOIS1+MOIS2+MOIS3+MOIS4+MOIS5+MOIS6+MOIS7)*16,(M7)*16);
+
+      painter.setBrush(Qt::darkGreen);
+      painter.drawPie(size,(MOIS1+MOIS2+MOIS3+MOIS4+MOIS5+MOIS6+MOIS7+MOIS8)*16,(M8)*16);
+
+      painter.setBrush(Qt::darkYellow);
+      painter.drawPie(size,(MOIS1+MOIS2+MOIS3+MOIS4+MOIS5+MOIS6+MOIS7+MOIS8+MOIS9)*16,(M9)*16);
+
+      painter.setBrush(Qt::darkMagenta);
+      painter.drawPie(size,(MOIS1+MOIS2+MOIS3+MOIS4+MOIS5+MOIS6+MOIS7+MOIS8+MOIS9+MOIS10)*16,(M10)*16);
+
+      painter.setBrush(Qt::gray);
+      painter.drawPie(size,(MOIS1+MOIS2+MOIS3+MOIS4+MOIS5+MOIS6+MOIS7+MOIS8+MOIS9+MOIS10+MOIS11)*16,(M11)*16);
+
+      painter.setBrush(Qt::black);
+      painter.drawPie(size,(MOIS1+MOIS2+MOIS3+MOIS4+MOIS5+MOIS6+MOIS7+MOIS8+MOIS9+MOIS10+MOIS11+MOIS12)*16,(M12)*16);
+
+       MOIS1=((MOIS1/360)*100);//percentage ;
+       MOIS2=((MOIS2/360)*100);
+       MOIS3=((MOIS3/360)*100);
+       MOIS4=((MOIS4/360)*100);
+       MOIS5=((MOIS5/360)*100);
+       MOIS6=((MOIS6/360)*100);
+       MOIS7=((MOIS7/360)*100);
+       MOIS8=((MOIS8/360)*100);
+       MOIS9=((MOIS9/360)*100);
+      MOIS10=((MOIS10/360)*100);
+      MOIS11=((MOIS11/360)*100);
+      MOIS12=((MOIS12/360)*100);
+
+
+
+
+QString A1String= QString::number(MOIS1);
+QString A2String= QString::number(MOIS2);
+QString A3String= QString::number(MOIS3);
+QString A4String= QString::number(MOIS4);
+QString A5String= QString::number(MOIS5);
+QString A6String= QString::number(MOIS6);
+QString A7String= QString::number(MOIS7);
+QString A8String= QString::number(MOIS8);
+QString A9String= QString::number(MOIS9);
+QString A10String= QString::number(MOIS10);
+QString A11String= QString::number(MOIS11);
+QString A12String= QString::number(MOIS12);
+
+
+A1String=A1String +"%";
+A2String=A2String +"%";
+A3String=A3String +"%";
+A4String=A4String +"%";
+A5String=A5String +"%";
+A6String=A6String +"%";
+A7String=A7String +"%";
+A8String=A8String +"%";
+A9String=A9String +"%";
+A10String=A10String +"%";
+A11String=A11String +"%";
+A12String=A12String +"%";
+
+
+
+      ui->stat->setPixmap(pix);
+      ui->lineEdit_9->setText(A1String);
+      ui->lineEdit_10->setText(A2String);
+      ui->lineEdit_11->setText(A3String);
+      ui->lineEdit_12->setText(A4String);
+      ui->lineEdit_13->setText(A5String);
+      ui->lineEdit_14->setText(A6String);
+      ui->lineEdit_15->setText(A7String);
+      ui->lineEdit_16->setText(A10String);
+      ui->lineEdit_17->setText(A8String);
+      ui->lineEdit_18->setText(A9String);
+   ui->lineEdit_19->setText(A11String);
+      ui->lineEdit_20->setText(A12String);
+//         refresh();
+
+
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
+                                                            tr("Excel Files (*.xls)"));
+            if (fileName.isEmpty())
+                return;
+
+            ExportExcelObject obj(fileName, "mydata", ui->tab_employes);
+
+            //colums to export
+            obj.addField(0, "ID_EMP", "char(20)");
+            obj.addField(1, "NOM", "char(20)");
+            obj.addField(2, "PRENOM", "char(20)");
+            obj.addField(3, "ADRESSE", "char(20)");
+            obj.addField(4, "POSTE", "char(20)");
+            obj.addField(5, "EMAIL", "char(20)");
+             obj.addField(6, "TELEPHONE", "char(20)");
+             obj.addField(7, "DATEDEBUT", "char(20)");
+              obj.addField(8, "DATEFIN", "char(20)");
+               obj.addField(9, "SALAIRE", "char(20)");
+
+
+
+
+
+            int retVal = obj.export2Excel();
+            if( retVal > 0)
+            {
+                QMessageBox::information(this, tr("Done"),
+                                         QString(tr("%1 records exported!")).arg(retVal)
+
+                                         );
+            }
+}
+
+
+void MainWindow::on_localisation_clicked()
+{
+    ui->Gestion_des_employes->setCurrentIndex(1);
+
+}
+
+
+void MainWindow::on_retour_clicked()
+{
+    ui->Gestion_des_employes->setCurrentIndex(2);
+
+}
+
+
+void MainWindow::on_retour_2_clicked()
+{
+    ui->Gestion_des_employes->setCurrentIndex(2);
+}
 

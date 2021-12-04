@@ -25,6 +25,7 @@ SOURCES += \
     Arduino.cpp \
     client.cpp \
     connection.cpp \
+    employe.cpp \
     exportexcelobject.cpp \
     mailing.cpp \
     main.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     Arduino.h \
     client.h \
     connection.h \
+    employe.h \
     exportexcelobject.h \
     mailing.h \
     mainwindow.h \
@@ -59,4 +61,9 @@ RESOURCES += \
 
 DISTFILES += \
     Rendez_Vous_an_AN.ts \
-    Rendez_Vous_tu_TU.ts
+    Rendez_Vous_tu_TU.ts \
+    map .png \
+    map .png \
+    map .png \
+    map.qml \
+    test.xls
