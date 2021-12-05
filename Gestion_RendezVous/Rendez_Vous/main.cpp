@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "connection.h"
+
 #include <QApplication>
 #include <QMessageBox>
 #include <QTranslator>
@@ -7,50 +8,47 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv); //On créé l'application.
+    QApplication a(argc, argv);
+
+    //-----------------------------------------TRADUCTION-----------------------------------------//
 
     QTranslator t;
-
     QStringList languages;
-    languages << "French" << "English" << "Turc" ;
+    languages << "Français" << "Anglais" << "Turc" ;
+    QString lang = QInputDialog::getItem(NULL,QObject::tr("Veuillez choisir la langue"),QObject::tr("Langue"), languages);
 
-    QString lang = QInputDialog::getItem(NULL,"Select Language", "Languge" , languages);
-
-    if ( lang == "English")
+    if (lang != "Français")
     {
-        t.load(":/english.qm");
+        a.installTranslator(&t);
+    }
+
+    if (lang == "Anglais")
+    {
+        t.load(":/Rendez_Vous_an_AN.qm");
     }
     else
-        if ( lang == "Turc")
+        if(lang == "Turc")
         {
-            t.load(":/Turc.qm");
+            t.load(":/Rendez_Vous_tu_TU.qm");
         }
 
-    if ( lang != "French")
+    //--------------------------------------------------------------------------------------------//
+
+    MainWindow w;
+    w.setWindowTitle("Magic Touch Application");
+    w.setWindowIcon(QIcon(":/img/logo.png"));
+    w.setGeometry(100, 60, 1280, 780);
+    w.show();
+
+/*  Connection c;
+    bool test=c.createConnection();
+    if(test)
     {
-        app.installTranslator(&t);
+        w.show();
+        QMessageBox::information(nullptr, QObject::tr("la base de données est ouverte"), QObject::tr("Connexion réussie\n" "Cliquez sur Annuler pour quitter"), QMessageBox::Cancel);
     }
-
-    Connection c; //Une seule instance de la classe connection
-
-    bool test=c.createconnection(); //Etablir la connexion
-
-    MainWindow w; //appelle lel fenetre
-
-    //w.setWindowIcon(QIcon("logop.png"));
-
-    w.setWindowTitle("Smart Beauty Center Application");
-
-    if(test) //Si la connexion est établie
-    {
-        w.show(); //afficher fenetre
-        /*w.resize(1250,700);*/
-
-        QMessageBox::information(nullptr, QObject::tr("database is open"), QObject::tr("Connection successful\n" "Click Cancel to exit"), QMessageBox::Cancel);
-    }
-    else //Si la connexion a échoué
-
-        QMessageBox::critical(nullptr, QObject::tr("database is not open"), QObject::tr("Connection failed \n" "Click Cancel to exit"), QMessageBox::Cancel);
-
-    return app.exec(); //execution de l'application
+    else
+        QMessageBox::critical(nullptr, QObject::tr("la base de données n est pas ouverte"), QObject::tr("La connexion a échoué \n" "Cliquez sur Annuler pour quitter"), QMessageBox::Cancel);
+*/
+    return a.exec();
 }

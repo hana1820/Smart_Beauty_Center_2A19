@@ -1,76 +1,111 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "rendez_vous.h"
-#include <QApplication>
-#include <QMessageBox>
-#include <iostream>
-#include <QDebug>
 
-/* include <QApplication>
-On inclue la création des fenêtres*/
-
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->TableView->setModel(Etmp.afficher());
 
-    /*
-    for(int i=1; i<13; i++)
-    {
-        ui->comboBox->addItem(QString::number(i) + " heures");
-    }
+    Connection c;
+    c.createConnection();
 
-    for(int j=0; j<60; j++)
-    {
-        ui->comboBox->addItem(QString::number(j) + " minutes");
-    }*/
+    Rendez_Vous R;
+    ui->TableView->setModel(Etmp.afficher_rdv());
+    ui->spinBox->setValue(R.nb_total_rdv());
 
     for(int i=0; i<13; i++)
     {
         for(int j=0; j<60; j+=30)
         {
-            ui->PeriodeComboBox->addItem(QString::number(i) + " hour et " + QString::number(j) + " minutes");
+            ui->PeriodeComboBox->addItem(QString::number(i) + " heures et " + QString::number(j) + " minutes");
         }
     }
 
-    QPixmap logog("C:/Users/USER/Desktop/Projet C++/Rendez_Vous/logog.png");
+    ui->NumLine->setValidator(new QIntValidator(0,99999999,this));
+    ui->IdLine->setValidator(new QIntValidator(0,99999999,this));
+
+    QPixmap logog("C:/Users/USER/Desktop/Rendez_Vous/logog.png");
     ui->logog->setPixmap(logog);
 
-    QPixmap logop("C:/Users/USER/Desktop/Projet C++/Rendez_Vous/logop.png");
+    QPixmap logop("C:/Users/USER/Desktop/Rendez_Vous/logop.png");
     ui->logop->setPixmap(logop);
+
+    QIcon ajout("C:/Users/USER/Desktop/Rendez_Vous/ajout.png");
+    ui->AjouterRDV->setIcon(ajout);
+
+    QIcon annuler("C:/Users/USER/Desktop/Rendez_Vous/annuler.png");
+    ui->QuitterRDV->setIcon(annuler);
+
+    QIcon email("C:/Users/USER/Desktop/Rendez_Vous/email.png");
+    ui->MailRDV->setIcon(email);
+
+    QIcon entrer("C:/Users/USER/Desktop/Rendez_Vous/entrer.png");
+    ui->Connecter->setIcon(entrer);
+
+    QIcon excel("C:/Users/USER/Desktop/Rendez_Vous/excel.png");
+    ui->ExcelRDV->setIcon(excel);
+
+    QIcon modifier("C:/Users/USER/Desktop/Rendez_Vous/modifier.png");
+    ui->ModifierRDV->setIcon(modifier);
+
+    QIcon recherche("C:/Users/USER/Desktop/Rendez_Vous/recherche.png");
+    ui->RechercherRDV->setIcon(recherche);
+
+    QIcon supprimer("C:/Users/USER/Desktop/Rendez_Vous/supprimer.png");
+    ui->SupprimerRDV->setIcon(supprimer);
+
+    connect(ui->sendBtn, SIGNAL(clicked()),this, SLOT(sendMail()));
+    connect(ui->browseBtn, SIGNAL(clicked()), this, SLOT(browse()));
+
+    //-----------------------------------------ARDUINO-----------------------------------------//
+
+    int ret=A.connect_arduino();
+    switch(ret){
+    case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+       break;
+    case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+      break;
+    case(-1):qDebug() << "arduino is not available";
+    }
+
+    QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update()));
+
+    //-----------------------------------------------------------------------------------------//
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-
-
-    int num_rdv =ui->NumLine->text().toInt();
-    bool test=Etmp.rechercher(num_rdv);
-
-    if(test)
-    {
-        ui->TableView->setModel(Etmp.rechercher(num_rdv));
-        /*QtableViewItem * item = ui->TableView->currentItem();
-          item->setTextColor(QT::red);
-          item->setBackgroundColor(QT::black);*/
-
-        QMessageBox::information(nullptr, QObject::tr("OK"),
-                    QObject::tr("Recherche effectuée\n" "Click Cancel to exit"), QMessageBox::Cancel);
-    }
-    else
-        QMessageBox::critical(nullptr, QObject::tr("Not OK"),
-                    QObject::tr("Recherche non effectuée\n" "Click Cancel to exit"), QMessageBox::Cancel);
 }
 
-
-void MainWindow::on_Ajouter_clicked()
+void MainWindow::on_Connecter_clicked()
 {
-    //Récupération des informations saisies dans les 3 champs
+    QString username = ui->IdentifiantLine->text();
+    QString password = ui->MdpLine->text();
+
+    if(username ==  "test" && password == "test")
+    {
+        Etmp.notifications("Connexion", "Le nom d'utilisateur et le mot de passe sont corrects");
+        ui->stackedWidget->setCurrentIndex(1);
+    }
+    else
+        Etmp.notifications("Connexion", "Username or password is not correct");
+}
+
+void MainWindow::on_QuitterRDV_clicked()
+{
+    close();
+}
+
+//----------------------------------------------------------CRUDS----------------------------------------------------------//
+
+void MainWindow::on_AjouterRDV_clicked()
+{
     int num_rdv = ui->NumLine->text().toInt();
-    //ui->lineEdit->text()="";  //tfaragh leblasa eli bch tekteb fyha baad ajout
     int id_client = ui->IdLine->text().toInt();
-    QString date_rdv = ui->dateEdit->date().toString();
+    QString date_rdv = ui->dateEdit_RDV->date().toString();
     QString heure = ui->timeEdit->time().toString();
     QString periode = ui->PeriodeComboBox->currentText();
     QString salle_rdv = ui->SalleComboBox->currentText();
@@ -84,138 +119,212 @@ void MainWindow::on_Ajouter_clicked()
     qDebug()<<salle_rdv;
     qDebug()<<designation;
 
-    Rendez_vous R(num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation);
+    Rendez_Vous R(num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation);
 
-    bool test=R.ajouter();
+    bool test=R.ajouter_rdv();
 
-    if(test) // Si requete executée
+    if(test)
     {
-        //Refresh (Actualiser)
+        ui->TableView->setModel(Etmp.afficher_rdv());
+        ui->spinBox->setValue(R.nb_total_rdv());
 
-        ui->TableView->setModel(Etmp.afficher());
-
-        QMessageBox::information(nullptr, QObject::tr("OK"), QObject::tr("Ajout effectuée\n" "Click Cancel to exit"), QMessageBox::Cancel);
+        Etmp.notifications("Success", "ajout avec success");
     }
-    else // Si requete non executée
-        QMessageBox::critical(nullptr, QObject::tr("Not OK"), QObject::tr("Ajout non effectuée\n" "Click Cancel to exit"), QMessageBox::Cancel);
+    else
+        Etmp.notifications("Failed", "ajout echoué");
 }
 
-void MainWindow::on_Quitter_clicked()
-{
-    close();
-}
-
-void MainWindow::on_Modifier_clicked()
+void MainWindow::on_ModifierRDV_clicked()
 {
     int num_rdv = ui->NumLine->text().toInt();
     int id_client = ui->IdLine->text().toInt();
-    QString date_rdv = ui->dateEdit->date().toString();
+    QString date_rdv = ui->dateEdit_RDV->date().toString();
     QString heure = ui->timeEdit->time().toString();
     QString periode = ui->PeriodeComboBox->currentText();
     QString salle_rdv = ui->SalleComboBox->currentText();
     QString designation = ui->DesComboBox->currentText();
 
-    Rendez_vous R(num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation);
+    Rendez_Vous R(num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation);
 
-    bool test=R.modifier(num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation);
+    bool test=R.modifier_rdv(num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation);
 
     if(test)
     {
-        ui->TableView->setModel(Etmp.afficher());   //refresh
+        ui->TableView->setModel(Etmp.afficher_rdv());
 
-        QMessageBox::information(nullptr, QObject::tr("OK"),
-                  QObject::tr("Modification effectuée\n" "Click Cancel to exit."), QMessageBox::Cancel);
+        Etmp.notifications("Succès","Modification avec success");
     }
     else
-        QMessageBox::critical(nullptr, QObject::tr("NOT OK"),
-                  QObject::tr("Modification non effectuée\n" "Click Cancel to exit."), QMessageBox::Cancel);
+        Etmp.notifications("échoué","Modification echouee");
 }
 
-
-void MainWindow::on_Supprimer_clicked()
+void MainWindow::on_SupprimerRDV_clicked()
 {
     int num_rdv =ui->NumLine->text().toInt();
-    bool test=Etmp.supprimer(num_rdv);
+    bool test=Etmp.supprimer_rdv(num_rdv);
+    Rendez_Vous R;
 
     if(test)
     {
-        //Refresh (Actualiser)
+        ui->TableView->setModel(Etmp.afficher_rdv());
+        ui->spinBox->setValue(R.nb_total_rdv());
 
-        ui->TableView->setModel(Etmp.afficher());
-
-        QMessageBox::information(nullptr, QObject::tr("OK"),
-                    QObject::tr("Suppression effectuée\n" "Click Cancel to exit"), QMessageBox::Cancel);
+        Etmp.notifications("Succès","Suppression avec success");
     }
     else
-        QMessageBox::critical(nullptr, QObject::tr("Not OK"),
-                    QObject::tr("Suppression non effectuée.\n" "Click Cancel to exit"), QMessageBox::Cancel);
+        Etmp.notifications("échoué","Suppression echoué");
 }
 
-void MainWindow::on_Rechercher_clicked()
+//----------------------------------------------------------METIERS----------------------------------------------------------//
+
+void MainWindow::on_TrierComboBox_currentIndexChanged(int test)
+{
+    if (test==1)
+    {
+        ui->TableView->setModel(Etmp.trierNum_RDV());
+
+        Etmp.notifications("Succès","Trie effectuée");
+    }
+    else
+        Etmp.notifications("échoué","Trie non effectuée");
+}
+
+void MainWindow::on_RechercherRDV_clicked()
 {
     int num_rdv =ui->RechercherLine->text().toInt();
-    bool test=Etmp.rechercher(num_rdv);
+    bool test=Etmp.rechercher_rdv(num_rdv);
 
     if(test)
     {
-        ui->TableView->setModel(Etmp.rechercher(num_rdv));
-        /*QtableViewItem * item = ui->tableView->currentItem();
-          item->setTextColor(QT::red);
-          item->setBackgroundColor(QT::black);*/
+        ui->TableView->setModel(Etmp.rechercher_rdv(num_rdv));
 
-        QMessageBox::information(nullptr, QObject::tr("OK"),
-                    QObject::tr("Recherche effectuée\n" "Click Cancel to exit"), QMessageBox::Cancel);
+        Etmp.notifications("Succès","Recherche effectuée");
     }
     else
-        QMessageBox::critical(nullptr, QObject::tr("Not OK"),
-                    QObject::tr("Recherche non effectuée\n" "Click Cancel to exit"), QMessageBox::Cancel);
+        Etmp.notifications("échoué","Recherche non effectuée");
 }
 
-void MainWindow::on_TrierComboBox_currentIndexChanged(int index)
+void MainWindow::on_ExcelRDV_clicked()
 {
-    if (index==1)
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
+                                                    tr("Excel Files (*.xls)"));
+    if (fileName.isEmpty())
+        return;
+
+    ExportExcelObject obj(fileName, "mydata", ui->TableView);
+
+    obj.addField(0, "NUM_RDV", "char(50)");
+    obj.addField(1, "ID_Client", "char(50)");
+    obj.addField(2, "ID_EMPLOYEE", "char(50)");
+    obj.addField(3, "DATE_RDV", "char(50)");
+    obj.addField(4, "HEURE", "char(50)");
+    obj.addField(5, "PERIODE", "char(50)");
+    obj.addField(6, "SALLE_RDV", "char(50)");
+    obj.addField(7, "DESIGNATION", "char(50)");
+
+    int retVal = obj.export2Excel();
+    if( retVal > 0)
     {
-        ui->TableView->setModel(Etmp.trierParNum_RDV());
-
-        QMessageBox::information(nullptr, QObject::tr("OK"),
-                    QObject::tr("Trie effectuée\n" "Click Cancel to exit"), QMessageBox::Cancel);
+        QMessageBox::information(this, tr("Done"), QString(tr("%1 records exported!")).arg(retVal));
     }
-    else
-        QMessageBox::information(nullptr, QObject::tr("OK"),
-                    QObject::tr("Trie non effectuée\n" "Click Cancel to exit"), QMessageBox::Cancel);
-
 }
 
-void MainWindow::on_TrierComboBox_currentIndexChanged(const QString &arg1)
+//mailing
+void MainWindow::on_MailRDV_clicked()
 {
-    if (arg1=="")
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::browse()
+{
+    files.clear();
+
+    QFileDialog dialog(this);
+    dialog.setDirectory(QDir::homePath());
+    dialog.setFileMode(QFileDialog::ExistingFiles);
+
+    if (dialog.exec())
+        files = dialog.selectedFiles();
+
+    QString fileListString;
+    foreach(QString file, files)
+        fileListString.append( "\"" + QFileInfo(file).fileName() + "\" " );
+
+    ui->file->setText( fileListString );
+}
+
+void MainWindow::sendMail()
+{
+    Mailing* mailing = new Mailing("hana.mejdoub@esprit.tn", ui->mail_pass->text(), "smtp.gmail.com");
+    connect(mailing, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+    if( !files.isEmpty() )
+        mailing->sendMail("hana.mejdoub@esprit.tn", ui->rcpt->text(), ui->subject->text(), ui->msg->toPlainText(), files );
+    else
+        mailing->sendMail("hana.mejdoub@esprit.tn", ui->rcpt->text(), ui->subject->text(), ui->msg->toPlainText());
+}
+
+void MainWindow::mailSent(QString status)
+{
+    if(status == "Message sent")
     {
-        ui->TableView->setModel(Etmp.trierParDate());
-
-        QMessageBox::information(nullptr, QObject::tr("OK"),
-                    QObject::tr("Trie effectuée\n" "Click Cancel to exit"), QMessageBox::Cancel);
+        Etmp.notifications("reussie","Envoie avec success");
+        ui->rcpt->clear();
+        ui->subject->clear();
+        ui->file->clear();
+        ui->msg->clear();
+        ui->mail_pass->clear();
     }
-    else
-        QMessageBox::information(nullptr, QObject::tr("OK"),
-                    QObject::tr("Trie non effectuée\n" "Click Cancel to exit"), QMessageBox::Cancel);
-
 }
 
-/*
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_Quitter_2_clicked()
 {
-    Connection c;
-    QSqlQueryModel * model=new QSqlQueryModel();
+    close();
+}
 
-    c.createconnection();
-    QSqlQuery* qry=new QSqlQuery(c.db);
+//----------------------------------------------------------ARDUINO----------------------------------------------------------//
 
-    qry->prepare("select * from a_sbc_rendezvous");
+void MainWindow::on_pushButton_aa_clicked()
+{
+    A.write_to_arduino("0");
+}
 
-    qry->exec();
-    model->setQuery(*qry);
+void MainWindow::on_pushButton_da_clicked()
+{
+    A.write_to_arduino("1");
+    Etmp.notifications("Alarme","Desactivee");
+}
 
-    c.closeConnection();
+void MainWindow::update()
+{
+    data=A.read_from_arduino();
 
-    QDebug() <<(model->rowcount());
-}*/
+    if(data=="2")
+    {
+        Etmp.notifications(" Attention ! ", " Mouvement detecte");
+
+        Mailing* mailing = new Mailing("hana.mejdoub@esprit.tn", "hanaE2020", "smtp.gmail.com");
+        connect(mailing, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+        mailing->sendMail("hana.mejdoub@esprit.tn", "ines.mahjoubi@esprit.tn", "Attention !", " Mouvement detectee dans le centre ");
+    }
+
+    if(data=="3")
+    {
+        Etmp.notifications(" Attention ! ", " GAZ detectee");
+
+        Mailing* mailing = new Mailing("hana.mejdoub@esprit.tn", "hanaE2020", "smtp.gmail.com");
+        connect(mailing, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+        mailing->sendMail("hana.mejdoub@esprit.tn", "ines.mahjoubi@esprit.tn", "Attention !", " Il ya a un presence de GAZ dans le centre !!!");
+    }
+
+    if(data=="4")
+    {
+        Etmp.notifications(" Alarme "," activee ");
+    }
+
+    qDebug() << " Data : " << data;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------//

@@ -1,57 +1,52 @@
 #ifndef RENDEZ_VOUS_H
 #define RENDEZ_VOUS_H
-#include <QString>
 #include <QSqlQuery>
-#include <QSqlQueryModel> // lire seulement // todkhol lel base de donnee w t affichih
+#include <QSqlQueryModel>
 #include <QApplication>
 #include <QTranslator>
 #include <QInputDialog>
+#include <QSystemTrayIcon>
+#include <QString>
+#include <QDate>
+#include <QtDebug>
 
-class Rendez_vous
+class Rendez_Vous
 {
 private:
-    QString date_rdv, heure, periode, salle_rdv, designation;
     int num_rdv,id_client;
-
+    QString date_rdv, heure, periode, salle_rdv, designation;
 public:
-
-    //Constructeurs
-    Rendez_vous();
-    Rendez_vous(int, int, QString, QString, QString, QString, QString);
+    Rendez_Vous();
+    Rendez_Vous(int, int, QString, QString, QString, QString, QString);
 
     //Getters
-    QString getDate(){return date_rdv;}
-    QString getHeure(){return heure;}
-    QString getPeriode(){return periode;}
-    QString getSalle(){return salle_rdv;}
-    QString getDesignation(){return designation;}
-    int getNumRDV(){return num_rdv;}
-    int getIdClient(){return id_client;}
+    int getNumRDV();
+    int getIdClient();
+    QString getDate();
+    QString getHeure();
+    QString getPeriode();
+    QString getSalle();
+    QString getDesignation();
 
     //Setters
-    void setDate(QString d){date_rdv=d;}
-    void setHeure(QString h){heure=h;}
-    void setPeriode(QString p){periode=p;}
-    void setSalle(QString s){salle_rdv=s;}
-    void setDesignation(QString des){designation=des;}
-    void setNumRDV(int num_rdv){this->num_rdv=num_rdv;}
+    void setNumRDV(int);
+    void setDate(QString);
+    void setHeure(QString);
+    void setPeriode(QString);
+    void setSalle(QString);
+    void setDesignation(QString);
 
-    // Fonctionnalités de Base relatives à l'entité Rendez_Vous
-    bool ajouter();
-    QSqlQueryModel * afficher();
-    bool supprimer(int);
-    bool modifier(int, int, QString, QString, QString, QString, QString);
+    bool ajouter_rdv();
+    QSqlQueryModel * afficher_rdv();
+    bool supprimer_rdv(int);
+    bool modifier_rdv(int, int, QString, QString, QString, QString, QString);
 
-    // Les Métiers
-    QSqlQueryModel * trierParNum_RDV();
-    QSqlQueryModel * trierParDate();
-    QSqlQueryModel * rechercher(int);
-    //void translate();
+    QSqlQueryModel * trierNum_RDV();
+    //QSqlQueryModel * trierDate();
+    QSqlQueryModel * rechercher_rdv(int);
+    void notifications(QString, QString);
 
-    /* void mailing(); */
-    /* void Excel(); */
-    /* void Notifications(); */
-
+    int nb_total_rdv();
 };
 
 #endif // RENDEZ_VOUS_H

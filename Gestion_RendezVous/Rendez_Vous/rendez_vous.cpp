@@ -1,7 +1,6 @@
 #include "rendez_vous.h"
 
-//Les requettes aana selection ajout suppression update creationdutableau
-Rendez_vous::Rendez_vous()
+Rendez_Vous::Rendez_Vous()
 {
     num_rdv=0;
     id_client=0;
@@ -12,7 +11,7 @@ Rendez_vous::Rendez_vous()
     designation="";
 }
 
-Rendez_vous::Rendez_vous(int num_rdv, int id_client, QString date_rdv, QString heure, QString periode, QString salle_rdv, QString designation)
+Rendez_Vous::Rendez_Vous(int num_rdv, int id_client, QString date_rdv, QString heure, QString periode, QString salle_rdv, QString designation)
 {
     this->num_rdv=num_rdv;
     this->id_client=id_client;
@@ -23,19 +22,44 @@ Rendez_vous::Rendez_vous(int num_rdv, int id_client, QString date_rdv, QString h
     this->designation=designation;
 }
 
-bool Rendez_vous::ajouter()
+//Getters
+int Rendez_Vous::getNumRDV(){return num_rdv;}
+int Rendez_Vous::getIdClient(){return id_client;}
+QString Rendez_Vous::getDate(){return date_rdv;}
+QString Rendez_Vous::getHeure(){return heure;}
+QString Rendez_Vous::getPeriode(){return periode;}
+QString Rendez_Vous::getSalle(){return salle_rdv;}
+QString Rendez_Vous::getDesignation(){return designation;}
+
+//Setters
+void Rendez_Vous::setNumRDV(int num_rdv){this->num_rdv=num_rdv;}
+void Rendez_Vous::setDate(QString d){this->date_rdv=d;}
+void Rendez_Vous::setHeure(QString h){this->heure=h;}
+void Rendez_Vous::setPeriode(QString p){this->periode=p;}
+void Rendez_Vous::setSalle(QString s){this->salle_rdv=s;}
+void Rendez_Vous::setDesignation(QString des){this->designation=des;}
+
+int Rendez_Vous::nb_total_rdv()
+{
+    QSqlQuery q;
+    int tot=0;
+    q.prepare("select * from a_sbc_rendezvous");
+    q.exec();
+
+    while (q.next()) tot++;
+
+    return tot;
+}
+
+//----------------------------------------------------------CRUDS----------------------------------------------------------//
+
+bool Rendez_Vous::ajouter_rdv()
 {
     QSqlQuery query;
 
     QString n = QString::number(num_rdv);
     QString Id = QString::number(id_client);
-
-    //prepare() prend la requete en parametre pour la preparer a l'execution.
-
     query.prepare("insert into a_sbc_rendezvous (num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation)" "values (:num_rdv, :id_client, :date_rdv, :heure, :periode, :salle_rdv, :designation)");
-
-    //Création des variables liées
-    // transmettre les valeurs et les variables
     query.bindValue(":num_rdv",n);
     query.bindValue(":id_client",Id);
     query.bindValue(":date_rdv",date_rdv);
@@ -44,16 +68,14 @@ bool Rendez_vous::ajouter()
     query.bindValue(":salle_rdv",salle_rdv);
     query.bindValue(":designation",designation);
 
-    return query.exec(); //exec() envoie la requete pour l'executer
-
+    return query.exec();
 }
 
-QSqlQueryModel * Rendez_vous::afficher()
+QSqlQueryModel * Rendez_Vous::afficher_rdv()
 {
-    QSqlQueryModel * model = new QSqlQueryModel(); // Création de l'objet
+    QSqlQueryModel * model = new QSqlQueryModel();
     model->setQuery("select * from a_sbc_rendezvous");
 
-    //setHeaderData taamel l affichage ml base de donnees
     model->setHeaderData(0,Qt::Horizontal, QObject::tr("num_rdv"));
     model->setHeaderData(1,Qt::Horizontal, QObject::tr("id_client"));
     model->setHeaderData(2,Qt::Horizontal, QObject::tr("id_employe"));
@@ -66,7 +88,7 @@ QSqlQueryModel * Rendez_vous::afficher()
     return model;
 }
 
-bool Rendez_vous::supprimer(int num_rdv)
+bool Rendez_Vous::supprimer_rdv(int num_rdv)
 {
     QSqlQuery query;
     QString n = QString::number(num_rdv);
@@ -78,7 +100,7 @@ bool Rendez_vous::supprimer(int num_rdv)
     return query.exec();
 }
 
-bool Rendez_vous::modifier(int num_rdv, int id_client, QString date_rdv, QString heure, QString periode, QString salle_rdv, QString designation)
+bool Rendez_Vous::modifier_rdv(int num_rdv, int id_client, QString date_rdv, QString heure, QString periode, QString salle_rdv, QString designation)
 {
     QSqlQuery query;
 
@@ -98,7 +120,9 @@ bool Rendez_vous::modifier(int num_rdv, int id_client, QString date_rdv, QString
     return query.exec();
 }
 
-QSqlQueryModel * Rendez_vous:: trierParNum_RDV()
+//----------------------------------------------------------METIERS----------------------------------------------------------//
+
+QSqlQueryModel * Rendez_Vous:: trierNum_RDV()
 {
     QSqlQueryModel * model = new QSqlQueryModel();
 
@@ -116,7 +140,8 @@ QSqlQueryModel * Rendez_vous:: trierParNum_RDV()
     return model;
 }
 
-QSqlQueryModel * Rendez_vous::trierParDate()
+/*
+QSqlQueryModel * Rendez_Vous::trierDate()
 {
     QSqlQueryModel * model = new QSqlQueryModel();
 
@@ -133,8 +158,9 @@ QSqlQueryModel * Rendez_vous::trierParDate()
 
     return model;
 }
+*/
 
-QSqlQueryModel * Rendez_vous::rechercher(int num_rdv)
+QSqlQueryModel * Rendez_Vous::rechercher_rdv(int num_rdv)
 {
 
     QSqlQueryModel * model = new QSqlQueryModel();
@@ -160,106 +186,13 @@ QSqlQueryModel * Rendez_vous::rechercher(int num_rdv)
 
     return model;
 }
-/*
-void Rendez_vous::translate()
- {
-    QApplication app(argc, argv);
 
-    QTranslator t;
-
-    QStringList languages;
-    languages << "French" << "English" << "Turc" ;
-
-    QString lang = QInputDialog::getItem(NULL,"Select Language", "Languge" , languages);
-
-    if ( lang == "English")
-    {
-        t.load(":/english.qm");
-    }
-    else
-        if ( lang == "Turc")
-        {
-            t.load(":/Turc.qm");
-        }
-
-    if ( lang != "French")
-    {
-        app.installTranslator(&t);
-    }
-         //ui->TraductionComboBox->setText(t());
- }*/
-
-/*
-//mailing
-void  MainWindow::browse()
+void Rendez_Vous::notifications(QString title, QString text)
 {
-    files.clear();
-
-    QFileDialog dialog(this);
-    dialog.setDirectory(QDir::homePath());
-    dialog.setFileMode(QFileDialog::ExistingFiles);
-
-    if (dialog.exec())
-        files = dialog.selectedFiles();
-
-    QString fileListString;
-    foreach(QString file, files)
-        fileListString.append( "\"" + QFileInfo(file).fileName() + "\" " );
-
-    ui->file->setText( fileListString );
-
+    QSystemTrayIcon * notifyIcon = new QSystemTrayIcon;
+    QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::MessageIcon::Information;
+    QIcon logop("C:/Users/USER/Desktop/Rendez_Vous/logop.png");
+    notifyIcon->setIcon(logop);
+    notifyIcon->show();
+    notifyIcon->showMessage(title, text, icon, 10000);
 }
-void   MainWindow::sendMail()
-{
-    Smtp* smtp = new Smtp("mohamedaziz.benhaha@esprit.tn",ui->mail_pass->text(), "smtp.gmail.com");
-    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
-
-    if( !files.isEmpty() )
-        smtp->sendMail("mohamedaziz.benhaha@esprit.tn", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText(), files );
-    else
-        smtp->sendMail("mohamedaziz.benhaha@esprit.tn", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText());
-}
-void   MainWindow::mailSent(QString status)
-{
-
-    if(status == "Message sent")
-        QMessageBox::warning( nullptr, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
-    ui->rcpt->clear();
-    ui->subject->clear();
-    ui->file->clear();
-    ui->msg->clear();
-    ui->mail_pass->clear();
-}
-*/
-
-
-/* //export excel
-void MainWindow::on_export_excel_clicked()
-{
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
-                                                    tr("Excel Files (*.xls)"));
-    if (fileName.isEmpty())
-        return;
-
-    ExportExcelObject obj(fileName, "mydata", ui->tableau);
-
-    //colums to export
-    obj.addField(0, "entier", "char(20)");
-    obj.addField(1, "reel", "char(20)");
-    obj.addField(2, "combobox", "char(20)");
-    obj.addField(3, "lineedit", "char(20)");
-    obj.addField(4, "textedit", "char(20)");
-    obj.addField(5, "dateedit", "char(20)");
-    obj.addField(5, "timeedit", "char(20)");
-
-
-    int retVal = obj.export2Excel();
-    if( retVal > 0)
-    {
-        QMessageBox::information(this, tr("Done"),
-                                 QString(tr("%1 records exported!")).arg(retVal)
-                                 );
-    }
-}
-*/
-
