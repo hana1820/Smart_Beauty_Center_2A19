@@ -12,6 +12,17 @@
 #include <QPixmap>
 #include <QDate>
 #include <QFileDialog>
+#include <QSortFilterProxyModel>
+#include <QTextTableFormat>
+#include <QStandardItemModel>
+#include <QDialog>
+#include <QFileDialog>
+#include <QMessageBox>
+
+#include "produit.h"
+#include "exportexcelobject.h"
+#include "stat_combo.h"
+#include "carte_fidelite.h"
 
 #include "client.h"
 #include "Arduino.h"
@@ -32,6 +43,25 @@ public:
     MainWindow(QWidget *parent = nullptr);
 
     ~MainWindow();
+    produit tmp;
+    carte_fidelite tmp_fid;
+    QSortFilterProxyModel *proxy, *proxy_fid;
+     int pt_dispo=9999999;
+
+    //produit
+    QString get_reference () const ;
+    QString get_nom () const ;
+    QString get_nature() const;
+    QString get_type() const;
+    double get_prix() const ;
+    int get_quantite() const;
+
+    void fill_form(QString);
+    void show_table();
+    void clear_form();
+
+    void get_prod_dispo();
+    void get_clients();
 
 private slots:
 
@@ -122,6 +152,9 @@ void update_label();
     void browse();
     void on_QuitterRDV_2_clicked();
 
+    void update();
+    void on_pushButton_aa_clicked();
+    void on_pushButton_da_clicked();
 //----------------------------------------------//
 
     void on_pb_ajouter_2_clicked();
@@ -150,9 +183,47 @@ void update_label();
 
     void on_retour_2_clicked();
 
+
+    void on_ajout_produit_clicked();
+
+    void on_suppression_produit_clicked();
+
+    void on_modification_produit_clicked();
+
+    void on_stat_prix_clicked();
+
+    void on_stat_type_clicked();
+
+    void on_rech_textChanged(const QString &arg1);
+
+    void on_sel_col_currentIndexChanged(const QString &arg1);
+
+    void on_tableau_produit_clicked(const QModelIndex &index);
+
+    void on_tableau_produit_doubleClicked(const QModelIndex &index);
+
+    void on_export_excel_clicked();
+
+
+    void on_rech_carte_textChanged(const QString &arg1);
+
+    void on_sel_col_carte_currentIndexChanged(const QString &arg1);
+
+    void on_id_client_fid_currentTextChanged(const QString &arg1);
+
+    void on_cartefid_clicked();
+
+    void on_retour_ines_clicked();
+
+    void on_pushButton_aa_2_clicked();
+
+    void on_pushButton_da_2_clicked();
+
 private:
     Ui::MainWindow *ui;
-
+    QString selected="";
+    int sel_col=-1,sel_col_fid=-1;
+    stat_combo *s;
     QTcpSocket *socket; // Représente le serveur
     quint16 tailleMessage;
     Client Ctmp;
@@ -167,6 +238,8 @@ Employe E ;
 void refrech() ;
    signals:
 void setCenter(QVariant,QVariant);// localisation
+
+
 };
 
 #endif // MAINWINDOW_H

@@ -190,7 +190,9 @@ QSqlQueryModel * Rendez_Vous::rechercher_rdv(int num_rdv)
 void Rendez_Vous::notifications(QString title, QString text)
 {
     QSystemTrayIcon * notifyIcon = new QSystemTrayIcon;
-
+    QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::MessageIcon::Information;
+    QIcon logop("C:/Users/USER/Desktop/Rendez_Vous/logop.png");
+    notifyIcon->setIcon(logop);
     notifyIcon->show();
-    notifyIcon->showMessage(title,text,QSystemTrayIcon::Information,10000);
+    notifyIcon->showMessage(title, text, icon, 10000);
 }

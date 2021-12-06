@@ -18,6 +18,11 @@ MainWindow::MainWindow(QWidget *parent)
     Connection c;
     c.createconnection();
 
+    show_table();
+    get_clients();
+    get_prod_dispo();
+
+
     //setWindowIcon(QIcon(":logo 0.png"));
     //Désactiver les pages pour les gestion avant la connexion.
     ui->tabWidget->setTabEnabled(1, false);
@@ -133,6 +138,8 @@ MainWindow::MainWindow(QWidget *parent)
      connect(ui->sendBtn, SIGNAL(clicked()),this, SLOT(sendMail()));
      connect(ui->browseBtn, SIGNAL(clicked()), this, SLOT(browse()));
 
+     QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update()));  //Arduino Hana Ines
+
      /*ui->tabWidget->setTabEnabled(1,false);
      ui->tabWidget->setTabEnabled(2,false);
      ui->tabWidget->setTabEnabled(3,false);
@@ -146,7 +153,6 @@ MainWindow::MainWindow(QWidget *parent)
      //connect(this,SIGNAL(setCenter(Qvariant,Qvariant)), obj, SLOT(setCenter(Qvarian,Qvariant)));
 
      emit setCenter(25.000,50.000);
-
 }
 
 MainWindow::~MainWindow()
@@ -609,8 +615,8 @@ void MainWindow::on_Connecter_clicked()
     {
         Etmp.notifications("Connexion", "Le nom d'utilisateur et le mot de passe sont corrects");
         //ui->label_username->setText(ui->lineEdit_id_connexion->text());
-        ui->tabWidget->setCurrentIndex(4);
-        ui->tabWidget->setTabEnabled(4, true);
+        ui->tabWidget->setCurrentIndex(2);
+        ui->tabWidget->setTabEnabled(2, true);
         ui->tabWidget->setTabEnabled(0,true);
         /*ui->tabWidget->setCurrentIndex(1);
         ui->tabWidget->setTabEnabled(1, true);
@@ -635,11 +641,9 @@ void MainWindow::on_Connecter_clicked()
 }
 void MainWindow::on_pb_generer_excel_clicked()
 {
-     QTableView * table;
+    QTableView * table;
     table = ui->tableView_2;
-      Ctmp.genereExcel(table);
-
-
+    Ctmp.genereExcel(table);
 }
 void MainWindow::on_pb_generer_pdf_clicked()
 {
@@ -864,7 +868,7 @@ void MainWindow::on_ExcelRDV_clicked()
 //mailing
 void MainWindow::on_MailRDV_clicked()
 {
-    ui->Gestion_des_Rendez_Vous->setCurrentIndex(1);
+    ui->Gestion_des_Rendez_Vous->setCurrentIndex(0);
 }
 
 void MainWindow::browse()
@@ -914,9 +918,53 @@ void MainWindow::on_QuitterRDV_2_clicked()
     close();
 }
 
-//-------------------------------------------------------------------------------------------------//
-//-------------------------------------------------------------------------------------------------//
+//----------------------------------------------------------ARDUINO----------------------------------------------------------//
 
+void MainWindow::on_pushButton_aa_clicked()
+{
+    A.write_to_arduino("0");
+}
+
+void MainWindow::on_pushButton_da_clicked()
+{
+    A.write_to_arduino("1");
+    Etmp.notifications("Alarme","Desactivee");
+}
+
+void MainWindow::update()
+{
+    data=A.read_from_arduino();
+
+    if(data=="2")
+    {
+        Etmp.notifications(" Attention ! ", " Mouvement detecte");
+
+        Mailing* mailing = new Mailing("hana.mejdoub@esprit.tn", "hanaE2020", "smtp.gmail.com");
+        connect(mailing, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+        mailing->sendMail("hana.mejdoub@esprit.tn", "ines.mahjoubi@esprit.tn", "Attention !", " Mouvement detectee dans le centre ");
+    }
+
+    if(data=="3")
+    {
+        Etmp.notifications(" Attention ! ", " GAZ detectee");
+
+        Mailing* mailing = new Mailing("hana.mejdoub@esprit.tn", "hanaE2020", "smtp.gmail.com");
+        connect(mailing, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+        mailing->sendMail("hana.mejdoub@esprit.tn", "ines.mahjoubi@esprit.tn", "Attention !", " Il ya a un presence de GAZ dans le centre !!!");
+    }
+
+    if(data=="4")
+    {
+        Etmp.notifications(" Alarme "," activee ");
+    }
+
+    qDebug() << " Data : " << data;
+}
+
+//-------------------------------------------------------------------------------------------------//
+//-------------------------------------------------------------------------------------------------//
 
 void MainWindow::on_pb_ajouter_2_clicked()
 {
@@ -1248,3 +1296,304 @@ void MainWindow::on_retour_2_clicked()
     ui->Gestion_des_employes->setCurrentIndex(2);
 }
 
+//***************************************** INES
+
+//get variables
+
+QString MainWindow::get_nature() const { //combo box
+
+    return ui->nature->currentText();
+}
+
+QString MainWindow::get_type() const { //combo box
+
+    return ui->type->currentText();
+}
+
+QString MainWindow::get_reference() const { //line edit
+
+    return ui->reference->text();
+}
+
+QString MainWindow::get_nom() const { //line edit
+
+    return ui->nom->text();
+}
+
+int MainWindow::get_quantite() const{ //int
+
+    return ui->quantite->value();
+}
+
+double MainWindow::get_prix() const{ //float
+
+    return ui->prix->value();
+}
+
+
+//fill form
+
+
+void MainWindow::fill_form(QString selected ) {
+    QSqlQuery query;
+    query.prepare("select * from A_SBC_PRODUITS where reference= :reference");
+    query.bindValue(":reference", selected);
+    query.exec();
+    while(query.next()){
+
+  ui->reference->setText(query.value(0).toString()); //line edit
+  ui->nom->setText(query.value(1).toString()); //line edit
+   ui->type->setCurrentText(query.value(2).toString()); //combobox
+   ui->nature->setCurrentText(query.value(3).toString()); //combobox
+     ui->quantite->setValue(query.value(4).toInt()); // int
+     ui->prix->setValue(query.value(5).toReal()); // reel
+
+    }
+
+}
+
+void MainWindow::clear_form( ) {
+
+    ui->reference->clear();
+    ui->nom->clear();
+    ui->type->setCurrentIndex(0);
+    ui->nature->setCurrentIndex(0);
+    ui->prix->setValue(0);
+    ui->quantite->setValue(0);
+
+}
+
+
+//ajout
+
+void MainWindow::on_ajout_produit_clicked()
+{
+    //recuperation des donnees
+      QString s1=get_reference();
+      QString s2=get_nom();
+      QString s3=get_type();
+      QString s4=get_nature();
+      double x2=get_prix();
+      int x1=get_quantite();
+
+
+      //ajout
+      produit s(s1,s2,s3,s4,x1,x2);
+      s.ajouter();
+
+      clear_form( );
+      //refresh du tableau (affichage)
+        show_table();
+        get_prod_dispo();
+
+}
+
+//get selected id
+
+void MainWindow::on_tableau_produit_clicked(const QModelIndex &index)
+{
+selected=ui->tableau_produit->model()->data(index).toString();
+}
+
+//suppression
+
+void MainWindow::on_suppression_produit_clicked()
+{
+    produit s;
+  s.supprimer(selected);
+
+ //refresh du tableau (affichage)
+   show_table();
+   get_prod_dispo();
+
+}
+
+//modification
+
+void MainWindow::on_tableau_produit_doubleClicked(const QModelIndex &index)
+{
+    fill_form(selected);
+}
+
+void MainWindow::on_modification_produit_clicked()
+{
+    //recuperation des donnees
+    QString s1=selected;
+    QString s2=get_nom();
+    QString s3=get_type();
+    QString s4=get_nature();
+    double x2=get_prix();
+    int x1=get_quantite();
+
+      //mofication
+      produit s(selected,s2,s3,s4,x1,x2);
+      s.modifier(selected);
+
+clear_form( );
+
+    //refresh du tableau (affichage)
+     show_table();
+     get_prod_dispo();
+
+}
+
+//affichage
+void MainWindow::show_table(){
+//creation model (masque du tableau) : permet recherche et tri
+    proxy = new QSortFilterProxyModel();
+    proxy_fid = new QSortFilterProxyModel();
+
+
+ //definir la source (tableau original)
+    proxy->setSourceModel(tmp.afficher());
+    proxy_fid->setSourceModel(tmp_fid.afficher());
+
+
+ //pour la recherche
+    proxy->setFilterCaseSensitivity(Qt::CaseSensitive); // S=/=s (difference entre majiscule et miniscule)
+    proxy->setFilterKeyColumn(-1); // chercher dans tout le tableau (-1) ou donner le numero de la colone
+    proxy_fid->setFilterCaseSensitivity(Qt::CaseSensitive); // S=/=s (difference entre majiscule et miniscule)
+    proxy_fid->setFilterKeyColumn(-1); // chercher dans tout le tableau (-1) ou donner le numero de la colone
+   //remplissage tableau avec le masque
+    ui->tableau_produit->setModel(proxy);
+    ui->table_carte_fid->setModel(proxy_fid);
+
+}
+
+
+//stat
+
+void MainWindow::on_stat_prix_clicked()
+{
+    s = new stat_combo();
+
+  s->setWindowTitle("statistique Prix");
+  s->choix_pie();
+  s->show();
+}
+
+void MainWindow::on_stat_type_clicked()
+{
+    s = new stat_combo();
+
+  s->setWindowTitle("statistique Type");
+  s->choix_bar();
+  s->show();
+}
+
+//recherche
+
+void MainWindow::on_rech_textChanged(const QString &arg1)
+{
+    proxy->setFilterFixedString(arg1);
+
+}
+
+void MainWindow::on_sel_col_currentIndexChanged(const QString &arg1)
+{
+    sel_col=ui->sel_col->currentIndex()-1;
+    proxy->setFilterKeyColumn(sel_col); // chercher dans tout le tableau (-1) ou donner le numero de la colone
+}
+
+//Excel
+void MainWindow::on_export_excel_clicked()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
+                                                    tr("Excel Files (*.xls)"));
+    if (fileName.isEmpty())
+        return;
+
+    ExportExcelObject obj(fileName, "mydata", ui->tableau_produit);
+
+    //colums to export
+    obj.addField(0, "Reference", "char(20)");
+    obj.addField(1, "Nom", "char(20)");
+    obj.addField(2, "Type", "char(20)");
+    obj.addField(3, "Nature", "char(20)");
+    obj.addField(4, "Quantite", "char(20)");
+    obj.addField(5, "Prix", "char(20)");
+
+
+
+
+
+    int retVal = obj.export2Excel();
+    if( retVal > 0)
+    {
+        QMessageBox::information(this, tr("Done"),
+                                 QString(tr("%1 records exported!")).arg(retVal)
+                                 );
+    }
+}
+
+void MainWindow::on_rech_carte_textChanged(const QString &arg1)
+{
+    proxy_fid->setFilterFixedString(arg1);
+
+}
+
+void MainWindow::on_sel_col_carte_currentIndexChanged(const QString &arg1)
+{
+    sel_col_fid=ui->sel_col->currentIndex()-1;
+    proxy_fid->setFilterKeyColumn(sel_col_fid); // chercher dans tout le tableau (-1) ou donner le numero de la colone
+}
+
+void MainWindow::get_prod_dispo(){
+    QSqlQuery query;
+    QSqlQueryModel * modal=new QSqlQueryModel();
+    query.prepare("select reference from A_SBC_PRODUITS where prix_fid < :dispo");
+    query.bindValue(":dispo", pt_dispo);
+    query.exec();
+    modal->setQuery(query);
+    ui->id_produit_fid->setModel(modal);
+
+}
+
+
+void MainWindow::get_clients(){
+    QSqlQuery query;
+    QSqlQueryModel * modal=new QSqlQueryModel();
+    query.prepare("select ID from carte_fidelite");
+    query.exec();
+    modal->setQuery(query);
+    ui->id_client_fid->setModel(modal);
+}
+
+
+
+void MainWindow::on_id_client_fid_currentTextChanged(const QString &arg1)
+{
+    QString cl=ui->id_client_fid->currentText();
+    QSqlQuery query;
+    QSqlQueryModel * modal=new QSqlQueryModel();
+    query.prepare("select point from carte_fidelite where id=:id");
+    query.bindValue(":id", cl);
+
+    query.exec();
+
+    while (query.next())
+        pt_dispo=query.value(0).toInt();
+
+    get_prod_dispo();
+}
+
+void MainWindow::on_cartefid_clicked()
+{
+    ui->stackines->setCurrentIndex(1);
+}
+
+void MainWindow::on_retour_ines_clicked()
+{
+    ui->stackines->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_aa_2_clicked()
+{
+    A.write_to_arduino("0");
+}
+
+void MainWindow::on_pushButton_da_2_clicked()
+{
+    A.write_to_arduino("1");
+    Etmp.notifications("Alarme","Desactivee");
+}

@@ -2,7 +2,7 @@ QT += core gui
 QT += sql
 QT += printsupport
 QT += serialport
-QT += network
+QT += network charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,6 +23,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Arduino.cpp \
+    carte_fidelite.cpp \
     client.cpp \
     connection.cpp \
     employe.cpp \
@@ -30,20 +31,26 @@ SOURCES += \
     mailing.cpp \
     main.cpp \
     mainwindow.cpp \
-    rendez_vous.cpp
+    produit.cpp \
+    rendez_vous.cpp \
+    stat_combo.cpp
 
 HEADERS += \
     Arduino.h \
+    carte_fidelite.h \
     client.h \
     connection.h \
     employe.h \
     exportexcelobject.h \
     mailing.h \
     mainwindow.h \
-    rendez_vous.h
+    produit.h \
+    rendez_vous.h \
+    stat_combo.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    stat_combo.ui
 
 TRANSLATIONS += \
     Rendez_Vous_fr_FR.ts \
