@@ -11,7 +11,6 @@ carte_fidelite::carte_fidelite(QString s1,QString s2, int x1){
     id=s1;
     id_client=s2;
     point=x1;
-
 }
 
 //dans la fonction ajout client -> si on a un nouveau client lors de la creation il aura une carte

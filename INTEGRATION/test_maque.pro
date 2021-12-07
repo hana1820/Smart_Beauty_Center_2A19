@@ -53,9 +53,7 @@ FORMS += \
     stat_combo.ui
 
 TRANSLATIONS += \
-    Rendez_Vous_fr_FR.ts \
-    Rendez_Vous_an_AN.ts \
-    Rendez_Vous_tu_TU.ts
+    Français.ts \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -67,8 +65,8 @@ RESOURCES += \
     Traduction.qrc
 
 DISTFILES += \
-    Rendez_Vous_an_AN.ts \
-    Rendez_Vous_tu_TU.ts \
+    Anglais.ts \
+    Espagnol.ts \
     map .png \
     map .png \
     map .png \

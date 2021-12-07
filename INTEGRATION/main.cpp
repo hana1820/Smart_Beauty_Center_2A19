@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     QTranslator t;
     QStringList languages;
-    languages << "Français" << "Anglais" << "Turc" ;
+    languages << "Français" << "Anglais" << "Espagnol" ;
     QString lang = QInputDialog::getItem(NULL,"Veuillez choisir la langue", "Langue", languages);
 
     if (lang != "Français")
@@ -29,19 +29,19 @@ int main(int argc, char *argv[])
 
     if (lang == "Anglais")
     {
-        t.load(":/Rendez_Vous_an_AN.qm");
+        t.load(":/Anglais.qm");
     }
     else
-        if(lang == "Turc")
+        if(lang == "Espagnol")
         {
-            t.load(":/Rendez_Vous_tu_TU.qm");
+            t.load(":/Espagnol.qm");
         }
 
     //--------------------------------------------------------------------------------------------//
 
     MainWindow w;
     w.setWindowTitle("Magic Touch Application");
-    w.setWindowIcon(QIcon("C:/Users/USER/Desktop/GESTION CLIENTS METIERS/logo.png"));
+    w.setWindowIcon(QIcon("C:/Users/USER/Desktop/integration/integration/logo.png"));
     w.show();
 
     /*

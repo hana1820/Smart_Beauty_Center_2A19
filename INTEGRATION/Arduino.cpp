@@ -15,8 +15,9 @@ QString Arduino::getarduino_port_name()
 
 QSerialPort *Arduino::getserial()
 {
-   return serial;
+    return serial;
 }
+
 int Arduino::connect_arduino()
 {   // recherche du port sur lequel la carte arduino identifée par  arduino_uno_vendor_id
     // est connectée
@@ -44,39 +45,39 @@ int Arduino::connect_arduino()
 }
 
 int Arduino::close_arduino()
-
 {
-
-    if(serial->isOpen()){
-            serial->close();
-            return 0;
-        }
+    if(serial->isOpen())
+    {
+        serial->close();
+        return 0;
+    }
     return 1;
-
-
 }
 
 
  QByteArray Arduino::read_from_arduino()
 {
-    if(serial->isReadable()){
-         data=serial->readAll(); //récupérer les données reçues
+    if(serial->isReadable())
+    {
+        data=serial->readAll(); //récupérer les données reçues
 
-         return data;
+        return data;
     }
- }
+    return 0;
+}
 
 
 int Arduino::write_to_arduino( QByteArray d)
 
 {
-
-    if(serial->isWritable()){
+    if(serial->isWritable())
+    {
         serial->write(d);
 
-    }else{
+    }
+    else
+    {
         qDebug() << "Couldn't write to serial!";
     }
     return 0;
-
 }

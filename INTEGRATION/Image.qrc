@@ -13,5 +13,6 @@
         <file>supprimer.png</file>
         <file>map .png</file>
         <file>p.png</file>
+        <file>send.png</file>
     </qresource>
 </RCC>

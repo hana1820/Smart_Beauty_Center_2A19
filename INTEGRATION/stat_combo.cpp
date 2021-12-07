@@ -23,16 +23,16 @@ qreal tot=0,c1=0,c2=0,c3=0, c4=0;
 q1.prepare("SELECT * FROM A_SBC_PRODUITS");
 q1.exec();
 
-q2.prepare("SELECT * FROM A_SBC_PRODUITS WHERE type='type 1'");
+q2.prepare("SELECT * FROM A_SBC_PRODUITS WHERE type='Visage'");
 q2.exec();
 
-q3.prepare("SELECT * FROM A_SBC_PRODUITS WHERE type='type 2'");
+q3.prepare("SELECT * FROM A_SBC_PRODUITS WHERE type='Corps'");
 q3.exec();
 
-q4.prepare("SELECT * FROM A_SBC_PRODUITS WHERE type='type 3' ");
+q4.prepare("SELECT * FROM A_SBC_PRODUITS WHERE type='Cheveux' ");
 q4.exec();
 
-q5.prepare("SELECT * FROM A_SBC_PRODUITS WHERE type='type 4' ");
+q5.prepare("SELECT * FROM A_SBC_PRODUITS WHERE type='Ongles' ");
 q5.exec();
 
 
@@ -49,10 +49,10 @@ c4=c4/tot;
 
 
 // Assign names to the set of bars used
-        QBarSet *set0 = new QBarSet("type 1");
-        QBarSet *set1 = new QBarSet("type 2");
-        QBarSet *set2 = new QBarSet("type 3");
-        QBarSet *set3 = new QBarSet("type 4");
+        QBarSet *set0 = new QBarSet("Visage");
+        QBarSet *set1 = new QBarSet("Corps");
+        QBarSet *set2 = new QBarSet("Cheveux");
+        QBarSet *set3 = new QBarSet("Ongles");
 
         // Assign values for each bar
         *set0 << c1;

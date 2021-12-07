@@ -16,32 +16,32 @@ Client::Client()
     prenom="";
     nom="";
     adresse="";
-    telephone=0;
+    id_employe=0;
     age=0;
     email="";
     sexe="";
     achat=0;
 
 }
-Client:: Client(int identifiant,QString prenom, QString nom, QString adresse,int telephone, int age,QString email,QString sexe,int achat,QDate date)
+Client:: Client(int identifiant,QString prenom, QString nom, QString adresse,int id_employe, int age,QString email,QString sexe,int achat,QDate date)
 {
     this->identifiant=identifiant;
     this->prenom=prenom;
     this->nom=nom;
     this->adresse=adresse;
-    this->telephone=telephone;
+    this->id_employe=id_employe;
     this->age=age;
     this->email=email;
     this->sexe=sexe;
     this->achat=achat;
     this->date=date;
 }
-Client:: Client (int identifiant,QString prenom,QString nom,int telephone,QString adresse,int montant)
+Client:: Client (int identifiant,QString prenom,QString nom,int id_employe,QString adresse,int montant)
 {
     this->identifiant=identifiant;
     this->prenom=prenom;
     this->nom=nom;
-    this->telephone=telephone;
+    this->id_employe=id_employe;
     this->adresse=adresse;
     this->achat=montant;
 }
@@ -57,8 +57,8 @@ void Client::set_nom(QString nom)
 {this->nom=nom;}
 void Client::set_adresse(QString adresse)
 {this->adresse=adresse;}
-void Client::set_telephone(int  telephone)
-{this->telephone=telephone;}
+void Client::set_id_employe(int  id_employe)
+{this->id_employe=id_employe;}
 void Client::set_email(QString email)
 {this->email=email;}
 void Client::set_sexe(QString sexe)
@@ -75,8 +75,8 @@ QString Client::get_Nom()
 {return nom;}
 QString Client::get_Adresse()
 {return adresse;}
-int Client::get_Telephone()
-{return telephone;}
+int Client::get_id_employe()
+{return id_employe;}
 int Client::get_Age()
 {return age;}
 QString Client::get_Email()
@@ -145,21 +145,21 @@ bool Client::ajouter()
 
     QSqlQuery query;
     QString identifiant_string = QString::number(identifiant);
-    QString telephone_string=QString::number(telephone);
+    QString id_employe_string=QString::number(id_employe);
     QString age_string=QString::number(age);
     QString achat_string=QString::number(achat);
 
     //prepare() prend la requete en paramètre pour la préparer à l'éxécution
 
-    query.prepare("insert into A_SBC_CLIENT (IDENTIFIANT, NOM, PRENOM, ADRESSE, TELEPHONE, AGE, MAIL, SEXE, ACHAT, DATEC)"
-            "values(:identifiant, :nom, :prenom, :adresse, :telephone, :age, :email, :sexe, :achat, :date)");
+    query.prepare("insert into A_SBC_CLIENT (IDENTIFIANT, NOM, PRENOM, ADRESSE, id_employe, AGE, MAIL, SEXE, ACHAT, DATEC)"
+            "values(:identifiant, :nom, :prenom, :adresse, :id_employe, :age, :email, :sexe, :achat, :date)");
 
 
     query.bindValue(":identifiant",identifiant_string);
     query.bindValue(":prenom",prenom);
     query.bindValue(":nom",nom);
     query.bindValue(":adresse",adresse);
-    query.bindValue(":telephone",telephone_string);
+    query.bindValue(":id_employe",id_employe_string);
     query.bindValue(":age",age_string);
     query.bindValue(":email",email);
     query.bindValue(":sexe",sexe);
@@ -201,18 +201,18 @@ bool Client::modifier()
 
 
     QString identifiant_string = QString::number(identifiant);
-    QString telephone_string=QString::number(telephone);
+    QString id_employe_string=QString::number(id_employe);
     QString age_string=QString::number(age);
     QString achat_string=QString::number(achat);
 
 
-    query.prepare("update A_SBC_CLIENT set IDENTIFIANT=:identifiant ,NOM=:nom ,PRENOM=:prenom ,ADRESSE=:adresse,TELEPHONE=:telephone,AGE=:age,MAIL=:email,SEXE=:sexe,ACHAT=:achat, DATEC=:date where IDENTIFIANT= :identifiant ");
+    query.prepare("update A_SBC_CLIENT set IDENTIFIANT=:identifiant ,NOM=:nom ,PRENOM=:prenom ,ADRESSE=:adresse,id_employe=:id_employe,AGE=:age,MAIL=:email,SEXE=:sexe,ACHAT=:achat, DATEC=:date where IDENTIFIANT= :identifiant ");
 
     query.bindValue(":identifiant",identifiant_string);
     query.bindValue(":nom", nom);
     query.bindValue(":prenom", prenom);
     query.bindValue(":adresse", adresse);
-    query.bindValue(":telephone",telephone_string);
+    query.bindValue(":id_employe",id_employe_string);
     query.bindValue(":age",age_string);
     query.bindValue(":email",email);
     query.bindValue(":sexe",sexe);
@@ -404,13 +404,13 @@ void Client::genererPdf()
 
 
    QString id_string=QString::number(identifiant);
-   QString telephone_string=QString::number(telephone);
+   QString id_employe_string=QString::number(id_employe);
    QString montant_string=QString::number(achat);
     painter.setFont(QFont("Courier New", 18));
         painter.drawText(2400,6300,id_string);
         painter.drawText(2400,7100,nom);
         painter.drawText(2400,7900,prenom);
-        painter.drawText(7500,6300,telephone_string);
+        painter.drawText(7500,6300,id_employe_string);
         painter.drawText(7500,7100,adresse);
         painter.drawText(7500,7900,montant_string);
         painter.setPen(Qt::red);

@@ -13,15 +13,16 @@
 class Rendez_Vous
 {
 private:
-    int num_rdv,id_client;
+    int num_rdv,id_client,id_employe;
     QString date_rdv, heure, periode, salle_rdv, designation;
 public:
     Rendez_Vous();
-    Rendez_Vous(int, int, QString, QString, QString, QString, QString);
+    Rendez_Vous(int, int, int, QString, QString, QString, QString, QString);
 
     //Getters
     int getNumRDV();
     int getIdClient();
+    int getid_employe();
     QString getDate();
     QString getHeure();
     QString getPeriode();
@@ -39,7 +40,7 @@ public:
     bool ajouter_rdv();
     QSqlQueryModel * afficher_rdv();
     bool supprimer_rdv(int);
-    bool modifier_rdv(int, int, QString, QString, QString, QString, QString);
+    bool modifier_rdv(int, int, int, QString, QString, QString, QString, QString);
 
     QSqlQueryModel * trierNum_RDV();
     //QSqlQueryModel * trierDate();

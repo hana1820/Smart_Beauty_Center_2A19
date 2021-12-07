@@ -25,11 +25,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     //setWindowIcon(QIcon(":logo 0.png"));
     //Désactiver les pages pour les gestion avant la connexion.
-    ui->tabWidget->setTabEnabled(1, false);
+  /*  ui->tabWidget->setTabEnabled(1, false);
      ui->tabWidget->setTabEnabled(2, false);
       ui->tabWidget->setTabEnabled(3, false);
        ui->tabWidget->setTabEnabled(4, false);
-       ui->tabWidget->setTabEnabled(5, false);
+       ui->tabWidget->setTabEnabled(5, false);*/
     socket = new QTcpSocket(this);
     connect(socket, SIGNAL(readyRead()), this, SLOT(DONNEESRecues()));
     connect(socket, SIGNAL(connected()), this, SLOT(CONNECTE()));
@@ -105,34 +105,34 @@ MainWindow::MainWindow(QWidget *parent)
      ui->NumLine->setValidator(new QIntValidator(0,99999999,this));
      ui->IdLine->setValidator(new QIntValidator(0,99999999,this));
 
-     QPixmap logog("C:/Users/USER/Desktop/GESTION CLIENTS METIERS/logog.png");
-     ui->logog->setPixmap(logog);
-
-     QPixmap logop("C:/Users/USER/Desktop/GESTION CLIENTS METIERS/logop.png");
+     QPixmap logop("C:/Users/USER/Desktop/integration/integration/logop.png");
      ui->logop->setPixmap(logop);
 
-     QIcon ajout("C:/Users/USER/Desktop/GESTION CLIENTS METIERS/ajout.png");
+     QPixmap logog("C:/Users/USER/Desktop/integration/integration/logog.png");
+     ui->logog->setPixmap(logog);
+
+     QIcon ajout("C:/Users/USER/Desktop/integration/integration/ajout.png");
      ui->AjouterRDV->setIcon(ajout);
 
-     QIcon annuler("C:/Users/USER/Desktop/GESTION CLIENTS METIERS/annuler.png");
+     QIcon annuler("C:/Users/USER/Desktop/integration/integration/annuler.png");
      ui->QuitterRDV->setIcon(annuler);
 
-     QIcon email("C:/Users/USER/Desktop/GESTION CLIENTS METIERS/email.png");
+     QIcon email("C:/Users/USER/Desktop/integration/integration/email.png");
      ui->MailRDV->setIcon(email);
 
-     QIcon entrer("C:/Users/USER/Desktop/GESTION CLIENTS METIERS/entrer.png");
+     QIcon entrer("C:/Users/USER/Desktop/integration/integration/entrer.png");
      ui->Connecter->setIcon(entrer);
 
-     QIcon excel("C:/Users/USER/Desktop/GESTION CLIENTS METIERS/excel.png");
+     QIcon excel("C:/Users/USER/Desktop/integration/integration/excel.png");
      ui->ExcelRDV->setIcon(excel);
 
-     QIcon modifier("C:/Users/USER/Desktop/GESTION CLIENTS METIERS/modifier.png");
+     QIcon modifier("C:/Users/USER/Desktop/integration/integration/modifier.png");
      ui->ModifierRDV->setIcon(modifier);
 
-     QIcon recherche("C:/Users/USER/Desktop//GESTION CLIENTS METIERS/recherche.png");
+     QIcon recherche("C:/Users/USER/Desktop/integration/integration/recherche.png");
      ui->RechercherRDV->setIcon(recherche);
 
-     QIcon supprimer("C:/Users/USER/Desktop/GESTION CLIENTS METIERS/supprimer.png");
+     QIcon supprimer("C:/Users/USER/Desktop/integration/integration/supprimer.png");
      ui->SupprimerRDV->setIcon(supprimer);
 
      connect(ui->sendBtn, SIGNAL(clicked()),this, SLOT(sendMail()));
@@ -236,7 +236,7 @@ A.write_to_arduino("1");
     QString prenom=ui->lineEdit_prenom->text();
     QString nom=ui->lineEdit_nom->text();
     QString adresse=ui->lineEdit_adresse->text();
-    int telephone=ui->lineEdit_telephone->text().toInt();
+    int id_employe=ui->lineEdit_telephone->text().toInt();
     int age=ui->lineEdit_age->text().toInt();
     QString email=ui->lineEdit_mail->text();
     QString sexe=ui->lineEdit_sexe->currentText();
@@ -246,7 +246,7 @@ A.write_to_arduino("1");
     if(Ctmp.testNom_prenom_adresse(adresse))
     {
         //verifiier la validité du mail;
-        Client C(identifiant,prenom,nom,adresse,telephone,age,email,sexe,achat,date);
+        Client C(identifiant,prenom,nom,adresse,id_employe,age,email,sexe,achat,date);
         ui->lineEdit_mail->setStyleSheet("color: black");
         ui->lineEdit_id->setStyleSheet("color: black");
         ui->lineEdit_prenom->setStyleSheet("color : black");
@@ -350,13 +350,13 @@ void MainWindow::on_pb_modifier_clicked()
     QString prenom=ui->lineEdit_prenom->text();
     QString adresse=ui->lineEdit_adresse->text();
     QString nom=ui->lineEdit_nom->text();
-    int telephone=ui->lineEdit_telephone->text().toInt();
+    int id_employe=ui->lineEdit_telephone->text().toInt();
     QString email=ui->lineEdit_mail->text();
     int age=ui->lineEdit_age->text().toInt();
     QString sexe=ui->lineEdit_sexe->currentText();
     int achat=ui->lineEdit_achat->text().toInt();
     QDate date=ui->dateEdit->date();
-    Client C(identifiant,prenom,nom,adresse,telephone,age,email,sexe,achat,date);
+    Client C(identifiant,prenom,nom,adresse,id_employe,age,email,sexe,achat,date);
     QMessageBox::StandardButton reply = QMessageBox::question(this,"UPDATE","ATTENTION!\nVOULEZ-VOUS VRAIMENT MODIFIER CES INFORMATIONS?", QMessageBox::Yes | QMessageBox::No);
 
     if(reply==QMessageBox::Yes)
@@ -615,8 +615,8 @@ void MainWindow::on_Connecter_clicked()
     {
         Etmp.notifications("Connexion", "Le nom d'utilisateur et le mot de passe sont corrects");
         //ui->label_username->setText(ui->lineEdit_id_connexion->text());
-        ui->tabWidget->setCurrentIndex(2);
-        ui->tabWidget->setTabEnabled(2, true);
+        ui->tabWidget->setCurrentIndex(4);
+        ui->tabWidget->setTabEnabled(4, true);
         ui->tabWidget->setTabEnabled(0,true);
         /*ui->tabWidget->setCurrentIndex(1);
         ui->tabWidget->setTabEnabled(1, true);
@@ -650,10 +650,10 @@ void MainWindow::on_pb_generer_pdf_clicked()
     int identifiant=ui->lineEdit_id->text().toInt();
     QString nom=ui->lineEdit_nom->text();
     QString prenom=ui->lineEdit_prenom->text();
-    int telephone=ui->lineEdit_telephone->text().toInt();
+    int id_employe=ui->lineEdit_telephone->text().toInt();
     QString adresse=ui->lineEdit_adresse->text();
     int montant=ui->lineEdit_achat->text().toInt();
-    Client C(identifiant,prenom,nom,telephone,adresse,montant);
+    Client C(identifiant,prenom,nom,id_employe,adresse,montant);
     C.genererPdf();
 }
 
@@ -741,6 +741,7 @@ void MainWindow::on_AjouterRDV_clicked()
 {
     int num_rdv = ui->NumLine->text().toInt();
     int id_client = ui->IdLine->text().toInt();
+    int id_employe = ui->IDE_Line->text().toInt();
     QString date_rdv = ui->dateEdit_RDV->date().toString();
     QString heure = ui->timeEdit->time().toString();
     QString periode = ui->PeriodeComboBox->currentText();
@@ -749,13 +750,14 @@ void MainWindow::on_AjouterRDV_clicked()
 
     qDebug()<<num_rdv;
     qDebug()<<id_client;
+    qDebug()<<id_employe;
     qDebug()<<date_rdv;
     qDebug()<<heure;
     qDebug()<<periode;
     qDebug()<<salle_rdv;
     qDebug()<<designation;
 
-    Rendez_Vous R(num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation);
+    Rendez_Vous R(num_rdv, id_client, id_employe, date_rdv, heure, periode, salle_rdv, designation);
 
     bool test=R.ajouter_rdv();
 
@@ -767,22 +769,23 @@ void MainWindow::on_AjouterRDV_clicked()
         Etmp.notifications("Success", "ajout avec success");
     }
     else
-        Etmp.notifications("Failed", "ajout echoué");
+        Etmp.notifications("Echec", "ajout echoué");
 }
 
 void MainWindow::on_ModifierRDV_clicked()
 {
     int num_rdv = ui->NumLine->text().toInt();
     int id_client = ui->IdLine->text().toInt();
+    int id_employe = ui->IDE_Line->text().toInt();
     QString date_rdv = ui->dateEdit_RDV->date().toString();
     QString heure = ui->timeEdit->time().toString();
     QString periode = ui->PeriodeComboBox->currentText();
     QString salle_rdv = ui->SalleComboBox->currentText();
     QString designation = ui->DesComboBox->currentText();
 
-    Rendez_Vous R(num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation);
+    Rendez_Vous R(num_rdv, id_client, id_employe, date_rdv, heure, periode, salle_rdv, designation);
 
-    bool test=R.modifier_rdv(num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation);
+    bool test=R.modifier_rdv(num_rdv, id_client, id_employe, date_rdv, heure, periode, salle_rdv, designation);
 
     if(test)
     {
@@ -791,7 +794,7 @@ void MainWindow::on_ModifierRDV_clicked()
         Etmp.notifications("Succès","Modification avec success");
     }
     else
-        Etmp.notifications("échoué","Modification echouee");
+        Etmp.notifications("Echec","Modification echouée");
 }
 
 void MainWindow::on_SupprimerRDV_clicked()
@@ -808,7 +811,7 @@ void MainWindow::on_SupprimerRDV_clicked()
         Etmp.notifications("Succès","Suppression avec success");
     }
     else
-        Etmp.notifications("échoué","Suppression echoué");
+        Etmp.notifications("Echec","Suppression echoué");
 }
 
 //----------------------------------------------------------METIERS----------------------------------------------------------//
@@ -822,7 +825,7 @@ void MainWindow::on_TrierComboBox_currentIndexChanged(int test)
         Etmp.notifications("Succès","Trie effectuée");
     }
     else
-        Etmp.notifications("échoué","Trie non effectuée");
+        Etmp.notifications("Echec","Trie non effectuée");
 }
 
 void MainWindow::on_RechercherRDV_clicked()
@@ -837,7 +840,7 @@ void MainWindow::on_RechercherRDV_clicked()
         Etmp.notifications("Succès","Recherche effectuée");
     }
     else
-        Etmp.notifications("échoué","Recherche non effectuée");
+        Etmp.notifications("Echec","Recherche non effectuée");
 }
 
 void MainWindow::on_ExcelRDV_clicked()
@@ -851,7 +854,7 @@ void MainWindow::on_ExcelRDV_clicked()
 
     obj.addField(0, "NUM_RDV", "char(50)");
     obj.addField(1, "ID_Client", "char(50)");
-    obj.addField(2, "ID_EMPLOYEE", "char(50)");
+    obj.addField(2, "ID_EMPLOYE", "char(50)");
     obj.addField(3, "DATE_RDV", "char(50)");
     obj.addField(4, "HEURE", "char(50)");
     obj.addField(5, "PERIODE", "char(50)");
@@ -861,14 +864,14 @@ void MainWindow::on_ExcelRDV_clicked()
     int retVal = obj.export2Excel();
     if( retVal > 0)
     {
-        QMessageBox::information(this, tr("Done"), QString(tr("%1 records exported!")).arg(retVal));
+        QMessageBox::information(this, tr("Succés"), QString(tr("%1 records exported!")).arg(retVal));
     }
 }
 
 //mailing
 void MainWindow::on_MailRDV_clicked()
 {
-    ui->Gestion_des_Rendez_Vous->setCurrentIndex(0);
+    ui->Gestion_des_Rendez_Vous->setCurrentIndex(1);
 }
 
 void MainWindow::browse()
@@ -915,7 +918,7 @@ void MainWindow::mailSent(QString status)
 
 void MainWindow::on_QuitterRDV_2_clicked()
 {
-    close();
+   ui->Gestion_des_Rendez_Vous->setCurrentIndex(0);
 }
 
 //----------------------------------------------------------ARDUINO----------------------------------------------------------//
@@ -960,7 +963,7 @@ void MainWindow::update()
         Etmp.notifications(" Alarme "," activee ");
     }
 
-    qDebug() << " Data : " << data;
+    qDebug() << "Data : " << data;
 }
 
 //-------------------------------------------------------------------------------------------------//

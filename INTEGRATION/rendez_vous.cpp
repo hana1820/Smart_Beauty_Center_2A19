@@ -4,6 +4,7 @@ Rendez_Vous::Rendez_Vous()
 {
     num_rdv=0;
     id_client=0;
+    id_employe=0;
     date_rdv="";
     heure="";
     periode="";
@@ -11,10 +12,11 @@ Rendez_Vous::Rendez_Vous()
     designation="";
 }
 
-Rendez_Vous::Rendez_Vous(int num_rdv, int id_client, QString date_rdv, QString heure, QString periode, QString salle_rdv, QString designation)
+Rendez_Vous::Rendez_Vous(int num_rdv, int id_client, int id_employe, QString date_rdv, QString heure, QString periode, QString salle_rdv, QString designation)
 {
     this->num_rdv=num_rdv;
     this->id_client=id_client;
+    this->id_employe=id_employe;
     this->date_rdv=date_rdv;
     this->heure=heure;
     this->periode=periode;
@@ -25,6 +27,7 @@ Rendez_Vous::Rendez_Vous(int num_rdv, int id_client, QString date_rdv, QString h
 //Getters
 int Rendez_Vous::getNumRDV(){return num_rdv;}
 int Rendez_Vous::getIdClient(){return id_client;}
+int Rendez_Vous::getid_employe(){return id_employe;}
 QString Rendez_Vous::getDate(){return date_rdv;}
 QString Rendez_Vous::getHeure(){return heure;}
 QString Rendez_Vous::getPeriode(){return periode;}
@@ -59,9 +62,11 @@ bool Rendez_Vous::ajouter_rdv()
 
     QString n = QString::number(num_rdv);
     QString Id = QString::number(id_client);
-    query.prepare("insert into a_sbc_rendezvous (num_rdv, id_client, date_rdv, heure, periode, salle_rdv, designation)" "values (:num_rdv, :id_client, :date_rdv, :heure, :periode, :salle_rdv, :designation)");
+    QString IDE = QString::number(id_employe);
+    query.prepare("insert into a_sbc_rendezvous (num_rdv, id_client, id_employe, date_rdv, heure, periode, salle_rdv, designation)" "values (:num_rdv, :id_client, :id_employe, :date_rdv, :heure, :periode, :salle_rdv, :designation)");
     query.bindValue(":num_rdv",n);
     query.bindValue(":id_client",Id);
+    query.bindValue(":id_employe",IDE);
     query.bindValue(":date_rdv",date_rdv);
     query.bindValue(":heure",heure);
     query.bindValue(":periode",periode);
@@ -100,17 +105,19 @@ bool Rendez_Vous::supprimer_rdv(int num_rdv)
     return query.exec();
 }
 
-bool Rendez_Vous::modifier_rdv(int num_rdv, int id_client, QString date_rdv, QString heure, QString periode, QString salle_rdv, QString designation)
+bool Rendez_Vous::modifier_rdv(int num_rdv, int id_client, int id_employe, QString date_rdv, QString heure, QString periode, QString salle_rdv, QString designation)
 {
     QSqlQuery query;
 
     QString n = QString::number(num_rdv);
     QString Id = QString::number(id_client);
+    QString IDE = QString::number(id_employe);
 
-    query.prepare("Update a_sbc_rendezvous set id_client = :id_client, date_rdv = :date_rdv, heure = :heure, periode = :periode, salle_rdv = :salle_rdv, designation = :designation where num_rdv = :num_rdv ");
+    query.prepare("Update a_sbc_rendezvous set id_client = :id_client, id_employe = :id_employe, date_rdv = :date_rdv, heure = :heure, periode = :periode, salle_rdv = :salle_rdv, designation = :designation where num_rdv = :num_rdv ");
 
     query.bindValue(":num_rdv", n);
     query.bindValue(":id_client", Id);
+    query.bindValue(":id_employe",IDE);
     query.bindValue(":date_rdv", date_rdv);
     query.bindValue(":heure", heure);
     query.bindValue(":periode", periode);
@@ -191,7 +198,7 @@ void Rendez_Vous::notifications(QString title, QString text)
 {
     QSystemTrayIcon * notifyIcon = new QSystemTrayIcon;
     QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::MessageIcon::Information;
-    QIcon logop("C:/Users/USER/Desktop/Rendez_Vous/logop.png");
+    QIcon logop("C:/Users/USER/Desktop/integration/integration/logop.png");
     notifyIcon->setIcon(logop);
     notifyIcon->show();
     notifyIcon->showMessage(title, text, icon, 10000);

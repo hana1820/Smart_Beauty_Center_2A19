@@ -22,7 +22,7 @@ public:
     void set_prenom(QString);
     void set_nom(QString);
     void set_adresse(QString);
-    void set_telephone(int);
+    void set_id_employe(int);
     void set_email(QString);
     void set_sexe(QString);
     void set_age(int);
@@ -32,7 +32,7 @@ public:
     QString get_Prenom();
     QString get_Nom();
     QString get_Adresse();
-    int get_Telephone();
+    int get_id_employe();
     int get_Age();
     QString get_Email();
     QString get_Sexe();
@@ -62,7 +62,7 @@ public:
 
 private:
    QString prenom,nom,adresse,email,sexe;
-   int telephone,age,identifiant,achat;
+   int id_employe,age,identifiant,achat;
    QDate date;
 
 
