@@ -219,6 +219,10 @@ void update_label();
 
     void on_pushButton_da_2_clicked();
 
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_deconnexion_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString selected="";

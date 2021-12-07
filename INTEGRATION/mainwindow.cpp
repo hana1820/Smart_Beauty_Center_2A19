@@ -25,11 +25,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     //setWindowIcon(QIcon(":logo 0.png"));
     //Désactiver les pages pour les gestion avant la connexion.
-  /*  ui->tabWidget->setTabEnabled(1, false);
+   ui->tabWidget->setTabEnabled(1, false);
      ui->tabWidget->setTabEnabled(2, false);
       ui->tabWidget->setTabEnabled(3, false);
        ui->tabWidget->setTabEnabled(4, false);
-       ui->tabWidget->setTabEnabled(5, false);*/
+       ui->tabWidget->setTabEnabled(5, false);
     socket = new QTcpSocket(this);
     connect(socket, SIGNAL(readyRead()), this, SLOT(DONNEESRecues()));
     connect(socket, SIGNAL(connected()), this, SLOT(CONNECTE()));
@@ -105,35 +105,67 @@ MainWindow::MainWindow(QWidget *parent)
      ui->NumLine->setValidator(new QIntValidator(0,99999999,this));
      ui->IdLine->setValidator(new QIntValidator(0,99999999,this));
 
-     QPixmap logop("C:/Users/USER/Desktop/integration/integration/logop.png");
+
+
+     QPixmap logog("C:/Users/BALLA/Desktop/integration/integration/logog.png");
+      QPixmap logog1("C:/Users/BALLA/Desktop/integration/integration/logo2.png");
+     ui->logog->setPixmap(logog);
+     ui->label_39->setPixmap(logog);
+     ui->logog_2->setPixmap(logog1);
+     ui->label_15->setPixmap(logog);
+
+     QPixmap logop("C:/Users/BALLA/Desktop/integration/integration/logop.png");
      ui->logop->setPixmap(logop);
 
-     QPixmap logog("C:/Users/USER/Desktop/integration/integration/logog.png");
-     ui->logog->setPixmap(logog);
-
-     QIcon ajout("C:/Users/USER/Desktop/integration/integration/ajout.png");
+     QIcon ajout("C:/Users/BALLA/Desktop/integration/integration/ajout.png");
      ui->AjouterRDV->setIcon(ajout);
 
-     QIcon annuler("C:/Users/USER/Desktop/integration/integration/annuler.png");
+     QIcon ajouter_client("C:/Users/BALLA/Desktop/integration/integration/ajouter icon.png");
+     ui->pb_ajouter->setIcon(ajouter_client);
+
+
+
+     QIcon annuler_client("C:/Users/BALLA/Desktop/integration/integration/icon annuler.png");
+     ui->pb_annuler->setIcon(annuler_client);
+
+     QIcon chat_client("C:/Users/BALLA/Desktop/integration/integration/icon chat.png");
+     ui->pb_chat->setIcon(chat_client);
+
+     QIcon excel_client("C:/Users/BALLA/Desktop/integration/integration/icon excel.png");
+     ui->pb_excel->setIcon(excel_client);
+
+     QIcon pdf_client("C:/Users/BALLA/Desktop/integration/integration/PDF ICON.png");
+     ui->pb_pdf->setIcon(pdf_client);
+
+
+
+     QIcon annuler("C:/Users/BALLA/Desktop/integration/integration/annuler.png");
      ui->QuitterRDV->setIcon(annuler);
 
-     QIcon email("C:/Users/USER/Desktop/integration/integration/email.png");
+     QIcon email("C:/Users/BALLA/Desktop/integration/integration/email.png");
      ui->MailRDV->setIcon(email);
 
-     QIcon entrer("C:/Users/USER/Desktop/integration/integration/entrer.png");
+     QIcon entrer("C:/Users/BALLA/Desktop/integration/integration/entrer.png");
      ui->Connecter->setIcon(entrer);
 
-     QIcon excel("C:/Users/USER/Desktop/integration/integration/excel.png");
+     QIcon excel("C:/Users/BALLA/Desktop/integration/integration/excel.png");
      ui->ExcelRDV->setIcon(excel);
 
-     QIcon modifier("C:/Users/USER/Desktop/integration/integration/modifier.png");
+     QIcon modifier("C:/Users/BALLA/Desktop/integration/integration/modifier.png");
      ui->ModifierRDV->setIcon(modifier);
+     ui->pb_modifier->setIcon(modifier);
 
-     QIcon recherche("C:/Users/USER/Desktop/integration/integration/recherche.png");
+     QIcon recherche("C:/Users/BALLA/Desktop/integration/integration/recherche.png");
      ui->RechercherRDV->setIcon(recherche);
+     ui->pb_rechercher->setIcon(recherche);
 
-     QIcon supprimer("C:/Users/USER/Desktop/integration/integration/supprimer.png");
+     QIcon supprimer("C:/Users/BALLA/Desktop/integration/integration/supprimer.png");
      ui->SupprimerRDV->setIcon(supprimer);
+     ui->pb_supprimer->setIcon(supprimer);
+
+     QPixmap utilisateur("C:/Users/BALLA/Desktop/integration/integration/username 1.png");
+     ui->user->setPixmap(utilisateur);
+     ui->user2->setPixmap(utilisateur);
 
      connect(ui->sendBtn, SIGNAL(clicked()),this, SLOT(sendMail()));
      connect(ui->browseBtn, SIGNAL(clicked()), this, SLOT(browse()));
@@ -432,12 +464,12 @@ void MainWindow::on_tableView_2_activated(const QModelIndex &index)
             ui->lineEdit_id->setText(query.value(0).toString());
             ui->lineEdit_nom->setText(query.value(1).toString());
             ui->lineEdit_prenom->setText(query.value(2).toString());
-            ui->lineEdit_adresse->setText(query.value(3).toString());
-            ui->lineEdit_telephone->setText(query.value(4).toString());
-            ui->lineEdit_age->setText(query.value(5).toString());
-            ui->lineEdit_mail->setText(query.value(6).toString());
-            ui->lineEdit_sexe->setCurrentText(query.value(7).toString());
-            ui->lineEdit_achat->setText(query.value(8).toString());
+            ui->lineEdit_adresse->setText(query.value(3).toString());       
+            ui->lineEdit_age->setText(query.value(4).toString());
+            ui->lineEdit_mail->setText(query.value(5).toString());
+            ui->lineEdit_sexe->setCurrentText(query.value(6).toString());
+            ui->lineEdit_achat->setText(query.value(7).toString());
+            ui->lineEdit_telephone->setText(query.value(9).toString());
 
         }
     }
@@ -484,7 +516,7 @@ void MainWindow::on_pb_recette_clicked()
     QString somme_string=QString::number(somme);
     QString sommeprec_string=QString::number(sommeprec);
     float progression;
-
+ ui->lineEdit_recette->setText(somme_string);
 if(sommeprec!=0)
 {
         progression=((somme-sommeprec)*100)/sommeprec;
@@ -492,7 +524,7 @@ if(sommeprec!=0)
 
         ui->lineEdit_pourcentage->setText(progression_string);
 
-   ui->lineEdit_recette->setText(somme_string);
+        ui->lineEdit_recette->setText(somme_string);
 }
 }
 
@@ -611,17 +643,42 @@ void MainWindow::on_Connecter_clicked()
     ui->lineEdit_connexion_password->setStyleSheet("color: black");
     ui->lineEdit_id_connexion->setStyleSheet("color: black");
 
-    if(id_connexion == "admin" && password_connexion == "admin")
+    if((id_connexion == "admin" && password_connexion == "admin"))
     {
         Etmp.notifications("Connexion", "Le nom d'utilisateur et le mot de passe sont corrects");
         //ui->label_username->setText(ui->lineEdit_id_connexion->text());
-        ui->tabWidget->setCurrentIndex(4);
-        ui->tabWidget->setTabEnabled(4, true);
-        ui->tabWidget->setTabEnabled(0,true);
+        ui->tabWidget->setCurrentIndex(1);
+
         /*ui->tabWidget->setCurrentIndex(1);
         ui->tabWidget->setTabEnabled(1, true);
         */
+        ui->tabWidget->setTabEnabled(1, true);
+          ui->tabWidget->setTabEnabled(2, true);
+           ui->tabWidget->setTabEnabled(3, true);
+            ui->tabWidget->setTabEnabled(4, true);
+            ui->tabWidget->setTabEnabled(5, true);
     }
+    else if((id_connexion == "client" && password_connexion == "client"))
+    {
+        Etmp.notifications("Connexion", "Le nom d'utilisateur et le mot de passe sont corrects");
+        //ui->label_username->setText(ui->lineEdit_id_connexion->text());
+        ui->tabWidget->setCurrentIndex(1);
+
+        ui->tabWidget->setTabEnabled(1, true);
+          ui->tabWidget->setTabEnabled(2, true);
+
+    }
+    else if((id_connexion == "employe" && password_connexion == "employe"))
+    {
+        Etmp.notifications("Connexion", "Le nom d'utilisateur et le mot de passe sont corrects");
+        //ui->label_username->setText(ui->lineEdit_id_connexion->text());
+        ui->tabWidget->setCurrentIndex(3);
+
+        ui->tabWidget->setTabEnabled(3, true);
+          ui->tabWidget->setTabEnabled(4, true);
+
+    }
+
     else if(id_connexion != "admin" && password_connexion == "admin")
     {
         ui->lineEdit_id_connexion->setStyleSheet("color: red");
@@ -673,6 +730,10 @@ void MainWindow::on_pushButton_deconnexion_clicked()
 {
     ui->tabWidget->setTabEnabled(0,true);
     ui->tabWidget->setTabEnabled(1,false);
+    ui->tabWidget->setTabEnabled(2,false);
+    ui->tabWidget->setTabEnabled(3,false);
+    ui->tabWidget->setTabEnabled(4,false);
+
 
     //MODE NUIT
 
@@ -1599,4 +1660,25 @@ void MainWindow::on_pushButton_da_2_clicked()
 {
     A.write_to_arduino("1");
     Etmp.notifications("Alarme","Desactivee");
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    Mailing* mailing = new Mailing("hana.mejdoub@esprit.tn", "hanaE2020", "smtp.gmail.com");
+    connect(mailing, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+if(ui->mail_oublie->text()=="ballamoussa.keita@esprit.tn")
+    mailing->sendMail("hana.mejdoub@esprit.tn", "ballamoussa.keita@esprit.tn", "PASSWORD", "Bonjour Cher administrateur, Votre MOT DE PASSE est: admin");
+else if(ui->mail_oublie->text()=="hana.mejdoub@esprit.tn")
+    mailing->sendMail("hana.mejdoub@esprit.tn", "hana.mejdoub@esprit.tn", "PASSWORD", "Bonjour cher responsable des clients, Votre MOT DE PASSE est: client");
+else if(ui->mail_oublie->text()=="ines.mahjoubi@esprit.tn")
+    mailing->sendMail("hana.mejdoub@esprit.tn", "ines.mahjoubi@esprit.tn", "PASSWORD", "Bonjour cher responsable des employes, Votre MOT DE PASSE est: employe");
+}
+
+void MainWindow::on_pushButton_deconnexion_2_clicked()
+{
+    ui->tabWidget->setTabEnabled(0,true);
+    ui->tabWidget->setTabEnabled(1,false);
+    ui->tabWidget->setTabEnabled(2,false);
+    ui->tabWidget->setTabEnabled(3,false);
+    ui->tabWidget->setTabEnabled(4,false);
 }

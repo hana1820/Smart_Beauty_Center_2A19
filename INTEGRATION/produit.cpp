@@ -22,7 +22,7 @@ bool produit::ajouter(){
     QSqlQuery query;
 
 
-    query.prepare("INSERT INTO A_SBC_PRODUIT (reference,nom,type,nature,quantite,prix,prix_fid)" "VALUES (:reference,:nom,:type,:nature,:quantite,:prix,:prix_fid)");
+    query.prepare("INSERT INTO A_SBC_PRODUITS (reference,nom,type,nature,quantite,prix,prix_fid)" "VALUES (:reference,:nom,:type,:nature,:quantite,:prix,:prix_fid)");
 
     query.bindValue(":reference", reference);
     query.bindValue(":nom",nom);

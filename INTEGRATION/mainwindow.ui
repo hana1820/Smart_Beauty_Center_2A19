@@ -51,7 +51,7 @@ color: rgb(121, 79, 29);</string>
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
@@ -67,7 +67,7 @@ color: rgb(121, 79, 29);</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_6">
        <widget class="Line" name="line">
@@ -257,7 +257,7 @@ color: rgb(121, 79, 29);</string>
        <widget class="QLabel" name="Connexion">
         <property name="geometry">
          <rect>
-          <x>620</x>
+          <x>650</x>
           <y>130</y>
           <width>231</width>
           <height>61</height>
@@ -276,10 +276,10 @@ color: rgb(121, 79, 29);</string>
          <string>CONNEXION</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_95">
+       <widget class="QLabel" name="user2">
         <property name="geometry">
          <rect>
-          <x>720</x>
+          <x>670</x>
           <y>0</y>
           <width>101</width>
           <height>121</height>
@@ -359,7 +359,7 @@ font: 14pt &quot;Gabriola&quot;;</string>
          <pixmap>logog.png</pixmap>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_id_connexion_2">
+       <widget class="QLineEdit" name="mail_oublie">
         <property name="geometry">
          <rect>
           <x>650</x>
@@ -446,13 +446,13 @@ color: rgb(0, 0, 0);</string>
          <string notr="true">font: 14pt &quot;Gabriola&quot;;</string>
         </property>
         <property name="text">
-         <string>Un message de confirmation contenant votre mot de pass sera envoyé à l'administrateur.</string>
+         <string>Un message de confirmation contenant votre mot de pass sera envoyé à l'adrese mail.</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_53">
         <property name="geometry">
          <rect>
-          <x>670</x>
+          <x>700</x>
           <y>360</y>
           <width>231</width>
           <height>51</height>
@@ -462,7 +462,7 @@ color: rgb(0, 0, 0);</string>
          <string notr="true">font: 14pt &quot;Gabriola&quot;;</string>
         </property>
         <property name="text">
-         <string>Prière de le récupérer chez lui.</string>
+         <string>Prière de le récupérer.</string>
         </property>
        </widget>
       </widget>
@@ -601,7 +601,7 @@ background-color: rgb(172, 114, 85);</string>
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
-      <widget class="QLabel" name="label_14">
+      <widget class="QLabel" name="user">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -737,7 +737,7 @@ background-color: rgb(172, 114, 85);</string>
        <string notr="true">background-color: rgb(245,172,162);</string>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_3">
        <widget class="QGroupBox" name="groupBox">
@@ -1523,23 +1523,20 @@ font:16pt &quot;Gabriola&quot;;</string>
           <enum>Qt::Vertical</enum>
          </property>
         </widget>
-        <widget class="QLabel" name="label_25">
+        <widget class="QLabel" name="logog_2">
          <property name="geometry">
           <rect>
-           <x>490</x>
+           <x>470</x>
            <y>40</y>
            <width>431</width>
-           <height>401</height>
+           <height>441</height>
           </rect>
-         </property>
-         <property name="cursor">
-          <cursorShape>CrossCursor</cursorShape>
          </property>
          <property name="text">
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>../../logo2.png</pixmap>
+          <pixmap>logog.png</pixmap>
          </property>
         </widget>
        </widget>
@@ -2082,6 +2079,9 @@ border-radius: 15px 15px 15px 15px;</string>
           <width>291</width>
           <height>41</height>
          </rect>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLabel" name="label_21">
@@ -5079,6 +5079,26 @@ background-color: rgb(172, 114, 85);</string>
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
+       <widget class="QPushButton" name="pushButton_deconnexion_2">
+        <property name="geometry">
+         <rect>
+          <x>880</x>
+          <y>20</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 16pt &quot;Gabriola&quot;;
+background-color: rgb(172, 114, 85);</string>
+        </property>
+        <property name="text">
+         <string>DECONNEXION</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>
@@ -5905,11 +5925,6 @@ background-color: rgb(255, 202, 218);</string>
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_6">
-     <attribute name="title">
-      <string>Configuration</string>
-     </attribute>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -5918,7 +5933,7 @@ background-color: rgb(255, 202, 218);</string>
      <x>0</x>
      <y>0</y>
      <width>1029</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

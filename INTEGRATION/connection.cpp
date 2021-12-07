@@ -12,14 +12,14 @@ bool Connection::createconnection()
 
     db = QSqlDatabase::addDatabase("QODBC"); //initialisation de l'attribut de db qui sera utilisé dans la méthode create connection;
 
-    db.setDatabaseName("Source_Projet2A");
+   /* db.setDatabaseName("Source_Projet2A");
     db.setUserName("system");
-    db.setPassword("QToracle");
+    db.setPassword("QToracle");*/
 
 
-  /* db.setDatabaseName("PROJET_SMART_BEAUTY_CENTER");//inserer le nom de la source de données ODBC
+   db.setDatabaseName("PROJET_SMART_BEAUTY_CENTER");//inserer le nom de la source de données ODBC
     db.setUserName("BALLA");//inserer nom de l'utilisateur
-    db.setPassword("@Tampon2001");//inserer mot de passe de cet utilisateur*/
+    db.setPassword("@Tampon2001");//inserer mot de passe de cet utilisateur
 
     /*db.setDatabaseName("qt_2021");//inserer le nom de la source de données ODBC
     db.setUserName("system");//inserer nom de l'utilisateur

@@ -45,7 +45,7 @@ Employe::Employe(int id,int telephone,QString nom,QString prenom,QString adresse
      QString id_string=QString::number(id);
      QString telephone_string=QString::number(telephone);
       QSqlQuery query;
-query.prepare("INSERT INTO EMPLOYES (id_emp,nom,prenom,adresse,poste,email,telephone) "
+query.prepare("INSERT INTO a_sbc_employe (id_emp,nom,prenom,adresse,poste,email,telephone) "
                          "VALUES (:id, :nom, :prenom, :adresse, :poste, :email, :telephone)");
 
 
@@ -62,7 +62,7 @@ query.prepare("INSERT INTO EMPLOYES (id_emp,nom,prenom,adresse,poste,email,telep
  {
 
       QSqlQuery query;
-           query.prepare("Delete from employes where id_emp=:id");
+           query.prepare("Delete from a_sbc_employe where id_emp=:id");
            query.bindValue(0,id);
 
            return query.exec();
@@ -71,7 +71,7 @@ query.prepare("INSERT INTO EMPLOYES (id_emp,nom,prenom,adresse,poste,email,telep
  QSqlQueryModel* Employe::afficher()
  {
     QSqlQueryModel* model=new QSqlQueryModel();
-         model->setQuery("SELECT* FROM EMPLOYES");
+         model->setQuery("SELECT* FROM a_sbc_employe");
 
          model->setHeaderData(0, Qt::Horizontal,QObject:: tr("ID_EMP"));
          model->setHeaderData(1, Qt::Horizontal,QObject:: tr("NOM"));
@@ -91,7 +91,7 @@ query.prepare("INSERT INTO EMPLOYES (id_emp,nom,prenom,adresse,poste,email,telep
       QString telephone_string=QString::number(telephone);
 
       QSqlQuery query;
-         query.prepare("update employes set nom=:nom,prenom=:prenom,adresse=:adresse,poste=:poste,email=:email,telephone=:telephone where id_emp=:id");
+         query.prepare("update a_sbc_employe set nom=:nom,prenom=:prenom,adresse=:adresse,poste=:poste,email=:email,telephone=:telephone where id_emp=:id");
 
          query.bindValue(":id",id_string); /*bind value : passer la valeur et la variable */
          query.bindValue(":nom",nom);      /* query : error branche vide */
@@ -108,7 +108,7 @@ query.prepare("INSERT INTO EMPLOYES (id_emp,nom,prenom,adresse,poste,email,telep
  {
      QSqlQueryModel * model=new QSqlQueryModel();
 
-     model->setQuery("select * from  EMPLOYES ORDER BY id_emp");
+     model->setQuery("select * from  a_sbc_employe ORDER BY id_emp");
 
      model->setHeaderData(0, Qt::Horizontal,QObject::tr("ID_EMP"));
      model->setHeaderData(1, Qt::Horizontal,QObject::tr("NOM"));
@@ -125,7 +125,7 @@ query.prepare("INSERT INTO EMPLOYES (id_emp,nom,prenom,adresse,poste,email,telep
  {
  QSqlQueryModel * model= new QSqlQueryModel();
  QSqlQuery query;
- query.prepare("SELECT * from EMPLOYES where ID_EMP= :id");
+ query.prepare("SELECT * from a_sbc_employe where ID_EMP= :id");
  query.bindValue(":id",ide);
 
      query.exec();
@@ -145,14 +145,14 @@ query.prepare("INSERT INTO EMPLOYES (id_emp,nom,prenom,adresse,poste,email,telep
 
   QSqlQueryModel *Employe::fusion()
   { QSqlQueryModel *model=new QSqlQueryModel();
-      model->setQuery("select SALLE_RDVZ from RENDEZVOUS");
+      model->setQuery("select SALLE_RDV from A_SBC_RENDEZVOUS");
       return model ;
 }
   double Employe::Statistiquee(QString db , QString ds)
   {
       QSqlQuery query;
           int s=0 ;
-             query.prepare("SELECT SUM (salaire) from EMPLOYES where datedebut >=TO_DATE(:db,'YYYY-MM-DD')  and datefin <= TO_DATE(:ds,'YYYY-MM-DD')");
+             query.prepare("SELECT SUM (salaire) from a_sbc_employe where datedebut >=TO_DATE(:db,'YYYY-MM-DD')  and datefin <= TO_DATE(:ds,'YYYY-MM-DD')");
             // query.bindValue(":id_emp",id);
              query.bindValue(":db",db) ;
              query.bindValue(":ds",ds) ;

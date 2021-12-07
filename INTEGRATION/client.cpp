@@ -178,11 +178,11 @@ model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
 model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
 model->setHeaderData(2,Qt::Horizontal,QObject::tr("PRENOM"));
 model->setHeaderData(3,Qt::Horizontal,QObject::tr("ADRESSE"));
-model->setHeaderData(4,Qt::Horizontal,QObject::tr("TEL"));
-model->setHeaderData(5,Qt::Horizontal,QObject::tr("AGE"));
-model->setHeaderData(6,Qt::Horizontal,QObject::tr("MAIL"));
-model->setHeaderData(7,Qt::Horizontal,QObject::tr("SEXE"));
-model->setHeaderData(8,Qt::Horizontal,QObject::tr("MONTANT"));
+model->setHeaderData(4,Qt::Horizontal,QObject::tr("AGE"));
+model->setHeaderData(5,Qt::Horizontal,QObject::tr("MAIL"));
+model->setHeaderData(6,Qt::Horizontal,QObject::tr("SEXE"));
+model->setHeaderData(7,Qt::Horizontal,QObject::tr("MONTANT"));
+model->setHeaderData(8,Qt::Horizontal,QObject::tr("DATE"));
 return model;
 }
 bool ::Client::supprimer(int id)
@@ -301,8 +301,8 @@ int Client::recetteTotale(QDate date)
     if (query.exec())
     {
         while (query.next())
-            if(query.value(9)==date)
-            somme +=query.value(8).toInt();
+            if(query.value(8)==date)
+            somme +=query.value(7).toInt();
         //8 representre la colonne qui contient le montant des achats ::::: @KEITA CODE
     }
 
